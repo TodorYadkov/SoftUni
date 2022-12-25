@@ -1,0 +1,98 @@
+// Here you can enter your choice
+let playerChooses = 'r';
+// invoke the main function with arguments
+game(playerChooses);
+
+function game(player) {
+    // make all data entry in lowercase letters
+    let playerTurn = player.toLowerCase();
+    // make differents types of constants
+    const draw = 'This game was a draw!';
+    const lose = 'You lose!';
+    const win = 'You Win!';
+    const rock = 'Rock';
+    const paper = 'Paper';
+    const scissors = 'Scissors';
+    // create an object to save all points
+    let finalResultObj = {
+        plaeyrPoint: 0,
+        computerPoint: 0,
+    };
+    // variable to display a temporary score of the current game
+    let tempResult = '';
+    // variable to display final score of all the game
+    let finalResultPlayers = '';
+
+    // get the player's choice
+    switch (playerTurn) {
+        case 'r':
+        case 'rock': playerTurn = rock;
+            break;
+        case 'p':
+        case 'paper': playerTurn = paper;
+            break;
+        case 's':
+        case 'scissors': playerTurn = scissors;
+            break;
+        default:
+            console.log('Invalid Input. Please try again');
+            break;
+    }
+    // show the palayer`s choice
+    console.log(`The player choses ${playerTurn}`);
+    // calculate match from array (always result is 0,1,2, this is index)
+    let computerChoice = ['Rock', 'Paper', 'Scissors'];
+    let computerTurn = computerChoice[Math.floor(Math.random() * 3)];
+    // show the match taken by the computer
+    console.log(`The computer choses ${computerTurn}`);
+    // show the beginning of our game
+    console.log('Let\'s fight!!!');
+    // get the score of the current game and add one point to the winner
+    switch (playerTurn) {
+        case rock:
+            if (computerTurn === rock) {
+                tempResult = draw;
+            } else if (computerTurn === paper) {
+                tempResult = lose;
+                finalResultObj.computerPoint += 1;
+            } else if (computerTurn === scissors) {
+                tempResult = win;
+                finalResultObj.plaeyrPoint += 1;
+            }
+            break;
+        case paper:
+            if (computerTurn === paper) {
+                tempResult = draw;
+            } else if (computerTurn === scissors) {
+                tempResult = lose;
+                finalResultObj.computerPoint += 1;
+            } else if (computerTurn === rock) {
+                tempResult = win;
+                finalResultObj.plaeyrPoint += 1;
+            }
+            break;
+        case scissors:
+            if (computerTurn === scissors) {
+                tempResult = draw;
+            } else if (computerTurn === rock) {
+                tempResult = lose;
+                finalResultObj.computerPoint += 1;
+            } else if (computerTurn === paper) {
+                tempResult = win;
+                finalResultObj.plaeyrPoint += 1;
+            }
+            break;
+    }
+    // shows the result of the current game and change the color with hex color #bada55
+    console.log(`%c${tempResult}`, 'background: #222; color: #bada55');
+    // after the game is over get the final result
+    if (finalResultObj.plaeyrPoint > finalResultObj.computerPoint) {
+        finalResultPlayers = 'You are the champion!';
+    } else if (finalResultObj.computerPoint > finalResultObj.plaeyrPoint) {
+        finalResultPlayers = 'Better luck next time!'
+    } else if (finalResultObj.plaeyrPoint === finalResultObj.computerPoint) {
+        finalResultPlayers = 'This game was a draw!'
+    }
+    // print the final result and change the color with hex color #f44336
+    console.log(`%cThe end result of the game is:\n${finalResultPlayers}\nPlayer point: ${finalResultObj.plaeyrPoint}\nComputer point: ${finalResultObj.computerPoint}`, 'background: #222; color: #f44336');
+}
