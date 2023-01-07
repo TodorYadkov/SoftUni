@@ -89,7 +89,7 @@ function solve() {
             });
         }
     }
-
+    // Generate element
     function generateEl(typeEl, content, parent, nameClass) {
         const el = document.createElement(typeEl);
 
