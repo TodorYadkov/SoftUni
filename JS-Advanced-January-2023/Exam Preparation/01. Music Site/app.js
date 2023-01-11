@@ -7,7 +7,7 @@ function solve() {
         savedSongs: document.querySelector('#saved-hits .saved-container'),
         totalLikes: document.querySelector('#total-likes .likes p'),
     };
-
+    // Function to add new song
     function addSongFn(event) {
         event.preventDefault();
 
