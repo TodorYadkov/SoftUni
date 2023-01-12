@@ -7,7 +7,6 @@ class Restaurant {
     }
 
     loadProducts(products) {
-
         for (let line of products) {
             let [productName, productQuantity, productTotalPrice] = line.split(' ');
             productQuantity = Number(productQuantity);
@@ -33,7 +32,6 @@ class Restaurant {
     }
 
     addToMenu(meal, neededProducts, price) {
-
         if (this.menu[meal]) {
             return `The ${meal} is already in the our menu, try something different.`;
         }
@@ -56,7 +54,6 @@ class Restaurant {
     }
 
     showTheMenu() {
-
         if (Object.keys(this.menu).length === 0) {
             return 'Our menu is not ready yet, please come later...';
         }
@@ -70,7 +67,6 @@ class Restaurant {
     }
 
     makeTheOrder(meal) {
-
         if (this.menu[meal] === undefined) {
             return `There is not ${meal} yet in our menu, do you want to order something else?`;
         }
@@ -87,7 +83,7 @@ class Restaurant {
         if (hasAllProducts === false) {
             return `For the time being, we cannot complete your order (${meal}), we are very sorry...`;
         }
-        
+
         for (let product in this.menu[meal].neededProducts) {
             this.stockProducts[product] -= this.menu[meal].neededProducts[product];
         }
