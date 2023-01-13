@@ -122,12 +122,3 @@ console.log(art.toString('desc'));                  // Title: My Story
                                                     // -- 1. Sammy: Some Content
                                                     // --- 1.2. SAmmy: Reply@
                                                     // --- 1.1. Zane: Reply
-
-
-
-
-
-
-
-
-
