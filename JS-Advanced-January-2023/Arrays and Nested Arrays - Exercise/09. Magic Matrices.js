@@ -11,15 +11,16 @@ function magicmatricies(matrix) {
             break;
         }
     }
-    
+
     if (result) {
         for (let col = 0; col < matrix[0].length; col++) {
             let colSum = 0;
-            for (let row = 0; row < matrix.length; row++)
+            for (let row = 0; row < matrix.length; row++) {
                 colSum += matrix[row][col];
-            if (colSum != sum) {
-                result = false;
-                break;
+                if (colSum != sum) {
+                    result = false;
+                    break;
+                }
             }
         }
     }
@@ -27,18 +28,18 @@ function magicmatricies(matrix) {
     console.log(`${result}`);
 }
 
-magicmatricies([[3, 6, 3], 
-                [6, 3, 6],
-                [3, 6, 3]]);
+magicmatricies([[3, 6, 3],
+[6, 3, 6],
+[3, 6, 3]]);
 magicmatricies([[4, 5, 6],
-                [6, 5, 4],
-                [5, 5, 5]]);
+[6, 5, 4],
+[5, 5, 5]]);
 magicmatricies([[11, 32, 45],
-                [21, 0, 1],
-                [21, 1, 1]]);
+[21, 0, 1],
+[21, 1, 1]]);
 magicmatricies([[1, 0, 0],
-                [0, 0, 1],
-                [0, 1, 0]]);
+[0, 0, 1],
+[0, 1, 0]]);
 magicmatricies([[1, 0, 1],
 [0, 1, 0],
 [1, 0, 1]]);
