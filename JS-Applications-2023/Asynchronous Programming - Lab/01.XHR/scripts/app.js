@@ -2,13 +2,11 @@ async function loadRepos() {
    const output = document.getElementById('res');
    try {
       const response = await fetch('https://api.github.com/users/testnakov/repos');
-
       if (response.ok === false) {
          throw new Error(`Houston, we have a problem: ${response.statusText}`);
       }
 
       output.textContent = JSON.stringify(await response.json());
-
    } catch (err) {
      output.alert(err);
    }
