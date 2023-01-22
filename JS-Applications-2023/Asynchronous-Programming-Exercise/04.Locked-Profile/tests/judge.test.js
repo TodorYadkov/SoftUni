@@ -1,7 +1,7 @@
 const { chromium } = require('playwright-chromium');
 const { expect } = require('chai');
 
-const userApplicationHttpPort = 'http://127.0.0.1:5500/02.%20JS-Applications-Asynchronous-Programming-Exercise-Resources/04.Locked-Profile/';
+const userApplicationHttpPort = 'http://localhost:3000';
 
 const host = userApplicationHttpPort; // Application host (NOT service host - that can be anything)
 
