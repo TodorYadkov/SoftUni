@@ -3,7 +3,7 @@ const { expect } = require('chai');
 
 const userApplicationHttpPort = '#userApplicationHttpPort#';
 
-const host = 'http://127.0.0.1:5500/02.%20JS-Applications-Asynchronous-Programming-Exercise-Resources/06.Blog/'; //'http://localhost:' + userApplicationHttpPort; // Application host (NOT service host - that can be anything)
+const host = //'http://localhost:' + userApplicationHttpPort; // Application host (NOT service host - that can be anything)
 
 const DEBUG = false;
 const slowMo = 500;
