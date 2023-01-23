@@ -1,23 +1,25 @@
 const cache = {};
-const postsUrl = 'http://localhost:3030/jsonstore/blog/posts';
-const commentsUrl = 'http://localhost:3030/jsonstore/blog/comments';
-(async function () {
-    const postResponse = await fetch(postsUrl);
+
+document.getElementById('btnLoadPosts').addEventListener('click', async () => {
+    if (Object.keys(cache).length !== 0) {
+        return;
+    }
+
+    const postResponse = await fetch('http://localhost:3030/jsonstore/blog/posts');
     const postData = await postResponse.json();
 
-    const commentsResponse = await fetch(commentsUrl);
+    const commentsResponse = await fetch('http://localhost:3030/jsonstore/blog/comments');
     const commentsData = await commentsResponse.json();
-    Object.assign(cache, postData, commentsData);
-})();
 
-document.getElementById('btnLoadPosts').addEventListener('click', () => {
+    Object.assign(cache, postData, commentsData);
+
     const selectOp = document.getElementById('posts');
     selectOp.innerHTML = '';
     Object.values(cache).forEach(post => {
-        if ((post.title !== undefined) && post.id) {
+        if (post.title !== undefined) {
             const op = document.createElement('option');
-            op.value = post.id;
             op.textContent = post.title;
+            op.value = post.id;
             selectOp.appendChild(op);
         }
     });
@@ -29,18 +31,19 @@ document.getElementById('btnViewPost').addEventListener('click', () => {
     const titleElement = document.getElementById('post-title');
     const postBodyElement = document.getElementById('post-body');
     const postUlElement = document.getElementById('post-comments');
-    
-    titleElement.textContent = '';
-    postUlElement.innerHTML = '';
 
     const selectedPost = Object.values(cache).find(post => post.id === selectedOpId);
     titleElement.textContent = selectedPost.title;
     postBodyElement.textContent = selectedPost.body;
 
+    postUlElement.innerHTML = '';
+
+
     const comments = Object.values(cache).filter(c => c.postId === selectedOpId);
     comments.forEach(c => {
         const li = document.createElement('li');
         li.textContent = c.text;
+        li.id = c.id;
         postUlElement.appendChild(li);
     });
 });
