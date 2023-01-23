@@ -25,7 +25,6 @@ document.getElementById('btnLoadPosts').addEventListener('click', async () => {
     });
 });
 
-
 document.getElementById('btnViewPost').addEventListener('click', () => {
     const selectedOpId = document.getElementById('posts').selectedOptions[0].value;
     const titleElement = document.getElementById('post-title');
@@ -37,7 +36,6 @@ document.getElementById('btnViewPost').addEventListener('click', () => {
     postBodyElement.textContent = selectedPost.body;
 
     postUlElement.innerHTML = '';
-
 
     const comments = Object.values(cache).filter(c => c.postId === selectedOpId);
     comments.forEach(c => {
