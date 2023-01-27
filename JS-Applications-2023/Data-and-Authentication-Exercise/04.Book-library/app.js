@@ -173,7 +173,7 @@ function generateEl(typeEl, content, parent, attributes) {
 // 1.1. Send a GET request to: http://localhost:3030/jsonstore/collections/books
 // 2.   When the [SUBMIT] button is clicked, validate the input - no empty string
 // 2.1. Send a POST request - JSON {author: 'New Author', title: 'New Title'}
-// 3.   When the [EDIT] button is clicked on a book - send a PUT request to the same URL + (book id)
+// 3.   When the [EDIT] button is clicked on a book - send a PUT request to the same URL/(book id)
 // 3.1. JSON {author: 'Changed Author', title: 'Changed Title'}
-// 4.   When the [DELETE] button is clicked on a book - send a DELETE request to the same URL + (book id)
+// 4.   When the [DELETE] button is clicked on a book - send a DELETE request to the same URL/(book id)
 // 4.1  No confirmation needed
