@@ -290,7 +290,7 @@ function generateEl(typeEl, parent, attributes) {
   return el;
 }
 
-// The task is to train a fetch request to the server. Nothing else is required.
+
 // 1.   Select HTML element
 // 2.   When the page is loaded the app should list all the furnitures in a table
 // 2.1. Make GET request to: http://localhost:3030/data/furniture
