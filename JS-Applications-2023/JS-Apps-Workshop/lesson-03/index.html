@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My Cookbook</title>
+        <link rel="stylesheet" href="static/site.css">
+        <link rel="stylesheet" href="static/recipe.css">
+        <link rel="stylesheet" href="static/form.css">
+        <script type="module" src="./src/app.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <h1>My Cookbook</h1>
+            <nav id="home-nav">
+                <a id="catalogBtn" class="active">Catalog</a>
+                <div id="user">
+                    <a id="createBtn" href="javascript:void(0)">Create Recipe</a>
+                    <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+                </div>
+                <div id="guest">
+                    <a id="loginBtn" href="javascript:void(0)">Login</a>
+                    <a id="registerBtn" href="javascript:void(0)">Register</a>
+                </div>
+            </nav>
+        </header>
+        <!-- Main -->
+        <main id="main">
+            
+        </main>
+
+        <!-- Hidden elements -->
+        <div id="views" style="display: none">
+            <!-- loading text -->
+            <p id="loading" style="color: white">Loading...</p>
+            <!-- login page -->
+            <article id="login-article">
+                <h2>Login</h2>
+                <form>
+                    <label>E-mail: <input type="text" name="email"></label>
+                    <label>Password: <input type="password" name="password"></label>
+                    <input type="submit" value="Login">
+                </form>
+            </article>
+            <!-- register page -->
+            <article id="register-article">
+                <h2>Register</h2>
+                <form>
+                    <label>E-mail: <input type="text" name="email"></label>
+                    <label>Password: <input type="password" name="password"></label>
+                    <label>Repeat: <input type="password" name="rePass"></label>
+                    <input type="submit" value="Register">
+                </form>
+            </article>
+            <!-- create page -->
+            <article id="create-article">
+                <h2>New Recipe</h2>
+                <form>
+                    <label>Name: <input type="text" name="name" placeholder="Recipe name"></label>
+                    <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+                    <label class="ml">Ingredients: <textarea name="ingredients" placeholder="Enter ingredients on separate lines"></textarea></label>
+                    <label class="ml">Preparation: <textarea name="steps" placeholder="Enter preparation steps on separate lines"></textarea></label>
+                    <input type="submit" value="Create Recipe">
+                </form>
+            </article>
+             <!-- edit recipe -->
+             <article id="edit-article">
+                <h2>Edit Recipe</h2>
+                <form>
+                    <label>Name: <input type="text" name="name" placeholder="Recipe name"></label>
+                    <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+                    <label class="ml">Ingredients: <textarea name="ingredients" placeholder="Enter ingredients on separate lines"></textarea></label>
+                    <label class="ml">Preparation: <textarea name="steps" placeholder="Enter preparation steps on separate lines"></textarea></label>
+                    <input type="submit" value="Update Recipe">
+                </form>
+            </article>
+        </div>
+    </body>
+</html>
