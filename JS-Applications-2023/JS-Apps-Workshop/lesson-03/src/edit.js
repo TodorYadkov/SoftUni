@@ -3,12 +3,14 @@ import { createRecipeCard, clearActiveBtn, sections, showLess } from './dom.js';
 // Show edit page (<article>) and fill form inputs
 export async function showEdit(recipe, articleRecipRef) {
     clearActiveBtn();
+    sections.main.replaceChildren(sections.editArticle);
 
     const form = sections.editArticle.getElementsByTagName('form')[0];
-    form.addEventListener('submit', (e) => editRecipe(e, form, recipe._id));
-    sections.editArticle.addEventListener('click', (e) => backToRecipe(e, articleRecipRef));
-
-    sections.main.replaceChildren(sections.editArticle);
+    if (form.getAttribute('data-event') === null) {
+        form.setAttribute('data-event', 'true');
+        form.addEventListener('submit', (e) => editRecipe(e, form, recipe._id));
+        sections.editArticle.addEventListener('click', (e) => backToRecipe(e, articleRecipRef));
+    }
     // fill form
     const arrayForm = [...form];
     for (const input of arrayForm) {

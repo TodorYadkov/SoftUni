@@ -21,6 +21,7 @@ export const sections = {
     createArticle: document.getElementById('create-article'),
     editArticle: document.getElementById('edit-article'),
 };
+
 // Generate a preview of each recipe
 export function createRecipePreview(recipe) {
     const result = e('article', { className: 'preview', onClick: toggleCard },

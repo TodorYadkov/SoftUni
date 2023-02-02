@@ -1,4 +1,5 @@
 import { sections, e, showLess } from './dom.js';
+
 // Delete recipe by id
 export async function showDelete(recipe) {
     if (sessionStorage.getItem('userInfo') === null) {

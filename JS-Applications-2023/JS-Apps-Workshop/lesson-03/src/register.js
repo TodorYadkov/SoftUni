@@ -6,11 +6,11 @@ export function showRegister() {
     navBtns.registerBtn.classList.add('active');
 
     const form = sections.registerArticle.getElementsByTagName('form')[0];
-    form.addEventListener('submit', (e) => registerFn(e, form));
+    form.addEventListener('submit', (e => registerFn(e, form)));
     sections.main.replaceChildren(sections.registerArticle);
 }
 // Register
-export async function registerFn(event, formHTMLEl) {
+async function registerFn(event, formHTMLEl) {
     event.preventDefault();
     const formData = Object.fromEntries(new FormData(formHTMLEl));
     if (!formData.email || !formData.password || (formData.password !== formData.rePass)) {

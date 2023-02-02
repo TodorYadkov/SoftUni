@@ -1,18 +1,17 @@
-import { navBtns, clearActiveBtn, sections, showLess } from './dom.js';
+import { navBtns, clearActiveBtn, sections, showLess, createRecipeCard } from './dom.js';
 
 // Show create page (<article>)
 export function showCreate() {
     clearActiveBtn();
     navBtns.createBtn.classList.add('active');
+    sections.main.replaceChildren(sections.createArticle);
 
     const form = sections.createArticle.getElementsByTagName('form')[0];
-    form.addEventListener('submit', (e) => createFn(e, form));
-
-    // TO DO 
-    // MAKE to back from create
-
-
-    sections.main.replaceChildren(sections.createArticle);
+    if (form.getAttribute('data-event') === null) {
+        form.setAttribute('data-event', 'true');
+        form.addEventListener('submit', (e) => createFn(e, form));
+        sections.createArticle.addEventListener('click', showLess);
+    }
 }
 // Create new recipe
 export async function createFn(event, formHTMLEl) {
@@ -51,8 +50,13 @@ export async function createFn(event, formHTMLEl) {
             throw new Error(`Error: ${response.statusText} - ${response.status}`);
         }
 
+        const data = await response.json();
+        const newRecipe = createRecipeCard(data);
+        newRecipe.addEventListener('click', showLess);
+
         formHTMLEl.reset();
-        showLess(event);
+        sections.main.replaceChildren(newRecipe);
+
     } catch (error) {
         console.error(error.message);
     }
