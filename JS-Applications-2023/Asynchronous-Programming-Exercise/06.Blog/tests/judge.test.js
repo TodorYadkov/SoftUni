@@ -3,7 +3,7 @@ const { expect } = require('chai');
 
 const userApplicationHttpPort = '#userApplicationHttpPort#';
 
-const host = //'http://localhost:' + userApplicationHttpPort; // Application host (NOT service host - that can be anything)
+const host = 'http://localhost:' + userApplicationHttpPort; // Application host (NOT service host - that can be anything)
 
 const DEBUG = false;
 const slowMo = 500;
@@ -11,7 +11,7 @@ const slowMo = 500;
 const mockData = {
     blog: [
         {
-            body: 'Body - Test but why don\'t work this stuff',
+            body: 'Body - Test',
             id: '1001',
             title: 'Unit Testing And Modules',
         },
@@ -24,7 +24,7 @@ const mockData = {
         },
         {
             id: '-MSgySbWEFw3rhCfIIns',
-            postId: '1001',
+            postId: '10/jsonstore/blog/posts01',
             text: 'Unit Testing is a useful testing technique in programming.',
         },
     ],
@@ -108,8 +108,7 @@ describe('E2E tests', function () {
             const post = await page.$$eval('#post-title', (t) =>
                 t.map((s) => s.textContent)
             );
-            console.log(post[0])
-            console.log(data[0].title)
+
             expect(post[0]).to.equal(data[0].title);
         });
 
