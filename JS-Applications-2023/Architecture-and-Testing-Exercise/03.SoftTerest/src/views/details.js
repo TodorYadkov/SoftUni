@@ -16,7 +16,7 @@ export async function showDetails(context, ideaId) {
     ctx = context;
     ctx.showSection(section);
     // Get user id
-    const userId = JSON.parse(sessionStorage.getItem('userInfo'))._id;
+    const userId = JSON.parse(sessionStorage.getItem('userInfo'))?._id;
     // Get idea from the server
     const idea = await ideaDetails(ideaId);
     section.innerHTML = `<img class="det-img" src="${idea.img}" />
