@@ -1,0 +1,15 @@
+<h1>Login Form</h1>
+<div class="form">
+    {{#if err}}
+    <p class="error">{{err}}</p>
+    {{/if}}
+    {{#with userInput}}
+    <form action="/user/login" method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="{{username}}">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" value="{{password}}">
+        <input type="submit" value="Login">
+    </form>
+    {{/with}}
+</div>
