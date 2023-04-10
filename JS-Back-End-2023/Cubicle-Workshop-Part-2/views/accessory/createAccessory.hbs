@@ -1,0 +1,17 @@
+<h1>Create Accessory</h1>
+<div class="form">
+    {{#if err}}
+    <p class="error">{{err}}</p>
+    {{/if}}
+    {{#with accesoryData}}
+    <form action="/accessory/create" method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="{{name}}">
+        <label for="name">Description</label>
+        <textarea id="description" name="description">{{description}}</textarea>
+        <label for="image">ImageUrl</label>
+        <input type="text" id="image" name="imageUrl" value="{{imageUrl}}">
+        <input type="submit" value="Create">
+    </form>
+    {{/with}}
+</div>
