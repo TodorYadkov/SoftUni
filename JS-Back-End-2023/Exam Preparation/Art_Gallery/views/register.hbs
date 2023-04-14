@@ -1,0 +1,35 @@
+<section id="register-container">
+    <div class="register-container-info">
+        <img src="/static/style/img/slider.jpg" alt="image">
+        {{#if error}}
+        <div class="error-box">
+            <p>{{error}}</p>
+        </div>
+        {{/if}}
+        {{#with userInput}}
+        <form action="/user/register" method="POST" class="container-text">
+            <h2>Register</h2>
+            <p>Register to get ideas and view the latest masterpieces.</p>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="ivan_00" name="username" value="{{username}}">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="*****" name="password" value="{{password}}">
+
+            <label for="re-password">Repeat password:</label>
+            <input type="password" id="re-password" placeholder="*****" name="re-password" value="{{re-password}}">
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" placeholder="2572 Orphan Road" name="address" value="{{address}}">
+
+            <button class="register-btn">Register</button>
+            <div class="card-no-account">
+                <p>Already have an account?<a href="/user/login"> Sign in</p>
+            </div>
+
+        </form>
+        {{/with}}
+    </div>
+
+</section>

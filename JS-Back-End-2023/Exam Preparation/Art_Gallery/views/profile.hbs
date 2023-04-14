@@ -1,0 +1,27 @@
+<section id="profile-page">
+    <h1>Full Profile Information</h1>
+    <article class="profile-card">
+
+        <article class="profile-card-info">
+            {{#with user}}
+            <h2>Username: {{username}}</h2>
+            <h3>Address: {{address}}</h3>
+            {{#if sharedPub}}
+            <h4>Titles of shared posts by the user: {{sharedPub}}</h4>
+            {{else}}
+            <h4>Titles of shared posts by the user: Not yet.</h4>
+            {{/if}}
+            {{#if publications}}
+            <h4>Titles of which the user is the author: {{publications}}</h4>
+            {{else}}
+            <h4>Titles of which the user is the author: Not yet.</h4>
+            {{/if}}
+            {{/with}}
+        </article>
+
+        <article class="profile-card-icon">
+            <img src="/static/style/img/vip-user.png" alt="art-image1">
+        </article>
+
+    </article>
+</section>

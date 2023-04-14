@@ -1,0 +1,30 @@
+<section id="login-container">
+
+    <div class="container">
+        <img src="/static/style/img/slider.jpg" alt="image">
+        {{#if error}}
+        <div class="error-box">
+            <p>{{error}}</p>
+        </div>
+        {{/if}}
+        {{#with userInput}}
+        <form action="/user/login" method="POST" class="container-text">
+            <h2>Login</h2>
+            <p>Welcome, see the new masterpieces!</p>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="ivan_00" name="username" value="{{username}}">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="*****" name="password" value="{{password}}">
+
+            <button class="login-btn">Login</button>
+            <div class="card-no-account">
+                <p>Don't have an account? <a href="/user/register">Sign up</a>.</p>
+            </div>
+
+        </form>
+        {{/with}}
+    </div>
+
+</section>
