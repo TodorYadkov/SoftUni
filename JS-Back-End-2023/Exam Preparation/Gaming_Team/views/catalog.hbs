@@ -1,0 +1,12 @@
+<section class="game-market">
+    <h1>Game Trade Code</h1>
+    <div class="offer-list">
+        {{#each allGames}}
+        {{>offerCard}}
+        {{else}}
+        <div class="no-offer">
+            <p>There are no game offers found!</p>
+        </div>
+        {{/each}}
+    </div>
+</section>
