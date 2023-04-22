@@ -1,0 +1,18 @@
+<div class="register-box">
+    <h1>Register</h1>
+    <h4>It's free and only take a minute</h4>
+    <form action="/user/register" method="POST">
+        {{#with userInput}}
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Username.." value="{{username}}">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="Email.." value="{{email}}">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password.." value="{{password}}">
+        <label>Confirm Password</label>
+        <input type="password" name="rePassword" placeholder="Confirm Password.." value="{{rePassword}}">
+        <input type="submit" value="Submit">
+        {{/with}}
+    </form>
+    <p>Already have an account? <a href="/user/login">Login here</a></p>
+</div>
