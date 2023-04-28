@@ -1,0 +1,63 @@
+<!-- Details Page -->
+<section id="catalog-section">
+    {{#with offerDetails}}
+    <h1 class="item">
+        {{title}}
+        {{#if isOwner}}
+        <div class="f-right">
+            <a class="action pad-small f-left" href="/edit/{{_id}}">Edit</a>
+            <a class="action pad-small f-left" href="/delete/{{_id}}">Delete</a>
+        </div>
+        {{/if}}
+    </h1>
+    <div class="item padded">
+
+        <div class="layout right large">
+
+            <div class="col">
+                <img src="{{imageUrl}}" class="img-large">
+            </div>
+
+            <div class="content pad-med">
+
+                <p>In category: <strong>{{category}}</strong></p>
+                <p>{{description}}</p>
+
+                <div class="align-center">
+                    <div>
+                        Current price: $<strong>{{price}}</strong>
+                    </div>
+
+                    {{#if isLogged}}
+                        {{#unless isOwner}}
+                            {{#unless isBestBidder}}
+                            <form class="vertical" method="post" action="/details/{{_id}}">
+                                <label><span>Bid amount</span><input type="number" step="0.01" name="placeBid"></label>
+                                <input class="action" type="submit" value="Place bid">
+                            </form>
+                            {{else}}
+                            <div>
+                                You are currently the <strong>highest bidder</strong> for this auction
+                            </div>
+                            {{/unless}}
+                        {{/unless}}
+                        {{#if isOwner}}
+                        <div>
+                            {{#if bestBidderName}}
+                            Bid by <strong>{{bestBidderName}}</strong>
+                            <a class="action pad-med cta" href="/closed-auction/{{_id}}">Close Auction</a>
+                            {{else}}
+                            No bids
+                            {{/if}}
+                        </div>
+                        {{/if}}
+                    {{/if}}
+                </div>
+
+            </div>
+        </div>
+
+        <footer>Listed by {{ownerName}}</footer>
+    </div>
+    {{/with}}
+</section>

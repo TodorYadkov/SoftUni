@@ -1,0 +1,33 @@
+<!-- Register Page -->
+<section id="register-section" class="narrow">
+    <h1 class="item">Register</h1>
+    <div class="item padded align-center">
+        {{#with userInput}}
+        <form class="aligned" method="post" action="/register">
+            <label>
+                <span>Email</span>
+                <input type="text" name="email" value="{{email}}">
+            </label>
+            <label>
+                <span>First name</span>
+                <input type="text" name="firstName" value="{{firstName}}">
+            </label>
+            <label>
+                <span>Last name</span>
+                <input type="text" name="lastName" value="{{lastName}}">
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" name="password" value="{{password}}">
+            </label>
+            <label>
+                <span>Repeat Password</span>
+                <input type="password" name="rePassword" value="{{rePassword}}">
+            </label>
+            <div class="align-center">
+                <input class="action" type="submit" value="Create Account">
+            </div>
+        </form>
+        {{/with}}
+    </div>
+</section>
