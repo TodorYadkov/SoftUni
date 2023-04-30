@@ -4,7 +4,7 @@ const { nameDB, connectionStrDB } = require('./environment');
 module.exports = async (app) => {
     try {
         await mongoose.connect(connectionStrDB, {
-            useNewUrlParser: true, 
+     	    useUnifiedTopology: true,
             useNewUrlParser: true,
         });
 
