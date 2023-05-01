@@ -1,0 +1,11 @@
+<section id="all-listings">
+    <h1>Apartments for recents</h1>
+    {{#each allOffer}}
+    {{>catalogCard}}
+    {{else}}
+    <div class="no-data-listing">
+        <p class="no-offer">There are no housing offers found...</p>
+    </div>
+    {{/each}}
+
+</section>
