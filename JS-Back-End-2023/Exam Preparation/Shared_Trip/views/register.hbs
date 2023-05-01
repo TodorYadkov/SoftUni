@@ -1,0 +1,37 @@
+<section class="py-5" id="register-page">
+    <div class="container register-page">
+        <h1>Register</h1>
+        <div class="register">
+            {{#with userInput}}
+            <form action="/user/register" method="post">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" name="email"
+                        value="{{email}}">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+                        value="{{password}}">
+                </div>
+                <div class="form-group">
+                    <label for="rePassword">Re-Password</label>
+                    <input type="password" class="form-control" id="rePassword" placeholder="Re-Password" name="rePass"
+                        value="{{rePass}}">
+                </div>
+                <label>Gender</label>
+                <div class="gender">
+                    <input type="radio" id="female" name="gender" value="female" {{check gender 'female' }}>
+                    <label for="female">Female</label>
+                    <input type="radio" id="male" name="gender" value="male" {{check gender 'male' }}>
+                    <label for="male">Male</label>
+                </div>
+                <div class="form-group">
+                    <p>Already have account? <a href="/user/login">Login Now!</a></p>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            {{/with}}
+        </div>
+    </div>
+</section>
