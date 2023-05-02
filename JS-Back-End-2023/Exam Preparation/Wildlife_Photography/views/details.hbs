@@ -1,0 +1,58 @@
+<section id="details-page">
+    {{#with itemDetails}}
+    <div class="main_card">
+        <div class="card_left">
+            <div class="card_datails">
+
+                <h1>Title: {{title}}</h1>
+                <h3>Created by an author: {{authorName}}</h3>
+                <div class="card_animal">
+                    <p class="card-keyword">Keyword: {{keyword}}</p>
+                    <p class="card-location">Location: {{location}}</p>
+                    <p class="card-date">Date: {{dateCreation}}</p>
+                </div>
+
+                <p class="disc">Description: {{description}}</p>
+
+                {{#if isLogged}}
+                <div class="social-btn">
+                    {{#if isOwner}}
+                    <a href="/edit/{{_id}}" class="edit-btn">Edit</a>
+                    <a href="/delete/{{_id}}" class="del-btn">Delete</a>
+                    {{else}}
+                        {{#unless hasVoted}}
+                        <a href="/details/{{_id}}/vote?q=1" class="vote-up">UpVote +1</a>
+                        <a href="/details/{{_id}}/vote?q=-1" class="vote-down">DownVote -1</a>
+                        {{else}}
+                        <p class="thanks-for-vote">Thanks For Voting</p>
+                        {{/unless}}
+                    {{/if}}
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <div class="card_right">
+            <img src="{{imageUrl}}" alt="image">
+        </div>
+    </div>
+
+</section>
+
+<section id="votes">
+    <div class="vote-info">
+        <div class="card_left">
+            <div class="card_datails">
+                <h1>Votes</h1>
+                <div class="card_vote">
+                    <p class="PV">Total rating of votes: {{rating}}</p>
+                </div>
+                {{#if peopleVoted}}
+                <p class="disc">People who voted for the post - {{peopleVoted}}</p>
+                {{else}}
+                <p class="disc">People who voted for the post - No one has voted yet.</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    {{/with}}
+</section>
