@@ -1,0 +1,58 @@
+<main>
+    <section class="container">
+        <h1>My Theater Info</h1>
+        <p>Lorem reprehenderit nostrud do do ut ad irure aliquip anim adipisicing nulla ullamco. Non mollit
+            Lorem sunt proident nostrud dolore est minim reprehenderit adipisicing consectetur dolore.
+            Nostrud id amet ad irure irure aute ad veniam deserunt mollit sint pariatur. Velit quis amet
+            aliquip tempor. Dolore culpa deserunt proident nostrud amet consectetur.
+            Exercitation exercitation pariatur deserunt duis. Elit duis aute do ullamco fugiat magna officia
+            ad. Pariatur nulla ut pariatur Lorem pariatur incididunt eu excepteur sint qui. Amet esse et
+            eiusmod officia fugiat aliquip ullamco laboris sint cillum cillum. Elit proident mollit officia
+            tempor aliquip non ea occaecat sunt eiusmod enim nulla anim. Voluptate laborum consequat elit
+            quis cupidatat tempor ad laboris duis non eiusmod.</p>
+    </section>
+    {{#if hasUser}}
+    <section>
+        <div class="aux">
+            <h1>Available Plays</h1>
+            <div class="home-buttons">
+                <a class="btn create-play" href="/create">Create Theater</a>
+                <a class="btn create-play" href="/?sort=date">Sort by Date</a>
+                <a class="btn create-play" href="/?sort=likes">Sort by Likes</a>
+                {{#if allPlays.isDisplayed}}
+                <a class="btn create-play" href="/?q=hide">Hide plays played</a>
+                {{else}}
+                <a class="btn create-play" href="/?q=show">Show plays played</a>
+                {{/if}}
+            </div>
+        </div>
+        <div class="theaters-container">
+            {{#each allPlays}}
+            {{>userCardHome}}
+            {{else}}
+            <h4>No plays yet...</h4>
+            {{/each}}
+        </div>
+    </section>
+    {{else}}
+    <section>
+        <h1>Best Rated Plays</h1>
+        <div class="theaters-container">
+            {{#each allPlays}}
+            {{>guestCardHome}}
+            {{else}}
+            <h4>No plays yet...</h4>
+            {{/each}}
+        </div>
+    </section>
+    {{/if}}
+</main>
+<footer>
+    <div>© 2020
+        <a href="https://softuni.bg/courses/js-back-end">JS Back-End</a>
+    </div>
+</footer>
+
+</body>
+
+</html>

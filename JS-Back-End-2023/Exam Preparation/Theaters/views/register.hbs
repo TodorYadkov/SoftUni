@@ -1,0 +1,21 @@
+{{#with userInput}}
+<form action="/user/register" method="post">
+    <h2>Register</h2>
+    <div class="on-dark">
+        <label for="username">Username:</label>
+        <input type="text" placeholder="Steven" name="username" value="{{username}}">
+    </div>
+
+    <div class="on-dark">
+        <label for="password">Password:</label>
+        <input type="password" placeholder="********" name="password" value="{{password}}">
+    </div>
+
+    <div class="on-dark">
+        <label for="repeatPassword">Repeat Password:</label>
+        <input type="password" placeholder="********" name="rePass" value="{{rePass}}">
+    </div>
+
+    <button class="btn" type="submit">Register</button>
+</form>
+{{/with}}
