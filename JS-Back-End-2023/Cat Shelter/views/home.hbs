@@ -1,0 +1,17 @@
+<h1>Cat Shelter</h1>
+<form action="/" method="post">
+    <input type="text" name="cat-search" value="{{searchStr}}">
+    <button type="submit">Search</button>
+</form>
+
+<section class="cats">
+    {{#if allCats}}
+    <ul>
+        {{#each allCats}}
+        {{>catCard}}
+        {{/each}}
+    </ul>
+    {{else}}
+    <h1>No cats available yet!</h1>
+    {{/if}}
+</section>

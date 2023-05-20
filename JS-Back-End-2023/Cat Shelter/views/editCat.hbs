@@ -1,0 +1,19 @@
+<h1>Cat Shelter</h1>
+<form action="#" method="post" class="cat-form" enctype="multipart/form-data">
+    <h2>Edit Cat</h2>
+    {{#with userInput}}
+    <label for="name">Name</label>
+    <input name="name" type="text" id="name" value="{{name}}">
+    <label for="description">Description</label>
+    <textarea name="description" id="description">{{description}}</textarea>
+    <label for="image">Image</label>
+    <input name="upload" type="file" id="image">
+    <label for="group">Breed</label>
+    <select name="breed" id="group">
+        {{#each ../allBreeds}}
+        <option value="{{_id}}" {{#if (equal _id ../../userInput.breed._id)}}selected{{/if}}>{{breed}}</option>
+        {{/each}}
+    </select>
+    {{/with}}
+    <button>Edit Cat</button>
+</form>

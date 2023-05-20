@@ -1,0 +1,9 @@
+<h1>Cat Shelter</h1>
+{{#with userInput}}
+<form action="/add-breed" method="post" class="cat-form">
+    <h2>Add Cat Breed</h2>
+    <label for="breed-name">Breed Name</label>
+    <input name="breed" type="text" id="breed-name" value="{{breed}}">
+    <button type="submit">Add Breed</button>
+</form>
+{{/with}}
