@@ -48,27 +48,3 @@ addCatController.post('/', upload.single('upload'), async (req, res) => {
 });
 
 module.exports = { addCatController };
-
-
-//TODO try to save picture in mongo db first step is change the imagePath with image and name: String, data: Buffer, contentType: String 
-/* app.post('/add-cat', upload.single('upload'), async (req, res) => {
-    try {
-      // Access form fields
-      const { name, description, breedSelect } = req.body;
-  
-        // Try to implement this!
-        name: name,
-        data: req.file.buffer,
-        contentType: req.file.mimetype
-      
-
-      res.redirect('/');
-    } catch (error) {
-        res.locals.errors = errorHandler(error).message;
-        res.render('addCat', {
-            userInput,
-            allBreeds: state.allBreeds,
-            title: 'Cat Shelter - Add Cat'
-        });
-    }
-  }); */
