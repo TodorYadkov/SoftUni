@@ -1,0 +1,57 @@
+<div class="jumbotron">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Movie Genre</h3>
+            <div *ngIf="allGenres">
+                <ul>
+                    <li *ngFor="let genre of allGenres.genres"><a routerLink="/genre/{{genre.id}}">{{genre.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <div *ngIf="popular; else popularLoading" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Popular Movies</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div *ngFor="let movie of popular.results;let i=index" class="col-md-2">
+                    <!-- <div *ngIf="i < 8"> -->
+                    <app-movie-card [movie]="movie"></app-movie-card>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #popularLoading>
+        <p>Loading...</p>
+    </ng-template>
+
+
+    <div *ngIf="topRated; else loadingTopRated" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Top Rated Movies</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div *ngFor="let movie of topRated.results;let i=index" class="col-md-2">
+                    <!-- <div *ngIf="i < 8"> -->
+                    <img *ngIf="movie.poster_path" class="thumbnail"
+                        src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+                    <h4>{{movie.title}}</h4>
+                    <p>{{movie.release_date}}</p>
+                    <p>Total likes: {{movie.vote_count}}</p>
+                    <p><a class="btn btn-default" routerLink="/details/{{movie.id}}">View Details</a></p>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #loadingTopRated>
+        <p>Loading...</p>
+    </ng-template>
+</div>

@@ -1,0 +1,46 @@
+<div *ngIf="movieDetails" class="jumbotron">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{movieDetails.title}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <img class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movieDetails.poster_path}}">
+                </div>
+                <div class="col-md-7">
+                    <ul class="list-group">
+                        <li class="list-group-item">Genres:
+                            <span style="margin-right: -1%;" *ngFor="let genre of movieDetails.genres; let last = last">
+                                {{genre.name}}
+                                <span *ngIf="!last">,</span>
+                            </span>
+                        </li>
+                        <li class="list-group-item">Release Date: {{movieDetails.release_date}}</li>
+                        <li class="list-group-item">Status: {{movieDetails.status}}</li>
+                        <li class="list-group-item">Budget: {{movieDetails.budget | currency: 'USD'}}</li>
+                        <li class="list-group-item">Revenue: {{movieDetails.revenue | currency: 'USD'}}</li>
+                        <li class="list-group-item">Language:
+                            <span style="margin-right: -0.5%;"
+                                *ngFor="let language of movieDetails.spoken_languages; let last = last">{{language.english_name}}
+                                <span *ngIf="!last">,</span>
+                            </span>
+                        </li>
+                        <li class="list-group-item">Overview: {{movieDetails.overview}}</li>
+                        <ul>
+                            <li class="list-group-item">Production:</li>
+                            <li class="list-group-item" *ngFor="let production of movieDetails.production_companies">
+                                <img class="img-fluid" src="http://image.tmdb.org/t/p/w500/{{production.logo_path}}"
+                                    alt="">
+                                <span class="span-left-margin">{{production.name}}</span>
+                            </li>
+                        </ul>
+                    </ul>
+                    <br>
+                    <a *ngIf="movieDetails.homepage" href="{{movieDetails.homepage}}" target="_blank"
+                        class="btn btn-default">Visit Movie Website</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
