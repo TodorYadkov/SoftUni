@@ -1,0 +1,49 @@
+<section id="createPage">
+    <form #createForm="ngForm" class="createForm" (ngSubmit)="create(createForm)">
+        <img src="/assets/cat-create.jpg">
+        <div>
+            <h2>Create PetPal</h2>
+            <div class="name">
+                <label for="name">Name:</label>
+                <input name="name" #nameInput="ngModel" id="name" type="text" placeholder="Max" ngModel required minlength="3">
+                <ng-container *ngIf="nameInput.invalid && nameInput.touched">
+                    <div class="error" *ngIf="nameInput.errors?.['required']">Name is required</div>
+                    <div class="error" *ngIf="nameInput.errors?.['minlength']">Name must be at least 3 characters long</div>
+                </ng-container>
+            </div>
+            <div class="breed">
+                <label for="breed">Breed:</label>
+                <input name="breed" #breedInput="ngModel" id="breed" type="text" placeholder="Shiba Inu" ngModel required minlength="3">
+                <ng-container *ngIf="breedInput.invalid && breedInput.touched">
+                    <div class="error" *ngIf="breedInput.errors?.['required']">Breed is required</div>
+                    <div class="error" *ngIf="breedInput.errors?.['minlength']">Breed must be at least 3 characters long</div>
+                </ng-container>
+            </div>
+            <div class="Age">
+                <label for="age">Age:</label>
+                <input name="age" #ageInput="ngModel" id="age" type="number" placeholder="2 years" ngModel required min="0">
+                <ng-container *ngIf="ageInput.invalid && ageInput.touched">
+                    <div class="error" *ngIf="ageInput.errors?.['required']">Age is required</div>
+                    <div class="error" *ngIf="ageInput.errors?.['min']">Age must be a positive number</div>
+                </ng-container>
+            </div>
+            <div class="weight">
+                <label for="weight">Weight:</label>
+                <input name="weight" #weightInput="ngModel" id="weight" type="number" placeholder="5kg" ngModel required min="0">
+                <ng-container *ngIf="weightInput.invalid && weightInput.touched">
+                    <div class="error" *ngIf="weightInput.errors?.['required']">Weight is required</div>
+                    <div class="error" *ngIf="weightInput.errors?.['min']">Weight must be a positive number</div>
+                </ng-container>
+            </div>
+            <div class="image">
+                <label for="image">Image:</label>
+                <input name="image" #imageInput="ngModel" id="image" type="text" placeholder="./image/dog.jpeg" ngModel required pattern="^https?:\/\/.*">
+                <ng-container *ngIf="imageInput.invalid && imageInput.touched">
+                    <div class="error" *ngIf="imageInput.errors?.['required']">Image is required</div>
+                    <div class="error" *ngIf="imageInput.errors?.['pattern']">Image must start with http:// or https://</div>
+                </ng-container>
+            </div>
+            <button class="btn" type="submit" [disabled]="createForm.invalid">Create Pet</button>
+        </div>
+    </form>
+</section>

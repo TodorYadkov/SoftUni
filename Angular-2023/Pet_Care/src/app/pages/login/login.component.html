@@ -1,0 +1,34 @@
+<section id="loginPage">
+    <form class="loginForm" #loginForm="ngForm" (ngSubmit)="loginMethod(loginForm)">
+        <img src="/assets/logo.png" alt="logo" />
+        <h2>Login</h2>
+        <ng-container *ngIf="hasError">
+            <div class="error">{{hasError}}</div>
+        </ng-container>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" name="email" type="text" placeholder="steven@abv.bg" value="" ngModel
+                #emailInput="ngModel" required email pattern="^\w+@\w+\.\w+">
+            <ng-container *ngIf="emailInput.invalid && emailInput.touched">
+                <div class="error" *ngIf="emailInput.errors?.['required']">Email is required</div>
+                <div class="error" *ngIf="emailInput.errors?.['email']">Email is invalid</div>
+            </ng-container>
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input id="password" name="password" type="password" placeholder="********" value="" ngModel
+                #passInput="ngModel" required minlength="6">
+            <ng-container *ngIf="passInput.invalid && passInput.touched">
+                <div class="error" *ngIf="passInput.errors?.['required']">Password is required</div>
+                <div class="error" *ngIf="passInput.errors?.['minlength']">Password must be at least 5 characters long</div>
+            </ng-container>
+        </div>
+
+        <button class="btn" type="submit" [disabled]="loginForm.invalid">Login</button>
+
+        <p class="field">
+            <span>If you don't have profile click <a routerLink="/register">here</a></span>
+        </p>
+    </form>
+</section>

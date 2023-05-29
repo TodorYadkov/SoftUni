@@ -1,0 +1,5 @@
+  #content {
+    margin: 3rem auto;
+    width: 92%;
+    min-height: calc(100vh - 13.4rem);
+  }

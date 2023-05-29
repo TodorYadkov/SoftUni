@@ -1,0 +1,19 @@
+<nav>
+    <section class="logo">
+        <img src="/assets/logo.png" alt="logo">
+    </section>
+    <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/catalog">Dashboard</a></li>
+
+        <ng-container *ngIf="!updateNavigation(); else loggedIn">
+            <li><a routerLink="/login">Login</a></li>
+            <li><a routerLink="/register">Register</a></li>
+        </ng-container>
+        <ng-template #loggedIn>
+            <li><a routerLink="/create">Create Postcard</a></li>
+            <li><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
+        </ng-template>
+
+    </ul>
+</nav>

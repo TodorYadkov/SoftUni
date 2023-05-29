@@ -1,0 +1,33 @@
+<section *ngIf="petDetails; else loading" id="detailsPage">
+    <div class="details">
+        <div class="animalPic">
+            <img src="{{petDetails.image}}">
+        </div>
+        <div>
+            <div *ngIf="petDetails" class="animalInfo">
+                <h1>Name: {{petDetails.name}}</h1>
+                <h3>Breed: {{petDetails.breed}}</h3>
+                <h4>Age: {{petDetails.age}}</h4>
+                <h4>Weight: {{petDetails.weight}}</h4>
+                <h4 class="donation">Donation: {{entireDonation}}$</h4>
+            </div>
+            <ng-container *ngIf="isLoggedIn">
+                <div class="actionBtn">
+                    <ng-container *ngIf="isOwner; else donate">
+                        <a routerLink="/edit/{{petDetails._id}}" class="edit">Edit</a>
+                        <a href="javascript:void(0)" (click)="deletePet(petDetails._id)" class="remove">Delete</a>
+                    </ng-container>
+                    <ng-template #donate>
+                        <a *ngIf="!isDonate" href="javascript:void(0)" (click)="donation(petDetails._id)"
+                            class="donate">Donate</a>
+                    </ng-template>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>
+<ng-template #loading>
+    <div>
+        Loading...
+    </div>
+</ng-template>
