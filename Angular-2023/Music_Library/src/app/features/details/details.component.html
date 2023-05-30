@@ -1,0 +1,36 @@
+<section id="details">
+    <div id="details-wrapper">
+        <p id="details-title">Album Details</p>
+        <ng-container *ngIf="albumDetails; else loading">
+        <div id="img-wrapper">
+            <img src="{{albumDetails.imageUrl}}" alt="{{albumDetails.singer}}" />
+        </div>
+        <div id="info-wrapper">
+            <p><strong>Band:</strong><span id="details-singer">{{albumDetails.singer}}</span></p>
+            <p>
+                <strong>Album name:</strong><span id="details-album">{{albumDetails.album}}</span>
+            </p>
+            <p><strong>Release date:</strong><span id="details-release">{{albumDetails.release}}</span></p>
+            <p><strong>Label:</strong><span id="details-label">{{albumDetails.label}}</span></p>
+            <p><strong>Sales:</strong><span id="details-sales">{{albumDetails.sales}}</span></p>
+        </div>
+        <div id="likes">Likes: <span id="likes-count">{{countLikes}}</span></div>
+
+        <ng-container *ngIf="isLogged"></ng-container>
+        <div id="action-buttons">
+            <ng-container *ngIf="isOwner; else like">
+                <a routerLink="/edit/{{albumDetails._id}}" id="edit-btn">Edit</a>
+                <a href="javascript:void(0)" (click)="deleteAlbum(albumDetails._id)" id="delete-btn">Delete</a>
+            </ng-container>
+            <ng-template #like>
+                <ng-container *ngIf="hasLike">
+                    <a href="javascript:void(0)" (click)="addLike(albumDetails._id)" id="like-btn">Like</a>
+                </ng-container>
+            </ng-template>
+        </div>
+    </ng-container>
+    <ng-template #loading>
+        <div>Loading...</div>
+    </ng-template>
+    </div>
+</section>

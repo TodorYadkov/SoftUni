@@ -1,0 +1,33 @@
+<section id="register">
+    <div class="form">
+        <h2>Register</h2>
+        <ng-container *ngIf="errorMsgFromServer">
+            <div class="error">{{errorMsgFromServer}}</div>
+        </ng-container>
+        <form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)" class="login-form">
+            <input type="text" name="email" id="register-email" placeholder="email" #emailInput="ngModel" ngModel
+                required email pattern="^\w+@\w+\.\w+$" />
+            <ng-container *ngIf="emailInput.invalid && emailInput.touched">
+                <div class="error" *ngIf="emailInput.errors?.['required']">Email is required</div>
+                <div class="error" *ngIf="emailInput.errors?.['email'] || emailInput.errors?.['pattern']">Email is
+                    invalid</div>
+            </ng-container>
+            <input type="password" name="password" id="register-password" placeholder="password" #passInput="ngModel"
+                ngModel required minlength="6" />
+            <ng-container *ngIf="passInput.invalid && passInput.touched">
+                <div class="error" *ngIf="passInput.errors?.['required']">Password is required</div>
+                <div class="error" *ngIf="passInput.errors?.['minlength']">Password must be at least 6 characters long
+                </div>
+            </ng-container>
+            <input type="password" name="re-password" id="repeat-password" placeholder="repeat password"
+                #rePassInput="ngModel" ngModel required minlength="6" />
+            <ng-container *ngIf="rePassInput.invalid && rePassInput.touched">
+                <div class="error" *ngIf="rePassInput.errors?.['required']">Repeat password is required</div>
+                <div class="error" *ngIf="rePassInput.errors?.['minlength']">Password must be at least 6 characters long
+                </div>
+            </ng-container>
+            <button type="submit" [hidden]="regForm.invalid || passInput.value !== rePassInput.value">register</button>
+            <p class="message">Already registered? <a routerLink="/login">Login</a></p>
+        </form>
+    </div>
+</section>

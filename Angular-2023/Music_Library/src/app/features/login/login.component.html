@@ -1,0 +1,27 @@
+<section id="login">
+    <div class="form">
+        <h2>Login</h2>
+        <ng-container *ngIf="errorMsgFromServer">
+            <div class="error">{{errorMsgFromServer}}</div>
+        </ng-container>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="login-form">
+            <input type="text" name="email" id="email" placeholder="email" ngModel #emailInput="ngModel" required email
+                pattern="^\w+@\w+\.\w+$" />
+            <ng-container *ngIf="emailInput.invalid && emailInput.touched">
+                <div class="error" *ngIf="emailInput.errors?.['required']">Email is required</div>
+                <div class="error" *ngIf="emailInput.errors?.['email'] || emailInput.errors?.['pattern']">Email is
+                    invalid</div>
+            </ng-container>
+            <input type="password" name="password" id="password" placeholder="password" ngModel #passInput="ngModel"
+                required minlength="6" />
+            <ng-container *ngIf="passInput.invalid && passInput.touched">
+                <div class="error" *ngIf="passInput.errors?.['required']">Password is required</div>
+                <div class="error" *ngIf="passInput.errors?.['minlength']">Password must be at least 6 characters long</div>
+            </ng-container>
+            <button type="submit" [hidden]="loginForm.invalid">login</button>
+            <p class="message">
+                Not registered? <a routerLink="/register">Create an account</a>
+            </p>
+        </form>
+    </div>
+</section>

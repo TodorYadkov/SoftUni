@@ -1,0 +1,44 @@
+<section id="create">
+    <div class="form">
+        <h2>Add Album</h2>
+        <ng-container *ngIf="errorMsgFromServer">
+            <div class="error">{{errorMsgFromServer}}</div>
+        </ng-container>
+        <form #formCreate="ngForm" (ngSubmit)="onSubmit(formCreate)" class="create-form">
+            <input type="text" name="singer" id="album-singer" placeholder="Singer/Band" ngModel #signerIn="ngModel"
+                required minlength="3" />
+            <ng-container *ngIf="signerIn.invalid && signerIn.touched">
+                <div class="error" *ngIf="signerIn.errors?.['required']">Signer is required</div>
+                <div class="error" *ngIf="signerIn.errors?.['minlength']">Signer must be at least 3 characters long
+                </div>
+            </ng-container>
+            <input type="text" name="album" id="album-album" placeholder="Album" ngModel #albumIn="ngModel" required
+                minlength="3" />
+            <ng-container *ngIf="albumIn.invalid && albumIn.touched">
+                <div class="error" *ngIf="albumIn.errors?.['required']">Album is required</div>
+                <div class="error" *ngIf="albumIn.errors?.['minlength']">Album must be at least 3 characters long</div>
+            </ng-container>
+            <input type="text" name="imageUrl" id="album-img" placeholder="Image url" ngModel #imageIn="ngModel"
+                required pattern="^https?:\/\/.+" />
+            <ng-container *ngIf="imageIn.invalid && imageIn.touched">
+                <div class="error" *ngIf="imageIn.errors?.['required']">Image is required</div>
+                <div class="error" *ngIf="imageIn.errors?.['pattern']">URL must start with http:// or https://</div>
+            </ng-container>
+            <input type="text" name="release" id="album-release" placeholder="Release date" ngModel #releaseIn="ngModel"
+                required />
+            <ng-container *ngIf="releaseIn.invalid && releaseIn.touched">
+                <div class="error" *ngIf="releaseIn.errors?.['required']">Release date is required</div>
+            </ng-container>
+            <input type="text" name="label" id="album-label" placeholder="Label" ngModel #labelIn="ngModel" required />
+            <ng-container *ngIf="labelIn.invalid && labelIn.touched">
+                <div class="error" *ngIf="labelIn.errors?.['required']">Label is required</div>
+            </ng-container>
+            <input type="text" name="sales" id="album-sales" placeholder="Sales" ngModel #salesIn="ngModel" required />
+            <ng-container *ngIf="salesIn.invalid && salesIn.touched">
+                <div class="error" *ngIf="salesIn.errors?.['required']">Sales is required</div>
+            </ng-container>
+
+            <button type="submit" [hidden]="formCreate.invalid">post</button>
+        </form>
+    </div>
+</section>
