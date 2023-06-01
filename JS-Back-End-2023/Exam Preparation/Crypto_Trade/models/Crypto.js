@@ -4,46 +4,74 @@ const cryptoSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        minLength: [2, 'The Name should be at least 2 characters'],
+        minLength: [2, 'Title must be at least 2 characters long'],
     },
     imageUrl: {
         type: String,
         required: true,
         validate: {
             validator: (value) => /^https?:\/\//gi.test(value),
-            message: 'The Crypto Image should start with http:// or https://'
+            message: 'The Crypto Image URL must start with http:// or https://'
         }
     },
     price: {
         type: Number,
-        reuired: true,
+        required: true,
         validate: {
             validator: (value) => value > 0,
-            message: 'The Price should be a positive number'
-        }
+            message: 'The price must be a positive number!'
+        },
     },
     description: {
         type: String,
         required: true,
-        minLength: [10, 'The Description should be a minimum of 10 characters long']
+        minLength: [10, 'Description must be at least 10 characters long'],
     },
     payment: {
         type: String,
-        reuired: true,
-        enum: {
-            values: ['crypto-wallet', 'credit-card', 'debit-card', 'paypal'],
-            message: 'The Payment Method must be one of the options'
+        required: true,
+        // enum: {
+        //     values: ['crypto-wallet', 'credit-card', 'debit-card', 'paypal'],
+        //     message: '{VALUE} is not supported !',
+        // },
+        validate: {
+            validator: (value) => {
+                const validValues = ['Crypto-Wallet', 'Credit-Card', 'Debit-Card', 'PayPal'];
+                const index = validValues.findIndex(v => v.toLocaleLowerCase() === value.toLocaleLowerCase());
+                if (index !== -1) {
+                    return validValues[index];
+                }
+
+                return false;
+            }
         },
     },
-    cryptoBuyer: [{
+    buyerId: [{
         type: mongoose.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
     }],
     owner: {
         type: mongoose.Types.ObjectId,
-        ref: 'User'
-    },
+        ref: 'User',
+        required: true,
+    }
 });
+
+function capitalizePayment(next) {
+    if (this.payment) {
+        this.payment = this.payment.toLocaleLowerCase() == 'paypal'
+            ? 'PayPal'
+            : this.payment.split('-').map(p => p[0].toUpperCase() + p.slice(1)).join('-');
+    } else if (this._update.payment) {
+        this._update.payment = this._update.payment.toLocaleLowerCase() == 'paypal'
+            ? 'PayPal'
+            : this._update.payment.split('-').map(p => p[0].toUpperCase() + p.slice(1)).join('-');
+    }
+    next();
+}
+
+cryptoSchema.pre('save', capitalizePayment);
+cryptoSchema.pre('findOneAndUpdate', capitalizePayment);
 
 const Crypto = mongoose.model('Crypto', cryptoSchema);
 

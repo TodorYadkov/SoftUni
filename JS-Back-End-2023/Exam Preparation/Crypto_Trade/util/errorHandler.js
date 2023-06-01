@@ -1,5 +1,5 @@
 function errorHandler(error) {
-    const result = {
+const result = {
         message: [],
         fields: {},
     };

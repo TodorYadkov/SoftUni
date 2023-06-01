@@ -6,4 +6,4 @@ controller404.get('*', (req, res) => {
     });
 });
 
-module.exports = { controller404 };
+module.exports = { controller404 }; 

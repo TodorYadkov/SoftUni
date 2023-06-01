@@ -1,13 +1,13 @@
+const catalogController = require('express').Router();
 const { getAllData } = require('../services/dataService.js');
 
-const catalogController = require('express').Router();
-
 catalogController.get('/', async (req, res) => {
-    const allOffers = await getAllData().lean();
+    const allData = await getAllData().lean();
+
     res.render('catalog', {
-        allOffers,
+        allData,
         title: 'Trade Catalog',
     });
 });
 
-module.exports = { catalogController };
+module.exports = { catalogController }; 

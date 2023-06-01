@@ -1,40 +1,26 @@
-const { query } = require('express');
 const { Crypto } = require('../models/Crypto.js');
+const { User } = require('../models/User.js');
 
 const getAllData = () => Crypto.find();
 
-const getDataById = (id) => Crypto.findById(id);
+const getDataById = (dataId) => Crypto.findById(dataId);
 
-const deleteDataById = (id) => Crypto.findByIdAndDelete(id);
+const deleteDataById = (dataId) => Crypto.findByIdAndDelete(dataId);
 
-const updateDataById = (id, data) => {
+const updateDataById = (dataId, data) => {
     const { name, imageUrl, price, description, payment } = data;
-    const offerToEdit = { name, imageUrl, price, description, payment };
-
-    return Crypto.findByIdAndUpdate(id, offerToEdit, { runValidators: true });
+    return Crypto.findOneAndUpdate({_id: dataId}, { name, imageUrl, price, description, payment }, { runValidators: true });
 };
 
-const createData = (data, userId) => {
+const createData = async (data, userId) => {
     const { name, imageUrl, price, description, payment } = data;
-    const newOffer = { name, imageUrl, price, description, payment, owner: userId };
-
-    return Crypto.create(newOffer);
+    const newData = await Crypto.create({ name, imageUrl, price, description, payment, owner: userId });
+    return newData;
 };
 
-const isBought = async (userId, offerId) => {
-    const offer = await getDataById(offerId);
-    return offer.cryptoBuyer.includes(userId);
-};
+const hasBought = (dataId, userId) => Crypto.findOne({ _id: dataId, buyerId: { $in: [userId] } });
 
-const buyCrypto = async (userId, offerId) => {
-    const offer = await getDataById(offerId);
-    if (offer.cryptoBuyer.includes(userId)) {
-        throw new Error('Already bought!');
-    }
-
-    offer.cryptoBuyer.push(userId);
-    await offer.save();
-};
+const buyCrypto = (dataId, userId) => Crypto.updateOne({ _id: dataId }, { $push: { buyerId: userId } });
 
 const getDataBySearch = (name, payment) => {
     const query = {};
@@ -42,7 +28,7 @@ const getDataBySearch = (name, payment) => {
         query.name = { $regex: new RegExp(name, 'gi') };
     }
     if (payment) {
-        query.payment = payment;
+        query.payment = { $regex: new RegExp(payment, 'gi') };
     }
 
     return Crypto.find(query);
@@ -50,11 +36,11 @@ const getDataBySearch = (name, payment) => {
 
 module.exports = {
     getAllData,
-    createData,
     getDataById,
     deleteDataById,
     updateDataById,
-    getDataBySearch,
-    isBought,
+    createData,
+    hasBought,
     buyCrypto,
+    getDataBySearch,
 };

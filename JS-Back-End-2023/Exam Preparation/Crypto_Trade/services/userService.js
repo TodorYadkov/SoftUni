@@ -1,47 +1,68 @@
+const bcrypt = require('bcrypt'); 
+const { roundsBcrypt, jwtSecret } = require('../config/environment.js');
 const { User } = require('../models/User.js');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { roundcBcrypt, jwtSecret } = require('../config/environment.js');
 
 async function userRegister(userInput) {
-    const { username, email, password } = userInput;
-    // Check if email exist
-    const existEmail = await User.findOne({ email });
-    if (existEmail) {
-        throw new Error(`${email} is already taken!`);
+    const { email, username, password } = userInput;
+    // Check if the username or email is already taken
+    const isExisting = await User.findOne({ $or: [{ email }, { username }] });
+    if (isExisting) {
+        throw new Error('Username or email is already used!');
     }
 
     // Hash password
-    const hashedPass = await bcrypt.hash(password, roundcBcrypt);
+    const hashedPassword = await bcrypt.hash(password, roundsBcrypt);
 
-    const newUser = await User.create({ username, email, password: hashedPass });
+    // Create and save new user
+    const user = await User.create({
+        email,
+        username,
+        password: hashedPassword
+    });
 
-    // Create user token
-    const userToken = jwt.sign({ username, email, _id: newUser._id }, jwtSecret, { expiresIn: '2d' });
-
-    return userToken;
+    // Create token
+    return generateToken(user);
 }
 
 async function userLogin(userInput) {
     const { email, password } = userInput;
-
     // Check if the user exist
     const user = await User.findOne({ email });
     if (!user) {
-        throw new Error('Inavlid email or password');
+        throw new Error('Invalid username or password!');
     }
 
-    // Check password
-    const matchPass = await bcrypt.compare(password, user.password);
-    if (matchPass === false) {
-        throw new Error('Invalid email or password');
+    // Validate password
+    const matchPassword = await bcrypt.compare(password, user.password);
+    if (!matchPassword) {
+        throw new Error('Invalid username or password!');
     }
 
-    // Create user token
-    const userToken = jwt.sign({ username: user.username, email: user.email, _id: user._id }, jwtSecret, { expiresIn: '2d' });
+    // Create token
+    return generateToken(user);
+}
 
-    return userToken;
+async function generateToken(user) {
+    try {
+        const token = await new Promise((resolve, reject) => {
+            jwt.sign({ _id: user._id, email: user.email, username: user.username },
+                jwtSecret,
+                { expiresIn: '2d' },
+                (err, signedToken) => {
+                    if (err) {
+                        reject(new Error('The token could not be signed!'));
+                    } else {
+                        resolve(signedToken);
+                    }
+                }
+            );
+        });
 
+        return token;
+    } catch (err) {
+        throw new Error('An error occurred while generating the token!');
+    }
 }
 
 module.exports = {

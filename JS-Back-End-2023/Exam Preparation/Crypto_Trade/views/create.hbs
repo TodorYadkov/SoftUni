@@ -2,26 +2,26 @@
     <div class="create-container-info">
         <h1>Create Announcement</h1>
         <h4>Post your coins to sell</h4>
-        <form action="/create" method="POST">
-            {{#with userInput}}
+        {{#with userInput}}
+        <form action="/create" method="post"> 
             <label>Name:</label>
-            <input type="text" id="name" name="name" placeholder="Bitcoin" value="{{name}}">
+            <input type="text" id="name" name="name" value="{{name}}" placeholder="Bitcoin">
             <label>Image:</label>
-            <input type="text" id="image" name="imageUrl" placeholder="http://..." value="{{imageUrl}}">
+            <input type="text" id="image" name="imageUrl" value="{{imageUrl}}" placeholder="http://...">
             <label>Price:</label>
-            <input type="number" id="price" step="0.00001" name="price" placeholder="31,166.71" value="{{price}}">
+            <input type="number" id="price" name="price" min="0" step="0.00001" value="{{price}}" placeholder="31,166.71">
             <label>Description:</label>
             <textarea id="description" name="description"
                 placeholder="Introduce your coins...">{{description}}</textarea>
             <label>Payment method:</label>
             <select id="payment" name="payment">
-                <option value="crypto-wallet" {{#if (equal payment "crypto-wallet")}}selected{{/if}}>Crypto Wallet</option>
-                <option value="credit-card" {{#if (equal payment "credit-card")}}selected{{/if}}>Credit Card</option>
-                <option value="debit-card" {{#if (equal payment "debit-card")}}selected{{/if}}>Debit Card</option>
-                <option value="paypal" {{#if (equal payment "paypal")}}selected{{/if}}>PayPal</option>
+                <option value="crypto-wallet" {{#if (equal payment 'crypto-wallet')}}selected{{/if}}>Crypto Wallet</option>
+                <option value="credit-card" {{#if (equal payment 'credit-card')}}selected{{/if}}>Credit Card</option>
+                <option value="debit-card" {{#if (equal payment 'debit-card')}}selected{{/if}}>Debit Card</option>
+                <option value="paypal" {{#if (equal payment 'paypal')}}selected{{/if}}>PayPal</option>
             </select>
             <input type="submit" id="btn" value="TRADE"></input>
-            {{/with}}
         </form>
+        {{/with}}
     </div>
 </section>

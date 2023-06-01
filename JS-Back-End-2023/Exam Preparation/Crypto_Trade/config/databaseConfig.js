@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
-const { connectionStrDB, nameDB } = require('./environment.js');
+const { CONNECTION_STR, nameDB } = require('./environment.js');
 
 module.exports = async (app) => {
     try {
-        await mongoose.connect(connectionStrDB, {
+        await mongoose.connect(CONNECTION_STR, {
             useUnifiedTopology: true,
             useNewUrlParser: true,
         });
-
-        console.log(`Database ${nameDB} connected successfully!`);
+        console.log(`Database ${nameDB} is connected!`);
     } catch (error) {
-        console.log(`Error initialiazing database ${nameDB}`);
+        console.error(`Error initializing database ${nameDB}`);
         console.error(error.message);
         process.exit(1);
     }

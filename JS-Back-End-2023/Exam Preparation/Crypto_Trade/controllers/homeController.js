@@ -1,9 +1,12 @@
 const homeController = require('express').Router();
 
-homeController.get('/', async (req, res) => {
+homeController.get('/', (req, res) => {
+
     res.render('home', {
         title: 'Home Page - Crypto Web',
     });
 });
 
-module.exports = { homeController };
+module.exports = {
+    homeController,
+}; 

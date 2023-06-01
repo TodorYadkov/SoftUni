@@ -7,4 +7,4 @@ function addEqualHelperHbs(req, res, next) {
 
 module.exports = {
     addEqualHelperHbs,
-};
+}; 
