@@ -1,0 +1,33 @@
+<section id="catalogPage">
+    <h1>All Albums</h1>
+    <div class="error" *ngIf="errorMsgFromServer">{{errorMsgFromServer}}</div>
+    <ng-container *ngIf="allAlbums; else loading">
+        <ng-container *ngIf="allAlbums.length > 0; else noAlbums">
+            <div *ngFor="let album of allAlbums" class="card-box">
+                <img src="{{album.imgUrl}}">
+                <div>
+                    <div class="text-center">
+                        <p class="name">Name: {{album.name}}</p>
+                        <p class="artist">Artist: {{album.artist}}</p>
+                        <p class="genre">Genre: {{album.genre}}</p>
+                        <p class="price">Price: ${{album.price}}</p>
+                        <p class="date">Release Date: {{album.releaseDate}}</p>
+                    </div>
+                    <ng-container *ngIf="isLoggedIn">
+                        <div class="btn-group">
+                            <a routerLink="/details/{{album._id}}" id="details">Details</a>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #noAlbums>
+            <p>No Albums in Catalog!</p>
+        </ng-template>
+
+    </ng-container>
+    <ng-template #loading>
+        <div>Loading...</div>
+    </ng-template>
+
+</section>

@@ -1,0 +1,42 @@
+<section id="registerPage">
+    <form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)">
+        <fieldset>
+            <legend>Register</legend>
+            <div class="error" *ngIf="errorMsgFromServer">{{errorMsgFromServer}}</div>
+            <label for="email" class="vhide">Email</label>
+            <input id="email" class="email" name="email" #inputEmail="ngModel" ngModel type="text" placeholder="Email"
+                required email pattern="^\w+@\w+\.\w+$">
+            <ng-container *ngIf="inputEmail.invalid && inputEmail.touched">
+                <div class="error" *ngIf="inputEmail.errors?.['required']">Email is required</div>
+                <div class="error" *ngIf="inputEmail.errors?.['email']">Email is invalid</div>
+                <div class="error" *ngIf="inputEmail.errors?.['pattern']">Email must contain only letters and digits
+                </div>
+            </ng-container>
+
+            <label for="password" class="vhide">Password</label>
+            <input id="password" class="password" name="password" #inputPass="ngModel" ngModel type="password"
+                placeholder="Password" required minlength="6">
+            <ng-container *ngIf="inputPass.invalid && inputPass.touched">
+                <div class="error" *ngIf="inputPass.errors?.['required']">Password is required</div>
+                <div class="error" *ngIf="inputPass.errors?.['minlength']">Password must be at least 6 characters long
+                </div>
+            </ng-container>
+
+            <label for="conf-pass" class="vhide">Confirm Password:</label>
+            <input id="conf-pass" class="conf-pass" name="conf-pass" #inputRePass="ngModel" ngModel type="password"
+                placeholder="Confirm Password" required minlength="6">
+            <ng-container *ngIf="!inputPass.invalid || inputRePass.invalid && inputRePass.touched">
+                <div class="error" *ngIf="inputRePass.errors?.['required']">Confirm Password is required</div>
+                <div class="error" *ngIf="inputRePass.errors?.['minlength']">Confirm Password must be at least 6
+                    characters long</div>
+                <div class="error" *ngIf="inputPass.value != inputRePass.value">Passwords do not match</div>
+            </ng-container>
+
+            <button type="submit" class="register" [disabled]="regForm.invalid">Register</button>
+
+            <p class="field">
+                <span>If you already have profile click <a routerLink="/login">here</a></span>
+            </p>
+        </fieldset>
+    </form>
+</section>

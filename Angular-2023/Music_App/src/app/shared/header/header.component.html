@@ -1,0 +1,22 @@
+<header>
+    <nav>
+        <img src="/assets/headphones.png">
+        <a routerLink="/">Home</a>
+        <ul>
+            <!--All user-->
+            <li><a routerLink="/catalog">Catalog</a></li>
+            <li><a routerLink="/search">Search</a></li>
+
+            <ng-container *ngIf="updateNav(); else noLoggedIn">
+                <li><a routerLink="/create">Create Album</a></li>
+                <li><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
+            </ng-container>
+
+            <ng-template #noLoggedIn>
+                <li><a routerLink="/login">Login</a></li>
+                <li><a routerLink="/register">Register</a></li>
+            </ng-template>
+
+        </ul>
+    </nav>
+</header>

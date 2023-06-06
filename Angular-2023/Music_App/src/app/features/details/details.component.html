@@ -1,0 +1,30 @@
+<section id="detailsPage">
+    <ng-container *ngIf="albumDetails; else loading">
+        <div class="error" *ngIf="errorMsgFromServer">{{errorMsgFromServer}}</div>
+        <div class="wrapper">
+            <div class="albumCover">
+                <img src="{{albumDetails.imgUrl}}">
+            </div>
+            <div class="albumInfo">
+                <div class="albumText">
+
+                    <h1>Name: {{albumDetails.name}}</h1>
+                    <h3>Artist: {{albumDetails.artist}}</h3>
+                    <h4>Genre: {{albumDetails.genre}}</h4>
+                    <h4>Price: ${{albumDetails.price}}</h4>
+                    <h4>Date: {{albumDetails.releaseDate}}</h4>
+                    <p>{{albumDetails.description}}</p>
+                </div>
+
+
+                <div class="actionBtn" *ngIf="isOwner">
+                    <a routerLink="/edit/{{albumDetails._id}}" class="edit">Edit</a>
+                    <a href="javascript:void(0)" (click)="deleteAlbum(albumDetails._id)" class="remove">Delete</a>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #loading>
+        <div>Loading...</div>
+    </ng-template>
+</section>

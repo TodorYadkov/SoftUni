@@ -1,0 +1,66 @@
+<section class="createPage">
+    <form #createForm="ngForm" (ngSubmit)="onSubmit(createForm)">
+        <fieldset>
+            <legend>Add Album</legend>
+            <div class="error" *ngIf="errorMsgFromServer">{{errorMsgFromServer}}</div>
+            <div class="container">
+                <label for="name" class="vhide">Album name</label>
+                <input id="name" name="name" ngModel #inputName="ngModel" class="name" type="text"
+                    placeholder="Album name" required minlength="3" pattern="^[a-zA-Z\s]+$">
+                <ng-container *ngIf="inputName.invalid && inputName.touched">
+                    <div class="error" *ngIf="inputName.errors?.['required']">Name is required</div>
+                    <div class="error" *ngIf="inputName.errors?.['minlength']">Name must be at least 3 characters long
+                    </div>
+                    <div class="error" *ngIf="inputName.errors?.['pattern']">Name must contain only English letters
+                    </div>
+                </ng-container>
+
+                <label for="imgUrl" class="vhide">Image Url</label>
+                <input id="imgUrl" name="imgUrl" ngModel #inputImgUrl="ngModel" class="imgUrl" type="text"
+                    placeholder="Image Url" required pattern="^https?:\/\/.+[^\s]$">
+                <ng-container *ngIf="inputImgUrl.invalid && inputImgUrl.touched">
+                    <div class="error" *ngIf="inputImgUrl.errors?.['required']">Image Url is required</div>
+                    <div class="error" *ngIf="inputImgUrl.errors?.['pattern']">Image Url msut start with http:// or
+                        https://</div>
+                </ng-container>
+
+                <label for="price" class="vhide">Price</label>
+                <input id="price" name="price" ngModel #inputPrice="ngModel" class="price" type="number"
+                    placeholder="Price" required min="0" step="0.01">
+                <ng-container *ngIf="inputPrice.invalid && inputPrice.touched">
+                    <div class="error" *ngIf="inputPrice.errors?.['required']">Price is required</div>
+                    <div class="error" *ngIf="inputPrice.errors?.['min']">Price must be a positive number</div>
+                </ng-container>
+
+                <label for="releaseDate" class="vhide">Release date</label>
+                <input id="releaseDate" name="releaseDate" ngModel #inputRelease="ngModel" class="releaseDate"
+                    type="text" placeholder="Release date" required>
+                <ng-container *ngIf="inputRelease.invalid && inputRelease.touched">
+                    <div class="error" *ngIf="inputRelease.errors?.['required']">Release date is required</div>
+                </ng-container>
+
+                <label for="artist" class="vhide">Artist</label>
+                <input id="artist" name="artist" ngModel #inputArtist="ngModel" class="artist" type="text"
+                    placeholder="Artist" required>
+                <ng-container *ngIf="inputArtist.invalid && inputArtist.touched">
+                    <div class="error" *ngIf="inputArtist.errors?.['required']">Artist is required</div>
+                </ng-container>
+                <label for="genre" class="vhide">Genre</label>
+                <input id="genre" name="genre" ngModel #inputGenre="ngModel" class="genre" type="text"
+                    placeholder="Genre" required>
+                <ng-container *ngIf="inputGenre.invalid && inputGenre.touched">
+                    <div class="error" *ngIf="inputGenre.errors?.['required']">Genre is required</div>
+                </ng-container>
+                <label for="description" class="vhide">Description</label>
+                <textarea name="description" ngModel #inputDescription="ngModel" class="description"
+                    placeholder="Description" required minlength="10"></textarea>
+                <ng-container *ngIf="inputDescription.invalid && inputDescription.touched">
+                    <div class="error" *ngIf="inputDescription.errors?.['required']">Name is required</div>
+                    <div class="error" *ngIf="inputDescription.errors?.['minlength']">Name must be at least 10
+                        characters long</div>
+                </ng-container>
+                <button class="add-album" type="submit" [disabled]="createForm.invalid">Add New Album</button>
+            </div>
+        </fieldset>
+    </form>
+</section>

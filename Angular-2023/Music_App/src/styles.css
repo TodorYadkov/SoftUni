@@ -1,0 +1,767 @@
+html {
+    font-family: 'Lato';
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    margin: auto;
+    padding: 0;
+    box-sizing: inherit;
+    line-height: 1.3;
+}
+
+body {
+    background-image: url('/assets/back.jpg');
+    background-size: cover;
+    background-image: fixed;
+}
+
+nav,
+footer {
+    background-color: #0B0C10;
+    width: 100%;
+    display: flex;
+    font-size: 16px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0;
+    padding: 0 5px 0 3px;
+    margin: 0%;
+    color: white;
+}
+
+nav a {
+    text-decoration: none;
+    color: #8f8f8f;
+    font-size: 20px;
+    font-weight: bolder;
+    position: relative;
+    margin: 20px;
+}
+
+nav ul {
+    margin: 0 0 0 auto;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 2px;
+}
+
+li::before {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    border-radius: 50%;
+    padding: 0.5em;
+    color: white;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 15px;
+    text-align: center;
+    color: #c5c6c7;
+    font-weight: bold;
+}
+
+nav a:hover {
+    cursor: pointer;
+    color: #45a29e;
+    font-weight: bolder;
+}
+
+#welcomePage {
+    color: #45a29e;
+    font-size: 24px;
+    padding: 30px;
+    margin: 10px;
+}
+
+#welcomePage img {
+    width: 40%
+}
+
+nav>img {
+    width: 90px;
+    height: 80px;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+.card-box {
+    box-shadow: 0px 0px 30px 0px;
+    padding: 20px;
+    margin-left: 120px;
+    background-position: right 35% bottom 45%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    float: left;
+    height: 550px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 70px;
+    margin-top: 20px;
+}
+
+.btn-group>a {
+    width: 200%;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b2845;
+    background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%);
+    background-size: 200% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    transition: 500ms;
+    color: white;
+    font-family: "Lato";
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.btn-group>a:hover {
+    background-position: right;
+}
+
+.btn-group>a:before {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Lato';
+    position: absolute;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 40px;
+    background-color: #1b2845;
+    background-image: linear-gradient(315deg, #1b2845 0%, #274060 74%);
+    transition: 500ms;
+}
+
+#catalogPage h1 {
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 26px;
+    font-family: 'Lato';
+    text-shadow: 5px 2px black;
+}
+
+.card-box>img {
+    display: block;
+    width: 250px;
+    border-radius: 15px;
+
+}
+
+.btn-group {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#catalogPage>p {
+    font-size: 40px;
+    color: #45a29e;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 30px;
+    text-shadow: 2px 2px black solid;
+}
+
+#search>input[type=text] {
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid #384049;
+    background: #15171b;
+    display: block;
+    width: 100%;
+    color: white;
+    transition: all 0.3s ease;
+    font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 1em 0;
+}
+
+#search>input[type=text]::-webkit-input-placeholder {
+    color: #343b44;
+    line-height: 1.2;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+input[type=text]:hover {
+    border-color: #4e5966;
+}
+
+.search {
+    margin: 1em auto;
+    padding: 2em;
+    width: 25em;
+    border-radius: 2px;
+    border-color: #2d333b;
+    background: #1b1f24;
+    box-shadow: 0 2px 2px #131518;
+}
+
+.button-list {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b2845;
+    background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%);
+    background-size: 200% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    transition: 500ms;
+    color: white;
+    font-family: "Lato";
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.search-result .no-result {
+    margin: 1em auto;
+    padding: 2em;
+    width: 25em;
+    align-items: center;
+}
+
+#search-albums h1,
+h2 {
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 26px;
+    font-family: 'Lato';
+    text-shadow: 5px 2px black;
+}
+
+.search-result .no-result {
+    font-size: 40px;
+    color: #45a29e;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 30px;
+    text-shadow: 2px 2px black solid;
+}
+
+.search-result .card-box {
+    box-shadow: 0px 0px 30px 0px;
+    background-position: right 35% bottom 45%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    float: left;
+    height: 550px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 70px;
+    margin-top: 20px;
+
+}
+
+#searchPage>h1 {
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 26px;
+    font-family: 'Lato';
+    text-shadow: 5px 2px black;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+fieldset {
+    margin: 1em auto;
+    padding: 2em;
+    width: 25em;
+    border-radius: 2px;
+    border-color: #2d333b;
+    background: #1b1f24;
+    box-shadow: 0 2px 2px #131518;
+}
+
+fieldset legend {
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.5em;
+    color: white;
+    background: #171a1e;
+    -o-border-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #2d333b 50%) 1 round;
+    border-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #2d333b 50%) 1 round;
+    border-width: 1px;
+    border-style: solid;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+input,
+input+label>i,
+textarea {
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid #384049;
+    background: #15171b;
+    display: block;
+    width: 100%;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+input[type=text],
+input[type=number],
+textarea {
+    font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 1em 0;
+}
+
+input[type=text]::-webkit-input-placeholder,
+input[type=number]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #343b44;
+    line-height: 1.2;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+input[type=text]:hover,
+textarea {
+    border-color: #4e5966;
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #39a086;
+}
+
+textarea {
+    height: 100px;
+    font-family: "Lato";
+    color: #aab2bd;
+}
+
+.add-album,
+.edit-album {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b2845;
+    background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%);
+    background-size: 200% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    transition: 500ms;
+    color: white;
+    font-family: "Lato";
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.createPage,
+.editPage {
+    font-family: "Lato";
+    font-size: 16px;
+    color: #aab2bd;
+    padding: 1em 0 10em;
+    width: 800px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.vhide {
+    opacity: 0;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+textarea::-webkit-scrollbar {
+    width: 12px;
+    background-color: black;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #39a086;
+}
+
+.wrapper {
+    height: 400px;
+    width: 1000px;
+    margin: 30px auto;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 0px 0px 1.5px 3px gray;
+    margin-bottom: 200px;
+}
+
+.albumCover {
+    float: left;
+    height: 100%;
+    width: auto;
+    margin-right: 20px;
+}
+
+.albumCover img {
+    border-radius: 12px 0 0 7px;
+    height: 100%;
+}
+
+.albumText {
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+.albumText h1 {
+    color: gainsboro;
+    font-weight: bolder;
+    font-size: 28px;
+}
+
+.albumText h3 {
+    margin: 8px 0 47px 18px;
+    font-size: 18px;
+    color: gray;
+    letter-spacing: 0.2em;
+    margin-bottom: 0;
+}
+
+.albumText h4 {
+    margin: 8px 0 10px 18px;
+    font-size: 16px;
+    color: #9F9991;
+    letter-spacing: 0.2em;
+}
+
+.albumText h5 {
+    margin: 8px 0 10px 14px;
+    font-size: 16px;
+    color: white;
+}
+
+.albumText>p {
+    height: auto;
+    width: 100%;
+    color: #9F9991;
+    line-height: 1.6em;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.actionBtn {
+    display: flex;
+    text-align: center;
+    left: auto;
+    top: auto;
+    right: 0;
+    bottom: 0;
+}
+
+.actionBtn>a {
+    width: 200%;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b2845;
+    background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%);
+    background-size: 200% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    transition: 500ms;
+    color: white;
+    font-family: "Lato";
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+.actionBtn>a:hover {
+    background-position: right;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+fieldset {
+    margin: 1em auto;
+    padding: 2em;
+    width: 25em;
+    border-radius: 2px;
+    border-color: #2d333b;
+    background: #1b1f24;
+    box-shadow: 0 2px 2px #131518;
+}
+
+fieldset legend {
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: center;
+    background: #171a1e;
+    -o-border-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #2d333b 50%) 1 round;
+    border-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #2d333b 50%) 1 round;
+    border-width: 1px;
+    border-style: solid;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+input,
+input+label>i {
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid #384049;
+    background: #15171b;
+    display: block;
+    width: 100%;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+input[type=text],
+input[type=password] {
+    font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 1em 0;
+}
+
+input[type=text]::-webkit-input-placeholder,
+input[type=password]::-webkit-input-placeholder {
+    color: #343b44;
+    line-height: 1.2;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+input[type=text]:hover,
+input[type=password]:hover {
+    border-color: #4e5966;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    outline: none;
+    border-color: #39a086;
+}
+
+.login,
+.register {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b2845;
+    background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%);
+    background-size: 200% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    transition: 500ms;
+    color: white;
+    font-family: "Lato";
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+#loginPage,
+#registerPage {
+    font-family: "Lato";
+    font-size: 16px;
+    color: #aab2bd;
+    padding: 1em 0 10em;
+}
+
+.vhide {
+    opacity: 0;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+p {
+    padding-top: 20px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+fieldset {
+    margin: 1em auto;
+    padding: 2em;
+    width: 25em;
+    border-radius: 2px;
+    border-color: #2d333b;
+    background: #1b1f24;
+    box-shadow: 0 2px 2px #131518;
+}
+
+fieldset legend {
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: center;
+    background: #171a1e;
+    -o-border-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #2d333b 50%) 1 round;
+    border-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #2d333b 50%) 1 round;
+    border-width: 1px;
+    border-style: solid;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+input,
+input+label>i {
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid #384049;
+    background: #15171b;
+    display: block;
+    width: 100%;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+input[type=text],
+input[type=password] {
+    font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 1em 0;
+}
+
+input[type=text]::-webkit-input-placeholder,
+input[type=password]::-webkit-input-placeholder {
+    color: #343b44;
+    line-height: 1.2;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+input[type=text]:hover,
+input[type=password]:hover {
+    border-color: #4e5966;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    outline: none;
+    border-color: #39a086;
+}
+
+.login,
+.register {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b2845;
+    background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%);
+    background-size: 200% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    transition: 500ms;
+    color: white;
+    font-family: "Lato";
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+#loginPage,
+#registerPage {
+    font-family: "Lato";
+    font-size: 16px;
+    color: #aab2bd;
+    padding: 1em 0 10em;
+}
+
+.vhide {
+    opacity: 0;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+p {
+    padding-top: 20px;
+}
+
+.error {
+    background-color: red;
+}
