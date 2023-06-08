@@ -1,0 +1,23 @@
+<div class="login-register-div">
+    <div class="login-register-box">
+        <h1>Petstagram</h1>
+
+        {{#with userInput}}
+        <form action="/user/login" method="post">
+            <p>
+                <label>Username:</label>
+                <input type="text" name="username" placeholder="Username" value="{{username}}">
+            </p>
+            <p>
+                <label>Password:</label>
+                <input type="password" name="password" placeholder="Password">
+            </p>
+            <button type="submit">LogIn</button>
+        </form>
+        {{/with}}
+
+    </div>
+    <div class="second-option">
+        <p>Don't have account? <a href="/user/register">Register</a></p>
+    </div>
+</div>

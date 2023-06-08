@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="col-9">
+
+        {{#each allPhotos}}
+        {{> photoCard}}
+        {{else}}
+        <article class="not-available-photo">
+            <h1>No photo posts yet.</h1>
+        </article>
+        {{/each}}
+
+    </div>
+
+</div>
