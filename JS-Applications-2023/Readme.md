@@ -1,4 +1,4 @@
-
+## За курса
 В курса "JS Applications" ще научите какво сa HTTP заявки и как да ги използвате. 
 Ще се запознаете с REST Services, какво представлява един Baas (backend as a service) и как да работите с него, 
 какво означава асинхронен код (Promises, използване на async/await), какво представляват Templating и Routing. По време на курса ще създавате Single Page Application, 
