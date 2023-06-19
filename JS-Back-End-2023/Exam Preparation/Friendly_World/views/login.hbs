@@ -1,0 +1,17 @@
+<main class="login">
+    <section id="login">
+        <div class="form">
+            <h2>Login</h2>
+            {{#with userInput}}
+            <form class="login-form" action="/user/login" method="post">
+                <input type="text" name="email" value="{{email}}" id="email" placeholder="email" />
+                <input type="password" name="password" id="password" placeholder="password" />
+                <button type="submit">Login</button>
+                <p class="message">
+                    Not registered? <a href="/user/register">Create an account</a>
+                </p>
+            </form>
+            {{/with}}
+        </div>
+    </section>
+</main>

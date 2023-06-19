@@ -1,0 +1,16 @@
+<main class="register">
+    <section id="register">
+        <div class="form">
+            <h2>Register</h2>
+            {{#with userInput}}
+            <form class="login-form" action="/user/register" method="post">
+                <input type="text" name="email" value="{{email}}" id="register-email" placeholder="email" />
+                <input type="password" name="password" id="register-password" placeholder="password" />
+                <input type="password" name="rePass" id="repeat-password" placeholder="repeat password" />
+                <button type="submit">Register</button>
+                <p class="message">Already registered? <a href="/user/login">Login</a></p>
+            </form>
+            {{/with}}
+        </div>
+    </section>
+</main>

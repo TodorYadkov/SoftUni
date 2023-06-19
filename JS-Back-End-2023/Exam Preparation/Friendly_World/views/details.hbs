@@ -1,0 +1,51 @@
+<main class="details">
+    {{#with animalDetails}}
+    <section id="details">
+        <div id="details-wrapper">
+            <p id="details-title">Name: {{name}}</p>
+            <div id="img-wrapper">
+                <img src="{{imageUrl}}" />
+            </div>
+            <div id="info-wrapper">
+                <table>
+                    <tr>
+                        <td>
+                            <p>
+                                Years: <span id="details-years">{{years}}</span>
+                            </p>
+                        </td>
+                        <td>
+                            <p>Kind: <span id="details-kind">{{kind}}</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Need of: <span id="details-need">{{need}}</span></p>
+                        </td>
+                        <td>
+                            <p>Location: <span id="details-location">{{location}}</span></p>
+                        </td>
+                    </tr>
+                </table>
+                <p>Description: <span id="details-description">{{description}}</span></p>
+            </div>
+
+            {{#if isLogged}}
+            <div id="action-buttons">
+                {{#if isOwner}}
+                <a href="/edit/{{_id}}" id="edit-btn">Edit</a>
+                <a href="/delete/{{_id}}" id="delete-btn">Delete</a>
+                {{else}}
+                    {{#unless isDonate}}
+                        <a href="/details/{{_id}}/donate" id="donation-btn">Donation</a>
+                    {{else}}
+                        <p id="already-donated">You already donated!</p>
+                    {{/unless}}
+                {{/if}}
+            </div>
+            {{/if}}
+
+        </div>
+    </section>
+    {{/with}}
+</main>
