@@ -6,7 +6,7 @@
 <div *ngIf="errorMsgFromServer" class="alert alert-dismissible alert-danger fs-6 clear-error">
     {{errorMsgFromServer}}
 </div>
-<div *ngIf="userRestaurants !== undefined" class="row mt-5 mb-4">
+<div *ngIf="userRestaurants.length !== 0" class="row mt-5 mb-4">
     <div class="col-md-3">
         <!-- User details -->
         <div *ngIf="userDetails">
@@ -41,7 +41,7 @@
                         <div [id]="'collapse' + stat.restaurantId" class="accordion-collapse collapse"
                             [attr.aria-labelledby]="'panelsStayOpen-' + stat.restaurantId">
                             <div class="accordion-body">
-                                <i class="bi bi-cash-stack"></i> Общо приходи: <strong>{{stat.totalProfit}}</strong>
+                                <i class="bi bi-cash-stack"></i> Общо приходи: <strong>{{stat.totalProfit | number: '1.2-2' }} лв.</strong>
                                 <br>
                                 <i class="bi bi-bag-check"></i> Общо продажби: <strong>{{stat.totalCountSell}}</strong>
                                 <br>

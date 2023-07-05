@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, concatMap, forkJoin, map, merge, mergeMap, tap, toArray } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { ManagerSessionService } from 'src/app/core/services/users/manager-session.service';
 import { IOrderWithProducts } from 'src/app/models/order.interfaces';
@@ -14,10 +14,10 @@ import { IUser } from 'src/app/models/user.interfaces';
 export class ProfileComponent implements OnInit, OnDestroy {
   userDetails!: IUser;
   subscription!: Subscription;
-  userRestaurants!: IRestaurant[];
+  userRestaurants: IRestaurant[] = [];
   errorMsgFromServer!: string;
   isLoading: boolean = false;
-  statistics: { restaurantId: string, restaurantName: string, totalProfit: string, totalCountSell: number, bestSellers: string }[] = [];
+  statistics: { restaurantId: string, restaurantName: string, totalProfit: number, totalCountSell: number, bestSellers: string }[] = [];
 
   constructor(
     private managerSession: ManagerSessionService,
@@ -29,43 +29,38 @@ export class ProfileComponent implements OnInit, OnDestroy {
     if (hasUser) {
       this.isLoading = true;
       this.userDetails = hasUser.userDetails;
-      // Get user's restaurants
-      this.subscription = this.dataService.getUserRestaurants(hasUser.userDetails._id)
-        .subscribe({
-          next: (allRestaurants) => {
-            this.userRestaurants = allRestaurants;
-            // Get orders for each restaurant
-            this.userRestaurants.forEach(restaurant => {
-              // Get all orders for one restaurant
-              this.dataService.getRestaurantOrders(restaurant._id)
-                .subscribe({
-                  next: (restaurantOrders) => {
-                    // Get only totals of each bill
-                    const totalBills = restaurantOrders.map(order => order.orders.reduce((acc, curPrice) => { return acc += curPrice.price }, 0));
-                    // Add statistic if I want to showm more information can add more properties
-                    this.statistics.push({
-                      restaurantId: restaurant._id,
-                      restaurantName: restaurant.name,
-                      totalProfit: totalBills.reduce((acc, bill) => { return acc + bill }, 0).toFixed(2) + ' ' + 'лв.',
-                      totalCountSell: restaurantOrders.length,
-                      bestSellers: this.findTopSellingProducts(restaurantOrders),
-                    });
+      this.subscription = this.dataService.getUserRestaurants(this.userDetails._id)
+        .pipe(
+          mergeMap(allRestaurants => allRestaurants),
+          mergeMap(restaurant => {
+            this.userRestaurants.push(restaurant);
+            return this.dataService.getRestaurantOrders(restaurant._id)
+              .pipe(
+                mergeMap(order => {
+                  const totalBills = order.map((order) => order.orders.reduce((acc, curPrice) => acc + curPrice.price, 0));
+                  this.statistics.push({
+                    restaurantId: restaurant._id,
+                    restaurantName: restaurant.name,
+                    totalProfit: totalBills.reduce((acc, bill) => acc + bill, 0),
+                    totalCountSell: order.length,
+                    bestSellers: this.findTopSellingProducts(order),
+                  });
 
-                    this.isLoading = false;
-                  },
-                  error: (error) => {
-                    this.errorMsgFromServer = error.error.message.join('\n');
-                    this.isLoading = false;
-                  },
+                  return this.statistics;
                 })
-            });
-
+              );
+          }),
+        )
+        .subscribe({
+          next: (data) => {
+            // Show the restaurant with the most sales first
+            this.statistics.sort((a, b) => b.totalProfit - a.totalProfit);
             this.isLoading = false;
           },
           error: (error) => {
             this.errorMsgFromServer = error.error.message.join('\n');
             this.isLoading = false;
-          },
+          }
         });
     }
   }
