@@ -5,19 +5,19 @@
 <div *ngIf="!isLoading" class="body-form d-md-flex align-items-center justify-content-between">
     <div class="booking-content mt-5 mb-5">
         <div class="booking-image d-flex">
-            <img class="booking-img position-sticky" src="/assets/register-img.jpg" alt="Booking Image">
+            <img class="booking-img position-sticky d-none d-lg-flex flex-grow-1" src="/assets/register-img.jpg" alt="Booking Image">
         </div>
         <div class="booking-form">
             <form id="booking-form" #regForm="ngForm" (ngSubmit)="registerUser(regForm)">
                 <h2><i class="bi bi-person-fill-add"></i> Регистрация</h2>
-                <!-- If I want to hide error auto add class - clear-error  -->
+                <!-- To auto hide error add class - clear-error  -->
                 <div *ngIf="errorMsgFromServer" class="alert alert-dismissible alert-danger fs-6">
                     {{errorMsgFromServer}}
                 </div>
                 <!-- Name -->
                 <div class="form-group form-input">
                     <input type="text" class="form-control" id="name" name="name" ngModel #inName="ngModel" [ngClass]="{'is-valid': inName.valid && inName.dirty, 
-            'is-invalid': inName.invalid && inName.dirty}" required minlength="2" maxlength="30">
+                    'is-invalid': inName.invalid && inName.dirty}" required minlength="2" maxlength="30">
                     <label for="name" class="form-label">Вашето име</label>
                     <!-- Validation messages -->
                     <div *ngIf="inName.errors?.['required']" class="invalid-feedback fs-6">Полето е
