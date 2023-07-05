@@ -1,0 +1,73 @@
+<div class="d-flex space justify-content-center fs-4 fst-roboto">
+    <div class="card text-white bg-primary mb-1" style="max-width: 30rem;">
+        <div class="card-header">
+            <h2 class="fw-bolder"><i class="bi bi-journal-plus"></i> Добавяне на продук</h2>
+        </div>
+        <div class="card-body card border-primary mb-3">
+            <div>
+                <form #regForm="ngForm" (ngSubmit)="addProduct(regForm)">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-pen"></i></span>
+                            </div>
+                            <input placeholder="Име на продукта" type="text" class="form-control" name="name"
+                                [(ngModel)]="product.name" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-arrow-down-up"></i></span>
+                            </div>
+                            <input placeholder="Грамаж" type="text" class="form-control" name="weight"
+                                [(ngModel)]="product.weight" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-currency-euro"></i></span>
+                            </div>
+                            <input placeholder="Цена" type="number" step="0.01" class="form-control" name="price"
+                                [(ngModel)]="product.price" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-collection"></i></span>
+                            </div>
+                            <input placeholder="Група ястия" type="text" class="form-control" name="group"
+                                [(ngModel)]="product.price" required>
+                        </div>
+                    </div>
+       
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-card-image"></i></span>
+                            </div>
+                            <input placeholder="Снимка" type="text" class="form-control" name="image"
+                                [(ngModel)]="product.image" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button type="submit" class="btn btn-primary btn-lg fw-bolder"><i class="bi bi-plus-circle"
+                                style="font-size:16px;"></i>
+                            Добави</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

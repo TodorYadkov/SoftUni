@@ -1,0 +1,98 @@
+<div class="d-flex space justify-content-center fs-4 fst-roboto">
+    <div class="card text-white bg-primary mb-1" style="max-width: 30rem;">
+        <div class="card-header">
+            <h2 class="fw-bolder"><i class="bi bi-pencil-square"></i> Редакция</h2>
+        </div>
+        <div class="card-body card border-primary mb-3">
+            <div>
+                <form #regForm="ngForm" (ngSubmit)="editRestaurant(regForm)">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-house-add"></i></span>
+                            </div>
+                            <input placeholder="Име на ресторанта" type="text" class="form-control" name="name"
+                                [(ngModel)]="retaurant.name" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                            </div>
+                            <input placeholder="Град" type="text" class="form-control" name="location"
+                                [(ngModel)]="retaurant.location" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-person-vcard"></i></span>
+                            </div>
+                            <input placeholder="Адрес" type="text" class="form-control" name="address"
+                                [(ngModel)]="retaurant.address" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-card-image"></i></span>
+                            </div>
+                            <input placeholder="Снимка" type="text" class="form-control" name="image"
+                                [(ngModel)]="retaurant.image" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa-solid fa-utensils"></i></span>
+                            </div>
+                            <textarea placeholder="Кухня (Българска традиционна)" type="text" class="form-control"
+                                name="cuisine" [(ngModel)]="retaurant.cuisine" required></textarea>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-pen"></i></span>
+                            </div>
+                            <textarea placeholder="Описание" type="text" cols="20" class="form-control"
+                                name="description" [(ngModel)]="retaurant.description" required></textarea>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-phone"></i></span>
+                            </div>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">+359</span>
+                            </div>
+                            <input placeholder="Телефон" type="tel" class="form-control" name="phone"
+                                [(ngModel)]="retaurant.phone" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button type="submit" class="btn btn-primary btn-lg fw-bolder"><i class="bi bi-pencil"
+                                style="font-size:16px;"></i>
+                            Редакция</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

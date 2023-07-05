@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="card">
+        <div class="content">
+            <div class="imgBx">
+                <img src="{{restaurant.image}}" alt="{{restaurant.name}}">
+            </div>
+            <div class="contentBx">
+                <h3>{{restaurant.name}}
+                    <br>
+                    <span><i class="fas fa-utensils"></i> {{restaurant.cuisine}}</span>
+                    <br>
+                    <span><i class="bi bi-geo-alt-fill"></i> {{restaurant.location}}</span>
+                </h3>
+            </div>
+        </div>
+        <ul class="sci">
+            <li>
+                <div class="btn btn-primary btn-lg">
+                    <!-- Using on profile page -->
+                    <ng-container *ngIf="profile; else default">
+                        <a routerLink="/details/{{restaurant._id}}"><i class="bi bi-vector-pen"></i>&nbsp;Детайли</a>
+                    </ng-container>
+                    <!-- Using in home template -->
+                    <ng-template #default>
+                        <a routerLink="/orders/{{restaurant._id}}"><i class="bi bi-menu-up"></i>&nbsp;Нашето меню</a>
+                    </ng-template>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+<!-- Variant - 1 - To use uncoment css -->
+<!-- <div class="card mb-5">
+    <div class="backgroundEffect"></div>
+    <div class="pic"> <img class="" src="{{restaurant.image}}" alt="{{restaurant.name}}"></div>
+    <div class="content">
+        <p class="h-1 mt-2"><i class="bi bi-shop"></i> {{restaurant.name}}</p>
+        <p class="text-muted mt-1"><i class="fas fa-utensils"></i> {{restaurant.cuisine}}</p>
+        <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
+            <div class="btn btn-primary btn-lg"><a routerLink="/details/{{restaurant._id}}"><i class="bi bi-menu-up"></i>&nbsp;Нашето
+                меню</a></div>
+        </div> 
+    </div>
+</div> -->
+
+
+<!-- Old Variant -->
+<!-- <div class="col-md-4">
+    <div class="card border-primary mb-3">
+        <div class="card-header">
+            <h3><i class="bi bi-shop"></i> {{restaurant.name}}</h3>
+        </div>
+        <div class="card-body">
+            <img class="card-img" src="{{restaurant.image}}" alt="{{restaurant.name}}">
+            <h5 class="card-title"><i class="bi bi-geo-alt-fill"></i> {{restaurant.location}}
+            </h5>
+            <p class="card-text"><i class="fas fa-utensils"></i> {{restaurant.cuisine}}</p>
+            <div class="d-flex justify-content-center align-items-center">
+                <a routerLink="/details/{{restaurant._id}}" type="button" class="btn btn-primary btn-lg"><i
+                        class="bi bi-menu-up"></i> Нашето меню</a>
+            </div>
+        </div>
+    </div>
+</div> -->
