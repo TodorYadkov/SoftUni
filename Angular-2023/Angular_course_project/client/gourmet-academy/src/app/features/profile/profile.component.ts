@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, concatMap, forkJoin, map, merge, mergeMap, tap, toArray } from 'rxjs';
+import { Subscription, mergeMap } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { ManagerSessionService } from 'src/app/core/services/users/manager-session.service';
-import { IOrderWithProducts } from 'src/app/models/order.interfaces';
+import { Title } from '@angular/platform-browser';
+
 import { IRestaurant } from 'src/app/models/restaurant.interfaces';
 import { IUser } from 'src/app/models/user.interfaces';
+import { IOrderWithProducts } from 'src/app/models/order.interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -21,10 +23,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   constructor(
     private managerSession: ManagerSessionService,
-    private dataService: DataService
+    private dataService: DataService,
+    private title: Title,
   ) { }
 
+
   ngOnInit(): void {
+    this.title.setTitle('Профил');
+
     const hasUser = this.managerSession.getSessionToken();
     if (hasUser) {
       this.isLoading = true;
@@ -37,6 +43,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             return this.dataService.getRestaurantOrders(restaurant._id)
               .pipe(
                 mergeMap(order => {
+                  // Create statistic object
                   const totalBills = order.map((order) => order.orders.reduce((acc, curPrice) => acc + curPrice.price, 0));
                   this.statistics.push({
                     restaurantId: restaurant._id,
@@ -82,9 +89,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       });
     });
 
-    // Convert object to array
     const countedProducts = Object.entries(productCount);
-    // Sort array based on count in descending order
     countedProducts.sort((a, b) => b[1] - a[1]);
     // Extract the first best sellers
     const bestSellers = countedProducts.slice(0, bestSellersCount).map((entry) => entry[0]);
