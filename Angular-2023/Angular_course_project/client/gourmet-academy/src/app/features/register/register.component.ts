@@ -1,8 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { translateErrorsFromServer } from 'src/app/core/environments/constants';
+import { Title } from '@angular/platform-browser';
 
 import { ManagerSessionService } from 'src/app/core/services/users/manager-session.service';
 import { UsersService } from 'src/app/core/services/users/users.service';
@@ -13,7 +14,7 @@ import { IUser, IUserToken } from 'src/app/models/user.interfaces';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnDestroy {
+export class RegisterComponent implements OnInit, OnDestroy {
   userToken!: IUserToken;
   subscription!: Subscription;
   errorMsgFromServer!: string;
@@ -23,7 +24,13 @@ export class RegisterComponent implements OnDestroy {
     private userService: UsersService,
     private managerSession: ManagerSessionService,
     private router: Router,
+    private title: Title,
   ) { }
+
+  ngOnInit(): void {
+    this.title.setTitle('Регистрация');
+
+  }
 
   // Register method
   registerUser(formData: NgForm) {
@@ -51,8 +58,9 @@ export class RegisterComponent implements OnDestroy {
       this.errorMsgFromServer = 'Паролите не съвпадат'
 
     } else {
+
       this.isLoading = true;
-      this.subscription = this.userService.register(userInput) // When we make a get or post request, we don't need to unsubscribe
+      this.subscription = this.userService.register(userInput)
         .subscribe({
           next: (data) => {
             this.userToken = data;
