@@ -5,12 +5,12 @@
 <div *ngIf="!isLoading" class="body-form d-md-flex align-items-center justify-content-between">
     <div class="booking-content mt-5 mb-5">
         <div class="booking-image d-flex">
-            <img class="booking-img position-sticky" src="/assets/add-restaurant-img.png" alt="Booking Image">
+            <img class="booking-img position-sticky d-none d-lg-flex flex-grow-1" src="/assets/add-restaurant-img.png" alt="Booking Image">
         </div>
         <div class="booking-form">
             <form id="booking-form" #createFormR="ngForm" (ngSubmit)="createRestaurant(createFormR)">
                 <h2><i class="bi bi-house-add"></i> Добави ресторант</h2>
-                <!-- If I want to hide error auto add class - clear-error  -->
+                <!-- To auto hide error add class - clear-error  -->
                 <div *ngIf="errorMsgFromServer" class="alert alert-dismissible alert-danger fs-6">
                     {{errorMsgFromServer}}
                 </div>
