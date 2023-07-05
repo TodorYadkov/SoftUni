@@ -36,7 +36,6 @@ export const endpoints = {
 
 };
 
-// Using Map because when the map is exported when we write point - see only the method not the properties on Мap
 // Translate the errors and if they are different from the current ones show them in English
 export const translateErrorsFromServer: Map<string, string> = new Map([
     ['Email is already used!', 'Имейлът е вече зает моля използвайте друг'],
