@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { constants } from 'src/app/core/environments/constants';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { IRestaurant } from 'src/app/models/restaurant.interfaces';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ import { IRestaurant } from 'src/app/models/restaurant.interfaces';
 export class HomeComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   subscription!: Subscription;
-  allRestaurants!: IRestaurant[];
+  allRestaurants: IRestaurant[] = [];
   foundRestaurants: IRestaurant[] = [];
   totalPages: number = 1;
   pageNumber: number = 1;
@@ -22,17 +23,22 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private dataService: DataService,
-
+    private title: Title,
   ) { }
 
   ngOnInit(): void {
-    this.subscription = new Subscription(); // Initialize the subscription to get one new instance and can add more observable
+    this.title.setTitle('Начало');
+    // Initialize the subscription to get one new instance and can add more observable
+    this.subscription = new Subscription();
+    // Initialize the home page with the first page and default limit
     this.getRestaurants(constants.defaultPaginationPageNum, constants.defaultPaginationLimitNum);
   }
 
   // Get Restaurants with pagination
   getRestaurants(page: string, limit: string) {
+    // Show spinner
     this.isLoading = true;
+
     const observAllRestaurants$ = this.dataService.getRestaurantsByPagination(page, limit)
       .subscribe({
         next: (data) => {
@@ -44,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.isLoading = false;
         }
       });
-    // Add current observable to subscribtion and on ngDestroy all observable to be destroyed
+    // Add current observable to subscription and on ngDestroy all observable to be destroyed
     this.subscription.add(observAllRestaurants$);
   }
 
@@ -106,8 +112,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     const restaurantName = form.value.restaurantName;
     const location = form.value.location;
 
-    const isRestaurantNameValid = restaurantName && restaurantName.trim().length >= 1; // Check if name is filled and is at minimum 3 characters long
-    const isLocationValid = location && location.trim().length >= 1; // Check if location is filled and is at minimum 3 characters long
+    const isRestaurantNameValid = restaurantName && restaurantName.trim().length >= 1; // Check if name is filled and is at minimum 1 characters long
+    const isLocationValid = location && location.trim().length >= 1; // Check if location is filled and is at minimum 1 characters long
 
     return isRestaurantNameValid || isLocationValid;
   }
