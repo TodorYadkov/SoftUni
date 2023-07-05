@@ -15,15 +15,15 @@ import { onlyForLoggedInGuard } from './core/guards/only-for-logged-in.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent, canActivate: [onlyForGuestGuard] },
-  { path: 'login', component: LoginComponent, canActivate: [onlyForGuestGuard] },
-  { path: 'add-restaurants', component: AddRestaurantComponent, canActivate: [onlyForLoggedInGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate: [onlyForLoggedInGuard] },
+  { path: 'register', canActivate: [onlyForGuestGuard], component: RegisterComponent },
+  { path: 'login', canActivate: [onlyForGuestGuard], component: LoginComponent },
+  { path: 'add-restaurants', canActivate: [onlyForLoggedInGuard], component: AddRestaurantComponent },
+  { path: 'profile', canActivate: [onlyForLoggedInGuard], component: ProfileComponent },
   { path: 'about-us', component: AboutUsComponent },
   // {path: 'orders/:restaurant._id', component: }, TODO COMPONENT WHERE TO USER TO BUY
-  { path: 'details', canActivate: [onlyForLoggedInGuard], component: DetailsRestaurantComponent }, // :restaurantId NOT FORGOT TO ADD THIS AFTER THE PATH
-  { path: 'products/:productId', component: AddProductComponent, canActivate: [onlyForLoggedInGuard] },
-  { path: 'products/edit/:productId', component: EditProductComponent, canActivate: [onlyForLoggedInGuard] },
+  { path: 'details/:restaurantId', canActivate: [onlyForLoggedInGuard], component: DetailsRestaurantComponent },
+  { path: 'products/:productId', canActivate: [onlyForLoggedInGuard], component: AddProductComponent },
+  { path: 'products/edit/:productId', canActivate: [onlyForLoggedInGuard], component: EditProductComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
