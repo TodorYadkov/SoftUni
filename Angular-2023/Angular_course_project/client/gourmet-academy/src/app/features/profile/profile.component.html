@@ -2,7 +2,7 @@
     <app-loading></app-loading>
 </ng-container>
 
-<!-- If I want to hide error auto add class - clear-error  -->
+<!-- To auto hide error add class - clear-error  -->
 <div *ngIf="errorMsgFromServer" class="alert alert-dismissible alert-danger fs-6 clear-error">
     {{errorMsgFromServer}}
 </div>
@@ -41,7 +41,8 @@
                         <div [id]="'collapse' + stat.restaurantId" class="accordion-collapse collapse"
                             [attr.aria-labelledby]="'panelsStayOpen-' + stat.restaurantId">
                             <div class="accordion-body">
-                                <i class="bi bi-cash-stack"></i> Общо приходи: <strong>{{stat.totalProfit | number: '1.2-2' }} лв.</strong>
+                                <i class="bi bi-cash-stack"></i> Общо приходи: <strong>{{stat.totalProfit | number:
+                                    '1.2-2' }} лв.</strong>
                                 <br>
                                 <i class="bi bi-bag-check"></i> Общо продажби: <strong>{{stat.totalCountSell}}</strong>
                                 <br>
@@ -81,7 +82,7 @@
                     <h2><strong>Все още нямате добавен ресторант</strong></h2>
                     <h2>Направете го сега и увеличете свойте продажби с няколко лесни
                         стъпки от
-                        <a href="/add-restaurants" class="alert-link">тук <i class="bi bi-rocket-takeoff"></i></a>
+                        <a routerLink="/add-restaurants" class="alert-link">тук <i class="bi bi-rocket-takeoff"></i></a>
                     </h2>
                 </div>
             </div>
