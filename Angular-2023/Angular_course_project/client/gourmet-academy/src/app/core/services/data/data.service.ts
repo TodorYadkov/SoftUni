@@ -5,6 +5,7 @@ import { IEnvironments } from 'src/app/models/environment.interfaces';
 import { constants, endpoints } from '../../environments/constants';
 import { IAllRestaurants, IRestaurant } from 'src/app/models/restaurant.interfaces';
 import { IOrderWithProducts } from 'src/app/models/order.interfaces';
+import { IComment } from 'src/app/models/comment.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,15 @@ export class DataService {
     const url = constants.hostBackEnd + endpoints.getRestaurantOrders(restaurantId);
     return this.http.get<IOrderWithProducts[]>(url);
   }
-
+  // Get restaurant by ID
+  getRestaurantById(restaurantId: string): Observable<IRestaurant> {
+    const url = constants.hostBackEnd + endpoints.getRestaurantById(restaurantId);
+    return this.http.get<IRestaurant>(url);
+  }
+  // Get restaurant comments
+  getAllCommentsRestaurant(restaurantId: string): Observable<IComment[]> {
+    const url = constants.hostBackEnd + endpoints.getAllCommentsRestaurant(restaurantId);
+    return this.http.get<IComment[]>(url);
+  }
 
 }
