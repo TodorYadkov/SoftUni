@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { Subscription } from 'rxjs';
@@ -17,10 +17,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   theme!: string;
-  activeTab: number = 1;
   subscription!: Subscription;
-  isNavbarCollapsed: boolean = true;
-
 
   // IF NOT USE WEATHER API - DELETE ALL OF THIS and do NOT forget to delete and services
   // ipAddressSubscription$!: Subscription;
@@ -35,7 +32,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private userService: UsersService,
     private managerSession: ManagerSessionService,
     private router: Router,
-    private cdr: ChangeDetectorRef
     // private getUserIp: GetUserIpService,
     // private getData: DataService,
     // private weatherService: WeatherService,
@@ -101,13 +97,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // check which navigation to display
   updateNav(): boolean {
 
-    // Change active tab after login and logout
-    if (this.managerSession.userStatus && [1, 2, 3, 4].includes(this.activeTab) == false) {
-      this.setActive(1); // Set new active button
-    } else if (this.managerSession.userStatus === false && [1, 5, 6, 7].includes(this.activeTab) == false) {
-      this.setActive(1); // Set new active button
-    }
-
     return this.managerSession.userStatus;
   }
 
@@ -122,7 +111,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.document.documentElement.setAttribute('data-bs-theme', this.themeService.theme); // Set new attribute on html tag to show correct theme
   }
 
-  // Logout method
+  // Logout
   logout() {
     this.subscription = this.userService.logout()
       .subscribe({
@@ -133,18 +122,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         error: (error) => console.error(error.error.message),
       });
   }
-
-  // Set active button on navigation
-  setActive(tabNumber: number): void {
-    this.activeTab = tabNumber;
-    this.cdr.detectChanges(); // Use change detection because sometimes Angular didn't see the changes
-  }
-
-  // Show menu button when the display si small
-  toggleNavbar(): void {
-    this.isNavbarCollapsed = !this.isNavbarCollapsed;
-  }
-
 
   ngOnDestroy(): void {
     if (this.subscription !== undefined) {
