@@ -10,38 +10,39 @@
                         <!-- Button when the display is small -->
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation" (click)="toggleNavbar()">
+                            aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <!-- All menu items -->
                         <div class="container-fluid">
                             <div class="container">
-                                <!-- Add show class to show all items in nav when the display si small -->
-                                <div class="collapse navbar-collapse me-3" [class.show]="!isNavbarCollapsed"
+                                <!-- Add show class to show all items in nav when the display is small -->
+                                <div class="collapse navbar-collapse me-3"
                                     id="navbarNav">
                                     <ul class="navbar-nav me-auto">
                                         <li class="nav-item">
-                                            <a class="nav-link" (click)="setActive(1)"
-                                                [ngClass]="activeTab === 1 ? 'active' : null" routerLink="/"
+                                            <a class="nav-link"
+                                                routerLinkActive='active'
+                                                [routerLinkActiveOptions]="{ exact: true }" routerLink="/"
                                                 style="font-size: x-large;"><i class="bi bi-house-door"></i> Начало</a>
                                         </li>
                                         <!-- Update nav returns true if there is a userToken in localStorage - create template variable guest and if false show the guest nav -->
                                         <ng-container *ngIf="updateNav(); else guest">
                                             <li class="nav-item">
-                                                <a class="nav-link" routerLink="/add-restaurants" (click)="setActive(2)"
-                                                    [ngClass]="activeTab === 2 ? 'active' : null"
+                                                <a class="nav-link" routerLink="/add-restaurants"
+                                                    routerLinkActive='active'
                                                     style="font-size: x-large;"><i class="bi bi-house-add"></i> Добави
                                                     ресторант</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" routerLink="/profile" (click)="setActive(3)"
-                                                    [ngClass]="activeTab === 3 ? 'active' : null"
+                                                <a class="nav-link" routerLink="/profile"
+                                                    routerLinkActive='active'
                                                     style="font-size: x-large;"><i class="bi bi-person-circle"></i> Моят
                                                     профил</a>
                                             </li>
                                             <li class="nav-item" (click)="logout()">
-                                                <a class="nav-link" href="javascript:void(0)" (click)="setActive(4)"
-                                                    [ngClass]="activeTab === 4 ? 'active' : null"
+                                                <a class="nav-link" href="javascript:void(0)"
+                                                    routerLinkActive='active'
                                                     style="font-size: x-large;"><i class="bi bi-box-arrow-right"></i>
                                                     Изход</a>
                                             </li>
@@ -49,19 +50,19 @@
                                         <!-- Guest navigation -->
                                         <ng-template #guest>
                                             <li class="nav-item">
-                                                <a class="nav-link" (click)="setActive(5)"
-                                                    [ngClass]="activeTab === 5 ? 'active' : null" routerLink="/login"
+                                                <a class="nav-link"
+                                                    routerLinkActive='active' routerLink="/login"
                                                     style="font-size: x-large;"><i class="bi bi-door-open"></i> Вход</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" routerLink="/register" (click)="setActive(6)"
-                                                    [ngClass]="activeTab === 6 ? 'active' : null"
+                                                <a class="nav-link" routerLink="/register"
+                                                    routerLinkActive='active'
                                                     style="font-size: x-large;"><i class="bi bi-person-plus"></i>
                                                     Регистрация</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" routerLink="/about-us" (click)="setActive(7)"
-                                                    [ngClass]="activeTab === 7 ? 'active' : null"
+                                                <a class="nav-link" routerLink="/about-us"
+                                                    routerLinkActive='active'
                                                     style="font-size: x-large;"><i class="bi bi-info-circle"></i> За
                                                     нас</a>
                                             </li>
