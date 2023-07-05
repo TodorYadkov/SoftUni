@@ -1,6 +1,7 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { translateErrorsFromServer } from 'src/app/core/environments/constants';
 import { ManagerSessionService } from 'src/app/core/services/users/manager-session.service';
@@ -12,16 +13,21 @@ import { IUser } from 'src/app/models/user.interfaces';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy {
   errorMsgFromServer!: string;
   subscription!: Subscription;
   isLoading: boolean = false;
-
   constructor(
     private userService: UsersService,
     private managerSession: ManagerSessionService,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) { }
+
+  ngOnInit(): void {
+    this.title.setTitle('Вход');
+
+  }
 
   loginUser(formData: NgForm) {
     const userInput: IUser = formData.value;
