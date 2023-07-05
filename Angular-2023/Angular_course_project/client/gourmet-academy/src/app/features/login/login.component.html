@@ -4,7 +4,7 @@
 
 <div *ngIf="!isLoading" class="body-form booking-content mt-5 mb-5">
     <div class="booking-image d-flex">
-        <img class="booking-img position-sticky" src="/assets/login-img.jpg" alt="Booking Image">
+        <img class="booking-img position-sticky d-none d-lg-flex flex-grow-1" src="/assets/login-img.jpg" alt="Booking Image">
     </div>
     <div class="booking-form">
         <form id="booking-form" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
