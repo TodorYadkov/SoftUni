@@ -16,18 +16,12 @@ export class onlyForGuestGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    return (
-      this.checkIfLogged(state.url) || this.router.createUrlTree(['/not-found'])
-    );
-  }
 
-  checkIfLogged(url: string): boolean {
     const token = localStorage.getItem(constants.userTokenName);
     if (!token) {
-
       return true;
     }
 
-    return false;
+    return this.router.createUrlTree(['/not-found']);
   }
 }
