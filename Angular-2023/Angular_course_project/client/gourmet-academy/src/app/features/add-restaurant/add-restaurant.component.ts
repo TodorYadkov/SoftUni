@@ -1,4 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -10,7 +11,7 @@ import { IRestaurant } from 'src/app/models/restaurant.interfaces';
   templateUrl: './add-restaurant.component.html',
   styleUrls: ['./add-restaurant.component.css']
 })
-export class AddRestaurantComponent implements OnDestroy {
+export class AddRestaurantComponent implements OnInit, OnDestroy {
   retaurant!: IRestaurant;
   subscription!: Subscription;
   errorMsgFromServer!: string;
@@ -19,7 +20,12 @@ export class AddRestaurantComponent implements OnDestroy {
   constructor(
     private dataService: DataService,
     private router: Router,
+    private title: Title,
   ) { }
+
+  ngOnInit(): void {
+        this.title.setTitle('Ресторант');
+  }
 
   createRestaurant(formData: NgForm) {
     const userInput: IRestaurant = formData.value;
@@ -50,6 +56,7 @@ export class AddRestaurantComponent implements OnDestroy {
       this.errorMsgFromServer = ' Снимката трябва да бъде линк започващ с http:// или https://';
 
     } else {
+      
       this.isLoading = true;
       this.subscription = this.dataService.createRestaurant(userInput)
         .subscribe({
