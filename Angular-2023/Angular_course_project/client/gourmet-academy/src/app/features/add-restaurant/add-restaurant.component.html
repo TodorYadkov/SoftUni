@@ -1,19 +1,19 @@
-<ng-container *ngIf="isLoading">
-    <app-loading></app-loading>
-</ng-container>
+<!-- Spinner -->
+<app-loading [isLoading]="isLoading"></app-loading>
 
 <div *ngIf="!isLoading" class="body-form d-md-flex align-items-center justify-content-between">
-    <div class="booking-content mt-5 mb-5">
-        <div class="booking-image d-flex">
-            <img class="booking-img position-sticky d-none d-lg-flex flex-grow-1" src="/assets/add-restaurant-img.png" alt="Booking Image">
+    <div class="add-restaurant-content mt-5 mb-5">
+        <div class="add-restaurant-image d-flex">
+            <img class="add-restaurant-img position-sticky d-none d-lg-flex flex-grow-1"
+                src="/assets/add-restaurant-img.png" alt="Add restaurant Image">
         </div>
-        <div class="booking-form">
-            <form id="booking-form" #createFormR="ngForm" (ngSubmit)="createRestaurant(createFormR)">
+        <div class="add-restaurant-form">
+            <form id="add-restaurant-form" #createFormR="ngForm" (ngSubmit)="createRestaurant(createFormR)">
                 <h2><i class="bi bi-house-add"></i> Добави ресторант</h2>
-                <!-- To auto hide error add class - clear-error  -->
-                <div *ngIf="errorMsgFromServer" class="alert alert-dismissible alert-danger fs-6">
-                    {{errorMsgFromServer}}
-                </div>
+
+                <!-- Display error -->
+                <app-alert-message [errorMsgFromServer]="errorMsgFromServer"></app-alert-message>
+
                 <!-- Name -->
                 <div class="form-group form-input">
                     <input type="text" class="form-control" id="name" name="name" ngModel #inName="ngModel" [ngClass]="{'is-valid': inName.valid && inName.dirty, 
@@ -125,156 +125,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="d-flex space justify-content-center fs-4 fst-roboto">
-    <div class="card text-white bg-primary mb-1" style="max-width: 30rem;">
-        <div class="card-header">
-            <h2 class="fw-bolder"><i class="bi bi-pencil-square"></i> Добавете ресторант</h2>
-        </div>
-        <div class="card-body card border-primary mb-3">
-            <div>
-                <form #createFormR="ngForm" (ngSubmit)="createRestaurant(createFormR)">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="bi bi-house-add"></i></span>
-                            </div>
-                            <input placeholder="Име на ресторанта" type="text" class="form-control" name="name"
-                                [(ngModel)]="retaurant.name" required>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
-                            </div>
-                            <input placeholder="Град" type="text" class="form-control" name="location"
-                                [(ngModel)]="retaurant.location" required>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="bi bi-person-vcard"></i></span>
-                            </div>
-                            <input placeholder="Адрес" type="text" class="form-control" name="address"
-                                [(ngModel)]="retaurant.address" required>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="bi bi-card-image"></i></span>
-                            </div>
-                            <input placeholder="Снимка" type="text" class="form-control" name="image"
-                                [(ngModel)]="retaurant.image" required>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa-solid fa-utensils"></i></span>
-                            </div>
-                            <textarea placeholder="Кухня (Българска традиционна)" type="text" class="form-control"
-                                name="cuisine" [(ngModel)]="retaurant.cuisine" required></textarea>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="bi bi-pen"></i></span>
-                            </div>
-                            <textarea placeholder="Описание" type="text" cols="20" class="form-control"
-                                name="description" [(ngModel)]="retaurant.description" required></textarea>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="bi bi-phone"></i></span>
-                            </div>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">+359</span>
-                            </div>
-                            <input placeholder="Телефон" type="tel" class="form-control" name="phone"
-                                [(ngModel)]="retaurant.phone" required>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="d-flex justify-content-center align-items-center">
-                        <button type="submit" class="btn btn-primary btn-lg fw-bolder"><i class="bi bi-plus-circle"
-                                style="font-size:16px;"></i>
-                            Създай</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
