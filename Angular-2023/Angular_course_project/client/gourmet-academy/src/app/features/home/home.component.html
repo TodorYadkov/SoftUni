@@ -1,5 +1,7 @@
 <app-carousel></app-carousel>
 
+<app-alert-message [errorMsgFromServer]="errorMsgFromServer" [autoHide]="true"></app-alert-message>
+
 <!-- Hide if there is no restaurant in the DB -->
 <ng-container *ngIf="allRestaurants.length !== 0; else noRestaurants">
     <div id="home">
@@ -26,12 +28,10 @@
         </div>
 
 
-        <!-- Loading spinner -->
-        <ng-container *ngIf="isLoading; else displayRestaurants">
-            <app-loading></app-loading>
-        </ng-container>
+        <!-- Spinner -->
+        <app-loading [isLoading]="isLoading"></app-loading>
 
-        <ng-template #displayRestaurants>
+        <ng-container *ngIf="!isLoading">
             <h1 class="fst-marck text-primary" style="margin-top: 14px;"><i class="bi bi-menu-up"
                     style="font-size: 32px;"></i> Поръчайте сега от любимият си ресторант</h1>
 
@@ -124,7 +124,7 @@
 
             </div>
 
-        </ng-template>
+        </ng-container>>
 
     </div>
 </ng-container>
