@@ -7,6 +7,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { CardRestaurantComponent } from './card-restaurant/card-restaurant.component';
 import { BublesAnimationComponent } from './bubles-animation/bubles-animation.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { AlertMessageComponent } from './alert-message/alert-message.component';
+import { SuccessMessageComponent } from './success-message/success-message.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     CardRestaurantComponent,
     BublesAnimationComponent,
     CarouselComponent,
+    AlertMessageComponent,
+    SuccessMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,9 @@ import { CarouselComponent } from './carousel/carousel.component';
     LoadingComponent,
     CardRestaurantComponent,
     BublesAnimationComponent,
-    CarouselComponent
+    CarouselComponent,
+    AlertMessageComponent,
+    SuccessMessageComponent
   ]
 })
 export class SharedModule { }
