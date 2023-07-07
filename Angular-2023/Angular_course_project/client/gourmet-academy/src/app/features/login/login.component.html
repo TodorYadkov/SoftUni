@@ -1,15 +1,18 @@
-<ng-container *ngIf="isLoading" class="mt-5">
-    <app-loading></app-loading>
-</ng-container>
+<!-- Spinner -->
+<app-loading [isLoading]="isLoading"></app-loading>
 
-<div *ngIf="!isLoading" class="body-form booking-content mt-5 mb-5">
-    <div class="booking-image d-flex">
-        <img class="booking-img position-sticky d-none d-lg-flex flex-grow-1" src="/assets/login-img.jpg" alt="Booking Image">
+<div *ngIf="!isLoading" class="body-form login-content mt-5 mb-5">
+    <div class="login-image d-flex">
+        <img class="booking-img position-sticky d-none d-lg-flex flex-grow-1" src="/assets/login-img.jpg"
+            alt="Login Image">
     </div>
-    <div class="booking-form">
-        <form id="booking-form" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+    <div class="login-form">
+        <form id="login-form" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
             <h2><i class="bi bi-door-open"></i> Вход</h2>
 
+            <!-- Display error  -->
+            <app-alert-message [errorMsgFromServer]="errorMsgFromServer"></app-alert-message>
+            
             <!-- Email -->
             <div class="form-group form-input">
                 <input id="email" type="email" class="form-control" name="email" ngModel #inEmail="ngModel"
@@ -41,7 +44,7 @@
             <div class="form-submit mt-4">
                 <input [disabled]="loginForm.invalid" type="submit" value="Вход" class="submit" id="submit"
                     name="submit" />
-                <a class="vertify-booking" routerLink="/register">Ако все още не сте се регистрирали последвайте
+                <a class="login-vertify" routerLink="/register">Ако все още не сте се регистрирали последвайте
                     линка</a>
             </div>
         </form>
