@@ -1,5 +1,5 @@
 display-flex,
-.booking-content {
+.login-content {
     display: flex;
     display: -webkit-flex
 }
@@ -120,7 +120,7 @@ h2 {
     -ms-border-radius: 10px
 }
 
-.booking-content {
+.login-content {
     flex-wrap: wrap;
     -moz-flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
@@ -128,17 +128,17 @@ h2 {
     -ms-flex-wrap: wrap
 }
 
-.booking-image {
+.login-image {
     width: 58.33%;
     margin-bottom: -8px
 }
 
-.booking-img {
+.login-img {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px
 }
 
-.booking-form {
+.login-form {
     width: 41.67%;
     background: #222831;
     border-top-right-radius: 10px;
@@ -388,7 +388,7 @@ li.init:after {
     margin-bottom: 18px
 }
 
-.vertify-booking {
+.login-vertify {
     color: #edb77d;
     font-size: 11px;
     text-decoration: none;
@@ -401,7 +401,7 @@ li.init:after {
     -ms-transition: all .3s
 }
 
-.vertify-booking:hover {
+.login-vertify:hover {
     text-decoration: underline
 }
 
@@ -432,7 +432,7 @@ li.init:after {
         background: 0 0
     }
 
-    .booking-content {
+    .login-content {
         flex-direction: column;
         -moz-flex-direction: column;
         -webkit-flex-direction: column;
@@ -440,23 +440,23 @@ li.init:after {
         -ms-flex-direction: column
     }
 
-    .booking-image,
-    .booking-form {
+    .login-image,
+    .login-form {
         width: 100%
     }
 
-    .booking-image {
+    .login-image {
         order: 2;
         text-align: center
     }
 
-    .booking-form {
+    .login-form {
         order: 1;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0
     }
 
-    .booking-img {
+    .login-img {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         width: 100%
