@@ -1,19 +1,18 @@
-<ng-container *ngIf="isLoading" class="mt-5">
-    <app-loading></app-loading>
-</ng-container>
+<!-- Spinner -->
+<app-loading [isLoading]="isLoading"></app-loading>
 
 <div *ngIf="!isLoading" class="body-form d-md-flex align-items-center justify-content-between">
-    <div class="booking-content mt-5 mb-5">
-        <div class="booking-image d-flex">
-            <img class="booking-img position-sticky d-none d-lg-flex flex-grow-1" src="/assets/register-img.jpg" alt="Booking Image">
+    <div class="register-content mt-5 mb-5">
+        <div class="register-image d-flex">
+            <img class="register-img position-sticky d-none d-lg-flex flex-grow-1" src="/assets/register-img.jpg" alt="Register Image">
         </div>
-        <div class="booking-form">
-            <form id="booking-form" #regForm="ngForm" (ngSubmit)="registerUser(regForm)">
+        <div class="register-form">
+            <form id="register-form" #regForm="ngForm" (ngSubmit)="registerUser(regForm)">
                 <h2><i class="bi bi-person-fill-add"></i> Регистрация</h2>
-                <!-- To auto hide error add class - clear-error  -->
-                <div *ngIf="errorMsgFromServer" class="alert alert-dismissible alert-danger fs-6">
-                    {{errorMsgFromServer}}
-                </div>
+
+                <!-- Display error  -->
+                <app-alert-message [errorMsgFromServer]="errorMsgFromServer"></app-alert-message>
+
                 <!-- Name -->
                 <div class="form-group form-input">
                     <input type="text" class="form-control" id="name" name="name" ngModel #inName="ngModel" [ngClass]="{'is-valid': inName.valid && inName.dirty, 
@@ -90,19 +89,16 @@
                     <label for="rePass" class="form-label">Потвърдете вашата парола</label>
                     <!-- Validation messages -->
                     <div *ngIf="inRePass.dirty&& inRePass.errors?.['required']" class="invalid-feedback fs-6">
-                        Полето е
-                        задължително</div>
+                        Полето е задължително</div>
                     <div *ngIf="inRePass.dirty && inRePass.value !== inPass.value" class="invalid-feedback fs-6">
-                        Паролите не
-                        съвпадат</div>
+                        Паролите не съвпадат</div>
                     <div *ngIf="inRePass.valid && inRePass.value === inPass.value" class="valid-feedback fs-6">
                         Полето е валидно</div>
                 </div>
-
                 <div class="form-submit mt-4">
-                    <input [disabled]="regForm.invalid" type="submit" value="Регистрация" class="submit" id="submit"
+                    <input [disabled]="regForm.invalid || inRePass.value !== inPass.value" type="submit" value="Регистрация" class="submit" id="submit"
                         name="submit" />
-                    <a class="vertify-booking" routerLink="/login">Ако вече имате акаунт последвайте линка</a>
+                    <a class="register-vertify" routerLink="/login">Ако вече имате акаунт последвайте линка</a>
                 </div>
             </form>
         </div>
