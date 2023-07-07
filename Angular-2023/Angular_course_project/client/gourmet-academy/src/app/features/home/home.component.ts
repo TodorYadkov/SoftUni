@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   pageNumber: number = 1;
   pageArray!: number[];
   isSubmitedSearch: boolean = false;
+  errorMsgFromServer!: string;
 
   constructor(
     private dataService: DataService,
@@ -48,13 +49,39 @@ export class HomeComponent implements OnInit, OnDestroy {
           // Fill array with values, to have page numbers
           this.pageArray = Array(this.totalPages).fill(0).map((x, i) => i + 1);
           this.isLoading = false;
+        },
+        error: (error) => {
+          this.errorMsgFromServer = error.error.message.join('\n');
+          this.isLoading = false;
         }
       });
     // Add current observable to subscription and on ngDestroy all observable to be destroyed
     this.subscription.add(observAllRestaurants$);
   }
 
-  // Display numbers - from pagination
+  // Get restaurants by search
+  onSearch(form: NgForm) {
+    if (this.isValidForm(form)) {
+      this.isLoading = true;
+      const { restaurantName, location } = form.value;
+      const observRestaurantBySearch$ = this.dataService.getRestaurantsBySearch(restaurantName, location)
+        .subscribe({
+          next: (data) => {
+            this.foundRestaurants = data;
+            this.isLoading = false;
+            this.isSubmitedSearch = this.foundRestaurants.length === 0;
+          },
+          error: (error) => {
+            this.errorMsgFromServer = error.error.message.join('\n');
+            this.isLoading = false;
+          }
+        });
+      // Add current observable to subscribtion and on ngDestroy all observable to be destroyed
+      this.subscription.add(observRestaurantBySearch$);
+    }
+  }
+
+  // Display numbers - to pagination
   getVisiblePageNumbers(): number[] {
     let visiblePages = [];
 
@@ -87,24 +114,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   goToPage(page: number): void {
     const pageToStr = String(page);
     this.getRestaurants(pageToStr, constants.defaultPaginationLimitNum);
-  }
-
-  // Get restaurants by search
-  onSearch(form: NgForm) {
-    if (this.isValidForm(form)) {
-      this.isLoading = true;
-      const { restaurantName, location } = form.value;
-      const observRestaurantBySearch$ = this.dataService.getRestaurantsBySearch(restaurantName, location)
-        .subscribe({
-          next: (data) => {
-            this.foundRestaurants = data;
-            this.isLoading = false;
-            this.isSubmitedSearch = this.foundRestaurants.length === 0;
-          }
-        });
-      // Add current observable to subscribtion and on ngDestroy all observable to be destroyed
-      this.subscription.add(observRestaurantBySearch$);
-    }
   }
 
   // Check that the form is filled with at least one field
