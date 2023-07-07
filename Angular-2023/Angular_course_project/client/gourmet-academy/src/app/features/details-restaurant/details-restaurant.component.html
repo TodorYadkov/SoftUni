@@ -1,15 +1,15 @@
 <div class="shadow-lg d-flex flex-column position-relative mt-4 mb-3">
-    <ng-container *ngIf="isLoading" class="mt-5">
-        <app-loading></app-loading>
-    </ng-container>
-    <!-- To auto hide error add class - clear-error  -->
-    <div *ngIf="errorMsgFromServer" class="alert alert-dismissible alert-danger fs-6 clear-error">
-        {{errorMsgFromServer}}
-    </div>
+
+    <!-- Spinner -->
+    <app-loading [isLoading]="isLoading"></app-loading>
+
+    <!-- Display error -->
+    <app-alert-message [errorMsgFromServer]="errorMsgFromServer" [autoHide]="true"></app-alert-message>
     
     <div *ngIf="restaurantDetails !== undefined" class="container mt-3 mb-3 ">
         <div class="row">
             <div class="col-md-6 col-xxl-3">
+                <!-- Restaurant details -->
                 <div class="card">
                     <div class="card-body"><img src="{{restaurantDetails.image}}" class="rounded border" style="height: 230px; width: 268px;" width="268" height="230">
                         <h4 class="card-title mt-2">{{restaurantDetails.name}}</h4>
@@ -19,13 +19,14 @@
                         <p class="card-text text-muted mt-0 mb-0"><i class="bi bi-info-square"></i> {{restaurantDetails.description}}</p>
                     </div>
                 </div>
+                <!-- Comments -->
                 <div class="card" style="margin-top: 10px;">
                     <div class="card-body">
                         <h4 class="card-title">Коментари</h4>
                         <ng-container *ngIf="allComments.length !== 0;else noComments">
                             <p class="text-muted small mb-3" style="font-size: 8px;margin-top: -10px;">Последни пет добавени коментари</p>
                             <div *ngFor="let comment of allComments" class="card-text" style="margin-top: -10px;">
-                                <p class="text-muted mb-0"><strong>{{comment.userId.name}}:</strong> {{comment.comment}}</p>
+                                <p class="text-muted mb-0 py-0"><strong>{{comment.userId.name}}:</strong> {{comment.comment}}</p>
                                 <hr class="mt-0">
                             </div> 
                         </ng-container>
@@ -35,35 +36,31 @@
                     </div>
                 </div>
             </div>
+            <!-- Tabs -->
             <div class="col-md-6 col-xxl-9" style="position: relative;display: block;">
                 <div>
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1" style="padding-left: 5px;margin-right: 2px;padding-right: 8px;">Добави продукт</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2" style="padding-left: 7px;margin-right: 2px;padding-right: 2px;">Редактирай Продукт</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3" style="margin-left: 2px;padding-left: 5px;padding-right: 3px;margin-right: 2px;">Изтрий Продукт</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-4" style="padding-left: 4px;margin-left: 2px;margin-right: 2px;padding-right: 5px;">Редактирай Ресторант</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-5" style="margin-right: -11px;padding-right: 17px;padding-left: 3px;margin-left: 0px;">Изтрий ресторант</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1" style="padding-left: 2px;padding-right: 2px;margin-right: 1px;"><i class="bi bi-list"></i> Продукти</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2" style="padding-left: 2px;padding-right: 2px;margin-right: 1px;"><i class="bi bi-plus-circle"></i>Нов продукт</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3" style="padding-left: 2px;padding-right: 2px;margin-right: 1px;"><i class="bi bi-pencil-square"></i>Редактирай продукт</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-4" style="padding-left: 2px;padding-right: 2px;margin-right: 1px;"><i class="bi bi-x-circle"></i> Изтрий продукт</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-5" style="padding-left: 2px;padding-right: 2px;margin-right: 1px;"><i class="bi bi-pencil-square"></i> Редактирай ресторант</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-6" style="padding-left: 2px;padding-right: 2px;margin-right: 1px;"><i class="bi bi-x-circle"></i> Изтрий ресторант</a></li>
                     </ul>
                     <div class="tab-content">
-                        <!-- Add new product -->
                         <div class="tab-pane active show" role="tabpanel" id="tab-1" style="padding-top: 30px;padding-bottom: 31px;">
-                            <div class="row">
-                                <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
-                                    <h2 class="fw-bold mb-3"><span class="text-white text-decoration-underline">Нов продукт</span></h2>
-                                    <form>
-                                        <div class="mb-3"><input class="form-control" type="text" name="name" placeholder="Име на продукта"></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="weight" placeholder="Мярка"></div>
-                                        <div class="mb-3"><input class="form-control" type="number" name="price" placeholder="Цена" step="0.01"></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="group" placeholder="Група"></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="image" placeholder="Снимка линк"></div>
-                                        <div class="mb-5"><button class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;"><i class="bi bi-plus-circle"></i> Добави</button></div>
-                                    </form>
-                                </div>
-                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;"><img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402"></div>
-                            </div>
+
+                            <p>Test</p>
+
+                        </div>
+                        <!-- Add new product -->
+                        <div class="tab-pane" role="tabpanel" id="tab-2" style="padding-top: 30px;padding-bottom: 31px;">
+
+                            <app-add-product [restaurantId]="restaurantDetails._id"></app-add-product>
+
                         </div>
                         <!-- Edit product -->
-                        <div class="tab-pane" role="tabpanel" id="tab-2" style="padding-top: 30px;padding-bottom: 31px;">
+                        <div class="tab-pane" role="tabpanel" id="tab-3" style="padding-top: 30px;padding-bottom: 31px;">
                             <div class="row">
                                 <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
                                     <h2 class="fw-bold mb-3"><span class="text-white text-decoration-underline">Редакция продукт</span></h2>
@@ -76,11 +73,13 @@
                                         <div class="mb-5"><button class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;"><i class="bi bi-pencil-fill"></i> Редактирай</button></div>
                                     </form>
                                 </div>
-                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;"><img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402"></div>
+                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;">
+                                    <img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
+                                </div>
                             </div>
                         </div>
                         <!-- Delete product -->
-                        <div class="tab-pane" role="tabpanel" id="tab-3" style="padding-top: 30px;padding-bottom: 31px;">
+                        <div class="tab-pane" role="tabpanel" id="tab-4" style="padding-top: 30px;padding-bottom: 31px;">
                             <div class="row">
                                 <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
                                     <h2 class="fw-bold mb-3"><span class="text-white text-decoration-underline">Потвърдете изтриване</span></h2>
@@ -93,11 +92,13 @@
                                         <div class="mb-5"><button class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;"><i class="bi bi-x-circle"></i> Изтрий</button></div>
                                     </form>
                                 </div>
-                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;"><img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402"></div>
+                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;">
+                                    <img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
+                                </div>
                             </div>
                         </div>
                         <!-- Edit restaurant -->
-                        <div class="tab-pane" role="tabpanel" id="tab-4" style="padding-top: 30px;padding-bottom: 31px;">
+                        <div class="tab-pane" role="tabpanel" id="tab-5" style="padding-top: 30px;padding-bottom: 31px;">
                             <div class="row">
                                 <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
                                     <h2 class="fw-bold mb-3"><span class="text-white text-decoration-underline">Редакция ресторант</span></h2>
@@ -111,11 +112,13 @@
                                         <div class="mb-5"><button class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;"><i class="bi bi-pencil-fill"></i> Редактирай</button></div>
                                     </form>
                                 </div>
-                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;"><img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402"></div>
+                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;">
+                                    <img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
+                                </div>
                             </div>
                         </div>
                         <!-- Delete restaurant -->
-                        <div class="tab-pane" role="tabpanel" id="tab-5" style="padding-top: 30px;padding-bottom: 31px;">
+                        <div class="tab-pane" role="tabpanel" id="tab-6" style="padding-top: 30px;padding-bottom: 31px;">
                             <div class="row">
                                 <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
                                     <h2 class="fw-bold mb-3"><span class="text-white text-decoration-underline">Потвърди изтриване</span></h2>
@@ -129,7 +132,9 @@
                                         <div class="mb-5"><button class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;"><i class="bi bi-x-circle"></i> Изтрий</button></div>
                                     </form>
                                 </div>
-                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;"><img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402"></div>
+                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;">
+                                    <img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
+                                </div>
                             </div>
                         </div>
                     </div>
