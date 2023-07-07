@@ -1,11 +1,9 @@
-<ng-container *ngIf="isLoading" class="mt-5">
-    <app-loading></app-loading>
-</ng-container>
+<!-- Spinner -->
+<app-loading [isLoading]="isLoading"></app-loading>
 
-<!-- To auto hide error add class - clear-error  -->
-<div *ngIf="errorMsgFromServer" class="alert alert-dismissible alert-danger fs-6 clear-error">
-    {{errorMsgFromServer}}
-</div>
+<!-- Display error  -->
+<app-alert-message [errorMsgFromServer]="errorMsgFromServer" [autoHide]="true"></app-alert-message>
+
 <div *ngIf="userRestaurants.length !== 0" class="row mt-5 mb-4">
     <div class="col-md-3">
         <!-- User details -->
