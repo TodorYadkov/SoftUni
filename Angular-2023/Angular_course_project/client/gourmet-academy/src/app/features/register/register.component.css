@@ -1,5 +1,5 @@
 display-flex,
-.booking-content {
+.register-content {
     display: flex;
     display: -webkit-flex
 }
@@ -120,7 +120,7 @@ h2 {
     -ms-border-radius: 10px
 }
 
-.booking-content {
+.register-content {
     flex-wrap: wrap;
     -moz-flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
@@ -128,17 +128,17 @@ h2 {
     -ms-flex-wrap: wrap
 }
 
-.booking-image {
+.register-image {
     width: 58.33%;
     margin-bottom: -8px
 }
 
-.booking-img {
+.register-img {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px
 }
 
-.booking-form {
+.register-form {
     width: 41.67%;
     background: #222831;
     border-top-right-radius: 10px;
@@ -390,7 +390,7 @@ li.init:after {
     margin-bottom: 18px
 }
 
-.vertify-booking {
+.register-vertify {
     color: #edb77d;
     font-size: 11px;
     text-decoration: none;
@@ -403,7 +403,7 @@ li.init:after {
     -ms-transition: all .3s
 }
 
-.vertify-booking:hover {
+.register-vertify:hover {
     text-decoration: underline
 }
 
@@ -434,7 +434,7 @@ li.init:after {
         background: 0 0
     }
 
-    .booking-content {
+    .register-content {
         flex-direction: column;
         -moz-flex-direction: column;
         -webkit-flex-direction: column;
@@ -442,23 +442,23 @@ li.init:after {
         -ms-flex-direction: column
     }
 
-    .booking-image,
-    .booking-form {
+    .register-image,
+    .register-form {
         width: 100%
     }
 
-    .booking-image {
+    .register-image {
         order: 2;
         text-align: center
     }
 
-    .booking-form {
+    .register-form {
         order: 1;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0
     }
 
-    .booking-img {
+    .register-img {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         width: 100%
@@ -494,27 +494,27 @@ li.init:after {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.booking-content {
+.register-content {
     display: flex;
     align-items: stretch;
     justify-content: center;
     height: 100%;
 }
 
-.booking-image {
+.register-image {
     flex: 0 0 60%;
     max-height: 100%;
     overflow: hidden;
     background-color: #f1f1f1;
 }
 
-.booking-image img {
+.register-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.booking-form {
+.register-form {
     flex: 0 0 40%;
     padding: 20px;
     box-sizing: border-box;
@@ -533,16 +533,16 @@ li.init:after {
         height: auto;
     }
 
-    .booking-content {
+    .register-content {
         flex-direction: column;
     }
 
-    .booking-image {
+    .register-image {
         flex: none;
         max-height: none;
     }
 
-    .booking-form {
+    .register-form {
         flex: none;
         margin-top: 20px;
     }
