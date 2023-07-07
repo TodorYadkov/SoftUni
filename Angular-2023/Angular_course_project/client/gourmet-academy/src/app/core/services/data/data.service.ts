@@ -6,6 +6,7 @@ import { constants, endpoints } from '../../environments/constants';
 import { IAllRestaurants, IRestaurant } from 'src/app/models/restaurant.interfaces';
 import { IOrderWithProducts } from 'src/app/models/order.interfaces';
 import { IComment } from 'src/app/models/comment.interfaces';
+import { IProduct } from 'src/app/models/product.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +55,28 @@ export class DataService {
     const url = constants.hostBackEnd + endpoints.getAllCommentsRestaurant(restaurantId);
     return this.http.get<IComment[]>(url);
   }
+  // Create product
+  createNewProduct(restaurantId: string, productData: IProduct): Observable<IProduct> {
+    const url = constants.hostBackEnd + endpoints.addNewProduct(restaurantId);
+    return this.http.post<IProduct>(url, productData);
+  }
+  // Get product by ID
+  getProductById(productId: string): Observable<IProduct> {
+    const url = constants.hostBackEnd + endpoints.getProductById(productId);
+    return this.http.get<IProduct>(url);
+  }
+  // Update product (edit)
+  updateProduct(productId: string, productData: IProduct): Observable<IProduct> {
+    const url = constants.hostBackEnd + endpoints.updateProduct(productId);
+    return this.http.put<IProduct>(url, productData);
+  }
+  // Delete product
+  deleteProduct(productId: string): Observable<IProduct> {
+    const url = constants.hostBackEnd + endpoints.deleteProduct(productId);
+    return this.http.delete<IProduct>(url);
+  }
+
+
+
 
 }
