@@ -49,7 +49,6 @@ export class DetailsRestaurantComponent implements OnInit, OnDestroy {
       });
   }
 
-
   ngOnDestroy(): void {
     if (this.subscription !== undefined) {
       this.subscription.unsubscribe();
