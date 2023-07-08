@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
-import { RegisterComponent } from './features/register/register.component';
-import { LoginComponent } from './features/login/login.component';
-import { AddRestaurantComponent } from './features/add-restaurant/add-restaurant.component';
-import { ProfileComponent } from './features/profile/profile.component';
+import { RegisterComponent } from './features/users/register/register.component';
+import { LoginComponent } from './features/users/login/login.component';
+import { AddRestaurantComponent } from './features/restaurants/add-restaurant/add-restaurant.component';
+import { ProfileComponent } from './features/users/profile/profile.component';
 import { AboutUsComponent } from './features/about-us/about-us.component';
-import { DetailsRestaurantComponent } from './features/details-restaurant/details-restaurant.component';
+import { DetailsRestaurantComponent } from './features/restaurants/details-restaurant/details-restaurant.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { onlyForGuestGuard } from './core/guards/only-for-guest.guard';
 import { onlyForLoggedInGuard } from './core/guards/only-for-logged-in.guard';
