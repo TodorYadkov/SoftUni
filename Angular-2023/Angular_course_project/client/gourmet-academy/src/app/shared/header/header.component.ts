@@ -119,7 +119,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.managerSession.clearSession();
           this.router.navigate(['/']);
         },
-        error: (error) => console.error(error.error.message),
+        error: (error) => {
+          this.managerSession.clearSession();
+          console.error(error.error.message)
+          this.router.navigate(['/']);
+        },
       });
   }
 
