@@ -65,6 +65,11 @@ export class DataService {
     const url = constants.hostBackEnd + endpoints.getProductById(productId);
     return this.http.get<IProduct>(url);
   }
+  // Get all products
+  getAllProductsRestaurant(restaurantId: string): Observable<IProduct[]> {
+    const url = constants.hostBackEnd + endpoints.getAllProductsRestaurant(restaurantId);
+    return this.http.get<IProduct[]>(url);
+  }
   // Update product (edit)
   updateProduct(productId: string, productData: IProduct): Observable<IProduct> {
     const url = constants.hostBackEnd + endpoints.updateProduct(productId);
