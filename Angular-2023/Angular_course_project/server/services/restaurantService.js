@@ -10,7 +10,7 @@ const addNewRestaurant = (restaurantData, userId) => {
 
 const updateRestaurant = (restaurantData, restaurantId) => {
     const { name, location, address, phone, cuisine, description, image } = restaurantData;
-    return Restaurant.findByIdAndUpdate(restaurantId, { name, location, address, phone, cuisine, description, image }, { runValidators: true });
+    return Restaurant.findByIdAndUpdate(restaurantId, { name, location, address, phone, cuisine, description, image }, { runValidators: true, new: true });
 };
 
 const deleteRestaurant = async (restaurantId) => {
@@ -46,10 +46,10 @@ const addNewProduct = async (productData, restaurantId) => {
 
 const updateProduct = (productData, productId) => {
     const { name, weight, price, group, image } = productData;
-    return Product.findByIdAndUpdate(productId, { name, weight, price, group, image }, { runValidators: true });
+    return Product.findByIdAndUpdate(productId, { name, weight, price, group, image }, { runValidators: true, new: true });
 };
 
-const deleteProduct = (productId) => Product.findByIdAndDelete(productId);
+const deleteProduct = (productId) => Product.findByIdAndDelete(productId, { returnDocument: true });
 
 const getProductById = (productId) => Product.findById(productId).populate('restaurantId');
 
@@ -62,10 +62,10 @@ const addNewComment = (commentData, restaurantId, userId) => {
 
 const updateComment = (commentData, commentId) => {
     const { comment } = commentData;
-    return Comment.findByIdAndUpdate(commentId, { comment }, { runValidators: true });
+    return Comment.findByIdAndUpdate(commentId, { comment }, { runValidators: true, new: true });
 };
 
-const deleteComment = (commentId) => Comment.findByIdAndDelete(commentId);
+const deleteComment = (commentId) => Comment.findByIdAndDelete(commentId, { returnDocument: true });
 
 const getCommentById = (commentId) => Comment.findById(commentId).populate('userId', ['name', 'email', 'phone', 'address', 'role']);
 
