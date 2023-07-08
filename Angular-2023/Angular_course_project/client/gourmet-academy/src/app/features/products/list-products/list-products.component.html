@@ -1,0 +1,72 @@
+<div class="container rounded text-white table-shadow">
+      <!-- Spinner -->
+      <app-loading [isLoading]="isLoading"></app-loading>
+      <!-- Display error -->
+      <app-alert-message [errorMsgFromServer]="errorMsgFromServer"></app-alert-message>
+
+    <div class="row" *ngIf="allProducts">
+        <div class="product-details me-2">
+            <h2 class="fw-bold mb-3"><span class="text-decoration-underline">Всички продукти</span></h2>
+
+            <div class="d-flex justify-content-between"><span>You have 4 items in your cart</span>
+                <div class="d-flex flex-row align-items-center"><span class="text-muted">Sort by:</span>
+                    <div class="price ms-2"><span class="me-1">price</span><i class="fa fa-angle"></i></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- Card product -->
+                    <ng-container *ngIf="allProducts.length !==0; else noProduct">
+                        <div *ngFor="let product of allProducts"
+                            class="f-block d-flex justify-content-between align-items-center mt-1 py-2 items rounded box">
+                            <div class="d-flex flex-row"><img class="rounded mx-2 d-none d-lg-flex flex-grow-1" src="{{product.image}}" width="50px" height="50px">
+                                <div class="me-2"><span class="d-block text-muted fst-italic spec">Име: </span><span class="d-block fst-bold">{{product.name}}</span></div>
+                            </div>
+                            <div class="d-flex text-muted">
+                                <div class="mx-2"><span class="d-block text-muted fst-italic spec d-none d-lg-flex flex-grow-1">Грамаж: </span><span class="d-block fst-bold d-none d-lg-flex flex-grow-1">{{product.weight}}</span></div>
+                                <div class="mx-2"><span class="d-block text-muted fst-italic spec d-none d-lg-flex flex-grow-1">Група: </span><span class="d-block fst-bold d-none d-lg-flex flex-grow-1">{{product.group}}</span></div>
+                                <div class="mx-2"><span class="d-block text-muted fst-italic spec">Цена: </span><span class="d-block fst-bold">{{product.price | number:'1.2-2' }} лв.</span></div>
+                                <!-- Edit button -->
+                                <div class="ms-5 me-3">
+                                    <a type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        [attr.data-bs-target]="'#' + 'edit' + product._id">
+                                        <div class="d-flex mx-0"><i class="bi bi-pencil-square"></i></div>
+                                    </a>
+                                </div>
+                                <!-- Delete button -->
+                                <div class="me-2">
+                                    <a type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        [attr.data-bs-target]="'#' + 'delete' + product._id">
+                                        <div class="d-flex mx-0"><i class="bi bi-trash3"></i></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Edit Product -->
+                            <!-- add data-bs-focus="true" - Puts the focus on the modal when initialized, data-bs-backdrop="static" = for a backdrop which doesn't close the modal on click -->
+                            <!-- ata-bs-keyboard="true" - Closes the modal when escape key is pressed -->
+                            <div class="modal fade" id="edit{{product._id}}" data-bs-focus="true" data-bs-backdrop="static"
+                                data-bs-keyboard="true" tabindex="-1" aria-labelledby="editProduct" aria-hidden="true">
+
+                                <app-edit-product [productDetails]="product" (updatedProduct)="getAllProducts()"></app-edit-product>
+
+                            </div>
+                            <!-- Delete product -->
+                            <div class="modal fade" id="delete{{product._id}}" data-bs-focus="true" data-bs-keyboard="true"
+                                tabindex="-1" aria-labelledby="deleteProduct" aria-hidden="true">
+
+                                <app-delete-product [productDetails]="product"></app-delete-product>
+
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-template #noProduct>
+                        <div class="alert alert-dismissible alert-danger text-center">
+                            <h2><strong>Все още нямате добавен продукт</strong></h2>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
