@@ -53,7 +53,7 @@ router.get('/search', async (req, res, next) => {
         // Search - Search by location and by name
         const { name, location } = req.query;
         const restaurants = await getRestaurantsBySearch(name, location);
-        
+
         res.status(200).json(restaurants);
     } catch (error) {
         next(error);
@@ -135,9 +135,9 @@ router.delete('/:restaurantId', isAuth, preload(getRestaurantById), isOwner, asy
     try {
 
         const restaurantId = req.params.restaurantId;
-        await deleteRestaurant(restaurantId);
+        const deletedRestaurant = await deleteRestaurant(restaurantId);
 
-        res.status(200).json({ message: 'Restaurant is successfully deleted' });
+        res.status(200).json({ message: 'Restaurant is successfully deleted', deletedRestaurant });
     } catch (error) {
         next(error);
     }
@@ -255,9 +255,9 @@ router.delete('/products/delete/:productId', isAuth, preload(getProductById, 'pr
     try {
 
         const productId = req.params.productId;
-        await deleteProduct(productId);
+        const deletedProduct = await deleteProduct(productId);
 
-        res.status(200).json({ message: 'Product is successfully deleted' });
+        res.status(200).json({ message: 'Product is successfully deleted', deletedProduct });
     } catch (error) {
         next(error);
     }
@@ -360,9 +360,9 @@ router.delete('/comments/delete/:commentId', isAuth, preload(getCommentById, 'co
     try {
 
         const commentId = req.params.commentId;
-        await deleteComment(commentId);
+        const deletedComment = await deleteComment(commentId);
 
-        res.status(200).json({ message: 'Comment is successfully deleted' });
+        res.status(200).json({ message: 'Comment is successfully deleted', deletedComment });
     } catch (error) {
         next(error);
     }
