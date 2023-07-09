@@ -35,6 +35,16 @@ export class DataService {
     const url = constants.hostBackEnd + endpoints.addNewRestaurant;
     return this.http.post<IRestaurant>(url, userInput);
   }
+  // Update restaurant (edit)
+  updateRestaurant(restaurantId: string, restaurantData: IRestaurant): Observable<IRestaurant> {
+    const url = constants.hostBackEnd + endpoints.updateRestaurant(restaurantId);
+    return this.http.put<IRestaurant>(url, restaurantData);
+  }
+  // Delete restaurant
+  deleteRestaurant(restaurantId: string): Observable<IRestaurant> {
+    const url = constants.hostBackEnd + endpoints.deleteRestaurant(restaurantId);
+    return this.http.delete<IRestaurant>(url);
+  }
   // Get usersRestaurants
   getUserRestaurants(userId: string): Observable<IRestaurant[]> {
     const url = constants.hostBackEnd + endpoints.getUserRestaurants(userId);
@@ -76,9 +86,9 @@ export class DataService {
     return this.http.put<IProduct>(url, productData);
   }
   // Delete product
-  deleteProduct(productId: string): Observable<IProduct> {
+  deleteProduct(productId: string): Observable<{ message: string, deletedProduct: IProduct }> {
     const url = constants.hostBackEnd + endpoints.deleteProduct(productId);
-    return this.http.delete<IProduct>(url);
+    return this.http.delete<{ message: string, deletedProduct: IProduct }>(url);
   }
 
 
