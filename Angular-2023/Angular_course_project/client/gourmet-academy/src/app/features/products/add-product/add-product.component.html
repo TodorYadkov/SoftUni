@@ -61,13 +61,13 @@
                 <div *ngIf="inImage.valid" class="valid-feedback fs-6">Полето е валидно</div>
             </div>
             <div class="form-submit mb-5">
-                <button [disabled]="addProductFrom.invalid" class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;">
+                <button [disabled]="addProductFrom.invalid"  class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;">
                     <i class="bi bi-plus-circle"></i> Добави</button>
             </div>
         </form>
     </div>
-    <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;">
+    <div class="col d-none d-lg-flex flex-grow-1 mt-5" style="margin-left: 49px">
         <!-- If the value entered by the user is correct, display a new link -->
-        <img class="rounded-3" src="{{imageUrl ? imageUrl : '/assets/no-image.png'}}" style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
+        <img alt="Add your image" class="rounded-3" src="{{imageUrl ? imageUrl : '/assets/no-image.png'}}" style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
     </div>
 </div>
