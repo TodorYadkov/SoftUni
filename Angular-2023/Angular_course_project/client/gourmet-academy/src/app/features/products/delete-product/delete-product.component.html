@@ -23,13 +23,13 @@
                     </form>
                 </div>
                 <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;">
-                    <img class="rounded-3" src="{{productDetails.image}}" style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
+                    <img class="rounded-3" alt="No Image" src="{{productDetails.image}}" style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
                 </div>
             </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" (click)="deleteProduct(productDetails._id)"><i class="bi bi-exclamation-triangle"></i> Изтрий</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i> Затвори</button>
+            <button type="button" class="btn btn-danger" (click)="deleteProduct(productDetails._id)" [disabled]="disableBtnDelete"><i class="bi bi-exclamation-triangle"></i> Изтрий</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCloseModal()"><i class="bi bi-x-lg"></i> Затвори</button>
         </div>
     </div>
 </div>
