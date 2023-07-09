@@ -1,7 +1,8 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { IProduct } from 'src/app/models/product.interfaces';
+import { UpdateProductsListService } from '../update-products-list.service';
 
 @Component({
   selector: 'app-delete-product',
@@ -16,8 +17,12 @@ export class DeleteProductComponent implements OnDestroy {
   errorMsgFromServer!: string;
   isLoading: boolean = false;
   subscription!: Subscription;
+  disableBtnDelete: boolean = false;
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private updateProductList: UpdateProductsListService,
+  ) { }
 
   deleteProduct(productId: string) {
     this.isLoading = true;
@@ -26,13 +31,20 @@ export class DeleteProductComponent implements OnDestroy {
       .subscribe({
         next: (data) => {
           this.isLoading = false;
-          this.successMessage = `Успешно изтрихте ${data.name}`;
+          this.disableBtnDelete = true;
+          this.successMessage = `Успешно изтрихте ${data.deletedProduct.name}`;
         },
         error: (error) => {
           this.isLoading = false;
           this.errorMsgFromServer = error.error.message.join('\n');
         }
       })
+  }
+
+  // This fixes the issue with a modal to stay in the background -- TODO: Auto close modal after delete
+  onCloseModal() {
+    // Emit new event to update product list
+    this.updateProductList.emitTriggerGetAllProducts();
   }
 
   ngOnDestroy(): void {
