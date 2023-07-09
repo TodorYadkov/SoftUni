@@ -1,9 +1,10 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { ValidateProductService } from '../validate-product.service';
 import { IProduct } from 'src/app/models/product.interfaces';
+import { UpdateProductsListService } from '../update-products-list.service';
 
 @Component({
   selector: 'app-add-product',
@@ -13,7 +14,7 @@ import { IProduct } from 'src/app/models/product.interfaces';
 export class AddProductComponent implements OnDestroy {
   // Get restaurant ID from parent
   @Input() restaurantId!: string;
-
+  
   successMessage!: string;
   errorMsgFromServer!: string;
   isLoading: boolean = false;
@@ -22,7 +23,8 @@ export class AddProductComponent implements OnDestroy {
 
   constructor(
     private validateProduct: ValidateProductService,
-    private dataService: DataService
+    private dataService: DataService,
+    private updateProductList: UpdateProductsListService,
   ) { }
 
   // Create new product
@@ -35,12 +37,15 @@ export class AddProductComponent implements OnDestroy {
 
     } else {
       this.isLoading = true;
-      this.subscription = this.dataService.createNewProduct(this.restaurantId, productData)
+      this.subscription = this.dataService.createNewProduct(this.restaurantId, validatedProduct.verifiedInput)
         .subscribe({
           next: (data) => {
             this.isLoading = false;
             formData.reset();
-            this.successMessage = `Успешно добавихте ${productData.name}`;
+            this.imageUrl = ''; // Show default picture
+            this.successMessage = `Успешно добавихте ${validatedProduct.verifiedInput.name}`;
+            // Emit new event to update product list
+            this.updateProductList.emitTriggerGetAllProducts();
           },
           error: (error) => {
             this.isLoading = false;
@@ -51,7 +56,7 @@ export class AddProductComponent implements OnDestroy {
   }
 
   // Check if the current html path is correct
-   validateImagePath(imagePath: string) {
+  validateImagePath(imagePath: string) {
     this.imageUrl = this.validateProduct.validateImagePath(imagePath);
   }
 
