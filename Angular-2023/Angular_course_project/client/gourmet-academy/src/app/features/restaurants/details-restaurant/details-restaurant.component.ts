@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, mergeMap, tap } from 'rxjs';
+import { Subscription, map, mergeMap, tap } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { IComment } from 'src/app/models/comment.interfaces';
 import { IRestaurant } from 'src/app/models/restaurant.interfaces';
+import { UpdateProductsListService } from '../../products/update-products-list.service';
 
 @Component({
   selector: 'app-details-restaurant',
@@ -12,6 +13,7 @@ import { IRestaurant } from 'src/app/models/restaurant.interfaces';
   styleUrls: ['./details-restaurant.component.css']
 })
 export class DetailsRestaurantComponent implements OnInit, OnDestroy {
+
   subscription!: Subscription;
   restaurantDetails!: IRestaurant;
   restaurantId!: string;
@@ -22,22 +24,22 @@ export class DetailsRestaurantComponent implements OnInit, OnDestroy {
   constructor(
     private title: Title,
     private dataService: DataService,
-    private activeRoute: ActivatedRoute,
+    private activeRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.title.setTitle('Детайли');
 
     this.restaurantId = this.activeRoute.snapshot.params['restaurantId']; // Get restaurant Id
-    this.isLoading = true; // Show spinner
     // Get restaurant details
+    this.isLoading = true; // Show spinner
     this.subscription = this.dataService.getRestaurantById(this.restaurantId)
       .pipe(
         mergeMap(restaurant => {
           this.restaurantDetails = restaurant;
           return this.dataService.getAllCommentsRestaurant(restaurant._id)
             .pipe(
-              mergeMap(comments => this.allComments = comments.slice(-5).reverse()) // Get last added five comment
+              map(comments => this.allComments = comments.slice(-5).reverse()) // Get last added five comment
             )
         })
       ).subscribe({
