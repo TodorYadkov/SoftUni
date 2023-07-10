@@ -19,28 +19,22 @@
                         <div class="form-group mb-3">
                             <input [ngModel]="productDetails.name" #inName="ngModel" class="form-control"
                                 [ngClass]="{'is-valid': inName.valid && inName.dirty, 'is-invalid': inName.invalid && inName.dirty}"
-                                type="text" name="name" placeholder="Име на продукта" required minlength="3"
-                                maxlength="100">
-                            <div *ngIf="inName.errors?.['required']" class="invalid-feedback fs-6">Полето е задължително
-                            </div>
-                            <div *ngIf="inName.errors?.['minlength']" class="invalid-feedback fs-6">Името на продукта
-                                трябва да бъде минимум 3 символа</div>
-                            <div *ngIf="inName.errors?.['maxLength']" class="invalid-feedback fs-6">Името на продукта
-                                трябва да бъде максимум 100 символа</div>
+                                type="text" name="name" placeholder="Име на продукта" required minlength="3" maxlength="100">
+                                <!-- Validation messages -->
+                            <div *ngIf="inName.errors?.['required']" class="invalid-feedback fs-6">Полето е задължително</div>
+                            <div *ngIf="inName.errors?.['minlength']" class="invalid-feedback fs-6">Името на продукта трябва да бъде минимум 3 символа</div>
+                            <div *ngIf="inName.errors?.['maxLength']" class="invalid-feedback fs-6">Името на продукта трябва да бъде максимум 100 символа</div>
                             <div *ngIf="inName.valid" class="valid-feedback fs-6">Полето е валидно</div>
                         </div>
                         <!-- Weight -->
                         <div class="form-group mb-3">
                             <input [ngModel]="productDetails.weight" #inWeight="ngModel" class="form-control"
                                 [ngClass]="{'is-valid': inWeight.valid && inWeight.dirty, 'is-invalid': inWeight.invalid && inWeight.dirty}"
-                                type="text" name="weight" placeholder="Мярка - пример: 350гр." required minlength="2"
-                                maxlength="10">
-                            <div *ngIf="inWeight.errors?.['required']" class="invalid-feedback fs-6">Полето е
-                                задължително</div>
-                            <div *ngIf="inWeight.errors?.['minlength']" class="invalid-feedback fs-6">Мярката трябва да
-                                бъде минимум 2 символа</div>
-                            <div *ngIf="inWeight.errors?.['maxLength']" class="invalid-feedback fs-6">Мярката трябва да
-                                бъде максимум 10 символа</div>
+                                type="text" name="weight" placeholder="Мярка - пример: 350гр." required minlength="2" maxlength="10">
+                                <!-- Validation messages -->
+                            <div *ngIf="inWeight.errors?.['required']" class="invalid-feedback fs-6">Полето е задължително</div>
+                            <div *ngIf="inWeight.errors?.['minlength']" class="invalid-feedback fs-6">Мярката трябва да бъде минимум 2 символа</div>
+                            <div *ngIf="inWeight.errors?.['maxLength']" class="invalid-feedback fs-6">Мярката трябва да бъде максимум 10 символа</div>
                             <div *ngIf="inWeight.valid" class="valid-feedback fs-6">Полето е валидно</div>
                         </div>
                         <!-- Price -->
@@ -48,10 +42,9 @@
                             <input [ngModel]="productDetails.price" #inPrice="ngModel" class="form-control"
                                 [ngClass]="{'is-valid': inPrice.valid && inPrice.dirty, 'is-invalid': inPrice.invalid && inPrice.dirty}"
                                 type="number" name="price" placeholder="Цена" step="0.01" required min="0">
-                            <div *ngIf="inPrice.errors?.['required']" class="invalid-feedback fs-6">Моля въведете число
-                            </div>
-                            <div *ngIf="inPrice.errors?.['min']" class="invalid-feedback fs-6">Цената трябва да бъде
-                                положително число</div>
+                                <!-- Validation messages -->
+                            <div *ngIf="inPrice.errors?.['required']" class="invalid-feedback fs-6">Моля въведете число</div>
+                            <div *ngIf="inPrice.errors?.['min']" class="invalid-feedback fs-6">Цената трябва да бъде положително число</div>
                             <div *ngIf="inPrice.valid" class="valid-feedback fs-6">Полето е валидно</div>
                         </div>
                         <!-- Group -->
@@ -59,12 +52,10 @@
                             <input [ngModel]="productDetails.group" #inGroup="ngModel" class="form-control"
                                 [ngClass]="{'is-valid': inGroup.valid && inGroup.dirty, 'is-invalid': inGroup.invalid && inGroup.dirty}"
                                 type="text" name="group" placeholder="Група" required minlength="3" maxlength="20">
-                            <div *ngIf="inGroup.errors?.['required']" class="invalid-feedback fs-6">Полето е
-                                задължително</div>
-                            <div *ngIf="inGroup.errors?.['minlength']" class="invalid-feedback fs-6">Групата трябва да
-                                бъде минимум 3 символа</div>
-                            <div *ngIf="inGroup.errors?.['maxLength']" class="invalid-feedback fs-6">Групата трябва да
-                                бъде максимум 20 символа</div>
+                                <!-- Validation messages -->
+                            <div *ngIf="inGroup.errors?.['required']" class="invalid-feedback fs-6">Полето е задължително</div>
+                            <div *ngIf="inGroup.errors?.['minlength']" class="invalid-feedback fs-6">Групата трябва да бъде минимум 3 символа</div>
+                            <div *ngIf="inGroup.errors?.['maxLength']" class="invalid-feedback fs-6">Групата трябва да бъде максимум 20 символа</div>
                             <div *ngIf="inGroup.valid" class="valid-feedback fs-6">Полето е валидно</div>
                         </div>
                         <!-- Image -->
@@ -73,25 +64,22 @@
                             <input (ngModelChange)="validateImagePath($event)" [ngModel]="productDetails.image" #inImage="ngModel"
                                 class="form-control"
                                 [ngClass]="{'is-valid': inImage.valid && inImage.dirty, 'is-invalid': inImage.invalid && inImage.dirty}"
-                                type="text" name="image" placeholder="Снимка линк" required
-                                pattern="^https?:\/\/[^ ]+$">
-                            <div *ngIf="inImage.errors?.['required']" class="invalid-feedback fs-6">Полето е
-                                задължително</div>
-                            <div *ngIf="inImage.errors?.['pattern']" class="invalid-feedback fs-6">Снимката трябва да
-                                бъде линк започващ с http:// или https://</div>
+                                type="text" name="image" placeholder="Снимка линк" required pattern="^https?:\/\/[^ ]+$">
+                                <!-- Validation messages -->
+                            <div *ngIf="inImage.errors?.['required']" class="invalid-feedback fs-6">Полето е задължително</div>
+                            <div *ngIf="inImage.errors?.['pattern']" class="invalid-feedback fs-6">Снимката трябва да бъде линк започващ с http:// или https://</div>
                             <div *ngIf="inImage.valid" class="valid-feedback fs-6">Полето е валидно</div>
                         </div>
                         <div class="form-submit mb-5">
                             <button [disabled]="editFrom.invalid"
-                                class="btn btn-primary shadow justify-content-center align-items-center align-content-center"
-                                style="margin-left: 116px;">
+                                class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;">
                                 <i class="bi bi-pencil-square"></i> Редактирай</button>
                         </div>
                     </form>
                 </div>
                 <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;">
-                    <img class="rounded-3" src="{{imageUrl ? imageUrl : productDetails.image}}" alt="No Image"
-                        style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;"
+                    <img class="rounded-3" src="{{imageUrl ? imageUrl : productDetails.image}}" alt="No Image" 
+                    style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;"
                         width="340" height="402">
                 </div>
             </div>
