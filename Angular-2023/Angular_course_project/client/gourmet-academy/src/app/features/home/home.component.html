@@ -33,8 +33,7 @@
         <app-loading [isLoading]="isLoading"></app-loading>
 
         <ng-container *ngIf="!isLoading">
-            <h1 class="fst-marck text-primary" style="margin-top: 14px;"><i class="bi bi-menu-up"
-                    style="font-size: 32px;"></i> Поръчайте сега от любимият си ресторант</h1>
+            <h1 class="fst-marck text-primary-emphasis text-center" style="margin-top: 14px;">Поръчайте сега от любимият си ресторант !</h1>
 
             <div class="row">
 
@@ -132,12 +131,10 @@
 
 <!-- In case there are no restaurants in DB -->
 <ng-template #noRestaurants>
-    <div class="space">
-        <div class="alert alert-dismissible alert-danger text-center">
-            <h2><strong>Бъдете първи и добавете вашият ресторант сега</strong></h2>
-            <h2><i class="bi bi-rocket-takeoff"></i> Повишете вашите продажби с няколко лесни
-                стъпки от <a routerLink="/add-restaurants" class="alert-link">тук</a>
-            </h2>
+    <div class="card border-primary my-4">
+        <div class="text-center fst-marck text-primary-emphasis py-5">
+            <h1><strong>Бъдете първи и добавете вашият ресторант сега</strong></h1>
+            <h2>Повишете вашите продажби с няколко лесни стъпки от <a routerLink="/add-restaurants" class="alert-link">ТУК</a></h2>
         </div>
     </div>
 </ng-template>
