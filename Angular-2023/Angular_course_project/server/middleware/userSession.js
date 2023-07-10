@@ -21,7 +21,7 @@ module.exports = () => (req, res, next) => {
             req.user = decodedToken;
             req.userToken = userToken;
         } catch (error) {
-            // Add status code and invoke gloobal error handler
+            // Add status code and invoke global error handler
             error.statusCode = 401;
             return next(error);
         }
