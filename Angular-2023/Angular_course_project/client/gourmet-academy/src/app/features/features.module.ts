@@ -16,6 +16,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from "../shared/shared.module";
 import { ListProductsComponent } from './products/list-products/list-products.component';
 import { DeleteProductComponent } from './products/delete-product/delete-product.component';
+import { DeleteRestaurantComponent } from './restaurants/delete-restaurant/delete-restaurant.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { DeleteProductComponent } from './products/delete-product/delete-product
         EditProductComponent,
         NotFoundComponent,
         ListProductsComponent,
-        DeleteProductComponent
+        DeleteProductComponent,
+        DeleteRestaurantComponent,
+        OrdersComponent
     ],
     imports: [
         CommonModule,
