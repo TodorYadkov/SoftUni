@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription !== undefined) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
