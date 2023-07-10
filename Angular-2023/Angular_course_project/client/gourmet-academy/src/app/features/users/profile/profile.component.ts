@@ -14,6 +14,7 @@ import { IOrderWithProducts } from 'src/app/models/order.interfaces';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
+
   userDetails!: IUser;
   subscription!: Subscription;
   userRestaurants: IRestaurant[] = [];
@@ -67,13 +68,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
           error: (error) => {
             this.errorMsgFromServer = error.error.message.join('\n');
             this.isLoading = false;
-          }
+          },
+          complete: () => this.isLoading = false
         });
     }
   }
 
   // Get top selling products
-  private findTopSellingProducts(allOrders: IOrderWithProducts[]) {
+  private findTopSellingProducts(allOrders: IOrderWithProducts[]): string[] {
     // Change if want to show more or less products
     const bestSellersCount = 5;
 
@@ -101,9 +103,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription != undefined) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
-
 }
