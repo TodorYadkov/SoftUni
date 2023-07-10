@@ -1,4 +1,4 @@
-<div class="shadow-lg d-flex flex-column position-relative mt-4 mb-3 rounded">
+<div class="shadow-lg d-flex flex-column position-relative mt-4 mb-3 rounded card">
 
     <!-- Spinner -->
     <app-loading [isLoading]="isLoading"></app-loading>
@@ -39,67 +39,40 @@
             </div>
             <!-- Tabs list -->
             <div class="col-md-6 col-xxl-9" style="position: relative;display: block;">
-                <div>
+                <div class="card-body">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item" role="presentation"><a class="nav-link active px-2" role="tab" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-list"></i> Всички продукти</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link px-2" role="tab" data-bs-toggle="tab" href="#tab-2"><i class="bi bi-plus-circle"></i> Добави продукт</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link px-2" role="tab" data-bs-toggle="tab" href="#tab-3"><i class="bi bi-pencil-square"></i> Редактирай ресторант</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link px-2" role="tab" data-bs-toggle="tab" href="#tab4"><i class="bi bi-x-circle"></i> Изтрий ресторант</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link fs-5 active px-2 text-white" role="tab" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-list"></i> Всички продукти</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link fs-5 px-2 text-white" role="tab" data-bs-toggle="tab" href="#tab-2"><i class="bi bi-plus-circle"></i> Добави продукт</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link fs-5 px-2 text-white" role="tab" data-bs-toggle="tab" href="#tab-3"><i class="bi bi-pencil-square"></i> Редактирай ресторант</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link fs-5 px-2 text-white" role="tab" data-bs-toggle="tab" href="#tab-4"><i class="bi bi-x-circle"></i> Изтрий ресторант</a></li>
+                        <li class="nav-item justify-content-end me-3 mt-1" style="position: absolute; right: 0;"><a class="btn btn-outline-primary mt-2 btn-sm text-white" routerLink="/profile" role="tab"><i class="bi bi-caret-left"></i> Назад</a></li>
                     </ul>
-                    <!-- List all products -->
+
+                    <!-- Tabs content -->
                     <div class="tab-content">
+                        <!-- List all products -->
                         <div class="tab-pane active show" role="tabpanel" id="tab-1" style="padding-top: 30px;padding-bottom: 31px;">
 
                             <app-list-products [restaurantId]="restaurantDetails._id"></app-list-products>
 
                         </div>
-
                         <!-- Add new product -->
                         <div class="tab-pane" role="tabpanel" id="tab-2" style="padding-top: 30px;padding-bottom: 31px;">
 
                             <app-add-product [restaurantId]="restaurantDetails._id"></app-add-product>
 
                         </div>
-                        
                         <!-- Edit restaurant -->
                         <div class="tab-pane" role="tabpanel" id="tab-3" style="padding-top: 30px;padding-bottom: 31px;">
-                            <div class="row">
-                                <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
-                                    <h2 class="fw-bold mb-3"><span class="text-white text-decoration-underline">Редакция ресторант</span></h2>
-                                    <form>
-                                        <div class="mb-3"><input class="form-control" type="text" name="name" placeholder="Име на ресторанта"></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="location" placeholder="Град"></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="address" placeholder="Адрес"></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="phone" placeholder="Телефон"></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="cuisine" placeholder="Предлагана кухня"></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="image" placeholder="Снимка"></div>
-                                        <div class="mb-5"><button class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;"><i class="bi bi-pencil-fill"></i> Редактирай</button></div>
-                                    </form>
-                                </div>
-                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;">
-                                    <img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
-                                </div>
-                            </div>
+                           
+                            <app-edit-restaurant [restaurantDetails]="restaurantDetails" (restaurantUpdated)="refreshRestaurantDetails()"></app-edit-restaurant>
+
                         </div>
                         <!-- Delete restaurant -->
-                        <div class="tab-pane" role="tabpanel" id="tab4" style="padding-top: 30px;padding-bottom: 31px;">
-                            <div class="row">
-                                <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
-                                    <h2 class="fw-bold mb-3"><span class="text-white text-decoration-underline">Потвърди изтриване</span></h2>
-                                    <form>
-                                        <div class="mb-3"><input class="form-control" type="text" name="name" placeholder="Име на ресторанта" disabled=""></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="location" placeholder="Град" disabled=""></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="address" placeholder="Адрес" disabled=""></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="phone" placeholder="Телефон" disabled=""></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="cuisine" placeholder="Предлагана кухня" disabled=""></div>
-                                        <div class="mb-3"><input class="form-control" type="text" name="image" placeholder="Снимка" disabled=""></div>
-                                        <div class="mb-5"><button class="btn btn-primary shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;"><i class="bi bi-x-circle"></i> Изтрий</button></div>
-                                    </form>
-                                </div>
-                                <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;margin-top: 4px;">
-                                    <img style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
-                                </div>
-                            </div>
+                        <div class="tab-pane" role="tabpanel" id="tab-4" style="padding-top: 30px;padding-bottom: 31px;">
+                           
+                            <app-delete-restaurant [restaurantDetails]="restaurantDetails"></app-delete-restaurant>
+
                         </div>
                     </div>
                 </div>
