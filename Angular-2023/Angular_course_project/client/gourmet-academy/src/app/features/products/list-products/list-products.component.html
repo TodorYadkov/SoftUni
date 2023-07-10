@@ -3,10 +3,11 @@
     <app-loading [isLoading]="isLoading"></app-loading>
     <!-- Display error -->
     <app-alert-message [errorMsgFromServer]="errorMsgFromServer"></app-alert-message>
+    <!-- Only for test class - card border-primary mb-3 -->
     <div class="row" *ngIf="currentProducts">
         <div class="product-details me-2">
             <h2 class="fw-bold mb-3"><span class="text-decoration-underline">Всички продукти</span></h2>
-            <!-- Search. page to display, and sort -->
+            <!-- Search page to display, and sort -->
             <div *ngIf="isShownProducts" class="form-group d-flex align-items-center justify-content-between mb-3">
                 <!-- Search -->
                 <div class="col-4 me-5 shadow-sm">
@@ -48,8 +49,7 @@
                 <div class="col-12">
                     <!-- Card product -->
                     <ng-container *ngIf="isShownProducts; else noProduct">
-                        <div *ngFor="let product of currentProducts"
-                            class="f-block d-flex justify-content-between align-items-center mt-1 py-2 items rounded box">
+                        <div *ngFor="let product of currentProducts" class="f-block d-flex justify-content-between align-items-center mt-1 py-2 items rounded box">
                             <!-- Image product -->
                             <div class="d-flex flex-row"><img alt="No Image"
                                     class="rounded mx-2 d-none d-lg-flex flex-grow-1" src="{{product.image}}"
