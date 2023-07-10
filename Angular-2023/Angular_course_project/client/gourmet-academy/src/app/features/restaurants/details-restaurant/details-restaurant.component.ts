@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, map, mergeMap, tap } from 'rxjs';
+import { Subscription, mergeMap } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { IComment } from 'src/app/models/comment.interfaces';
 import { IRestaurant } from 'src/app/models/restaurant.interfaces';
-import { UpdateProductsListService } from '../../products/update-products-list.service';
 
 @Component({
   selector: 'app-details-restaurant',
@@ -29,7 +28,17 @@ export class DetailsRestaurantComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.title.setTitle('Детайли');
+    // Get restaurant details
+    this.getRestaurantDetails();
+  }
 
+  // Use when updating the restaurant to show new data
+  refreshRestaurantDetails(): void {
+    this.getRestaurantDetails();
+  }
+
+  // Get restaurant details
+  private getRestaurantDetails(): void {
     this.restaurantId = this.activeRoute.snapshot.params['restaurantId']; // Get restaurant Id
     // Get restaurant details
     this.isLoading = true; // Show spinner
@@ -39,7 +48,7 @@ export class DetailsRestaurantComponent implements OnInit, OnDestroy {
           this.restaurantDetails = restaurant;
           return this.dataService.getAllCommentsRestaurant(restaurant._id)
             .pipe(
-              map(comments => this.allComments = comments.slice(-5).reverse()) // Get last added five comment
+              mergeMap(comments => this.allComments = comments.slice(-5).reverse()) // Get last added five comment
             )
         })
       ).subscribe({
@@ -47,12 +56,13 @@ export class DetailsRestaurantComponent implements OnInit, OnDestroy {
         error: (error) => {
           this.errorMsgFromServer = error.error.message.join('\n');
           this.isLoading = false;
-        }
+        },
+        complete: () => this.isLoading = false,
       });
   }
 
   ngOnDestroy(): void {
-    if (this.subscription !== undefined) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
