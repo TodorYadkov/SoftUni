@@ -90,7 +90,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
       }
 
       return 0;
-    });
+    }).slice();
   }
 
   // Get all products for the current restaurant
