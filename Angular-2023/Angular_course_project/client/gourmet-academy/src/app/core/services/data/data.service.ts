@@ -60,11 +60,6 @@ export class DataService {
     const url = constants.hostBackEnd + endpoints.getRestaurantById(restaurantId);
     return this.http.get<IRestaurant>(url);
   }
-  // Get restaurant comments
-  getAllCommentsRestaurant(restaurantId: string): Observable<IComment[]> {
-    const url = constants.hostBackEnd + endpoints.getAllCommentsRestaurant(restaurantId);
-    return this.http.get<IComment[]>(url);
-  }
   // Create product
   createNewProduct(restaurantId: string, productData: IProduct): Observable<IProduct> {
     const url = constants.hostBackEnd + endpoints.addNewProduct(restaurantId);
@@ -90,8 +85,30 @@ export class DataService {
     const url = constants.hostBackEnd + endpoints.deleteProduct(productId);
     return this.http.delete<{ message: string, deletedProduct: IProduct }>(url);
   }
-
-
-
+  // Post new comment
+  addNewComment(restaurantId: string, commentData: IComment): Observable<IComment> {
+    const url = constants.hostBackEnd + endpoints.addNewComment(restaurantId);
+    return this.http.post<IComment>(url, commentData);
+  }
+  // Update comment
+  updateComment(commentId: string, commentData: IComment): Observable<IComment> {
+    const url = constants.hostBackEnd + endpoints.updateComment(commentId);
+    return this.http.put<IComment>(url, commentData);
+  }
+  // Delete comment
+  deleteComment(commentId: string): Observable<IComment> {
+    const url = constants.hostBackEnd + endpoints.deleteComment(commentId);
+    return this.http.delete<IComment>(url);
+  }
+  // Get comment by ID
+  getCommentById(commentId: string): Observable<IComment> {
+    const url = constants.hostBackEnd + endpoints.getCommentById(commentId);
+    return this.http.get<IComment>(url);
+  }
+  // Get restaurant comments
+  getAllCommentsRestaurant(restaurantId: string): Observable<IComment[]> {
+    const url = constants.hostBackEnd + endpoints.getAllCommentsRestaurant(restaurantId);
+    return this.http.get<IComment[]>(url);
+  }
 
 }
