@@ -26,34 +26,34 @@ export class EditRestaurantComponent implements OnDestroy {
     private validateRestaurant: ValidateRestaurantService
   ) { }
 
-  onEditRestaurant(formData: NgForm) {
+  onEditRestaurant(formData: NgForm): void {
     const restaurantData: IRestaurant = formData.value;
     // Validate user input
     const restaurantCheck = this.validateRestaurant.validate(restaurantData);
     if (restaurantCheck.hasError) {
       this.errorMsgFromServer = restaurantCheck.error;
-
-    } else {
-      this.isLoading = true;
-      this.subscription = this.dataService
-        .updateRestaurant(this.restaurantDetails._id, restaurantCheck.verifiedInput)
-        .subscribe({
-          next: (data) => {
-            this.isLoading = false;
-            this.restaurantDetails = data;
-            this.successMessage = `Успешно редактирахте ${data.name}`;
-            this.restaurantUpdated.emit(); // Refresh data on details page
-          },
-          error: (error) => {
-            this.isLoading = false;
-            this.errorMsgFromServer = error.error.message.join('\n');
-          }
-        });
+      return;
     }
+    
+    this.isLoading = true;
+    this.subscription = this.dataService
+      .updateRestaurant(this.restaurantDetails._id, restaurantCheck.verifiedInput)
+      .subscribe({
+        next: (data) => {
+          this.isLoading = false;
+          this.restaurantDetails = data;
+          this.successMessage = `Успешно редактирахте ${data.name}`;
+          this.restaurantUpdated.emit(); // Refresh data on details page
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.errorMsgFromServer = error.error.message.join('\n');
+        }
+      });
   }
 
   // Check if the current html path is correct
-  validateImagePath(imagePath: string) {
+  validateImagePath(imagePath: string): void {
     this.imageUrl = this.validateRestaurant.validateImagePath(imagePath);
   }
 
