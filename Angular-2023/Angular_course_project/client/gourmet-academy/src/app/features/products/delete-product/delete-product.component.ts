@@ -24,7 +24,7 @@ export class DeleteProductComponent implements OnDestroy {
     private updateProductList: UpdateProductsListService,
   ) { }
 
-  deleteProduct(productId: string) {
+  deleteProduct(productId: string): void {
     this.isLoading = true;
     this.subscription = this.dataService
       .deleteProduct(productId)
@@ -42,7 +42,7 @@ export class DeleteProductComponent implements OnDestroy {
   }
 
   // This fixes the issue with a modal to stay in the background -- TODO: Auto close modal after delete
-  onCloseModal() {
+  onCloseModal(): void {
     // Emit new event to update product list
     this.updateProductList.emitTriggerGetAllProducts();
   }
