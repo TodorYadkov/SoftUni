@@ -11,7 +11,7 @@
  * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url(https://fonts.googleapis.com/css2?family=Kablammo&family=Marck+Script&family=Montserrat+Alternates:wght@100&family=Roboto:wght@100&family=Rubik+Puddles&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Kablammo&family=Marck+Script&family=Bad+Script&family=Montserrat+Alternates:wght@100&family=Roboto:wght@100&family=Rubik+Puddles&display=swap);
 
 /* If must change color of the theme */
 /* --bs-primary-rgb: 2-33, 84, 32; #e-95420
@@ -13980,6 +13980,10 @@ fieldset:disabled .btn {
 
 .fst-roboto {
     font-family: 'Roboto', sans-serif;
+}
+
+.fst-bad {
+    font-family: 'Bad Script';
 }
 
 .home {
