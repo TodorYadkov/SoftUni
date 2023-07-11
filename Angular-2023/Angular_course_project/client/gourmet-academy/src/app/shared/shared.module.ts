@@ -23,7 +23,7 @@ import { SuccessMessageComponent } from './success-message/success-message.compo
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     HeaderComponent,
@@ -33,7 +33,7 @@ import { SuccessMessageComponent } from './success-message/success-message.compo
     BublesAnimationComponent,
     CarouselComponent,
     AlertMessageComponent,
-    SuccessMessageComponent
+    SuccessMessageComponent,
   ]
 })
 export class SharedModule { }
