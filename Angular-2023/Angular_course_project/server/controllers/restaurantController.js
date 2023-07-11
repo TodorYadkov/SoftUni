@@ -307,7 +307,7 @@ router.post('/comments/:restaurantId',
     body('comment').trim(),
     body('comment')
         .notEmpty().withMessage('Comment is required').bail()
-        .isLength({ min: 10 }).withMessage('Comment must be at least ten characters long'),
+        .isLength({ max: 300 }).withMessage('Comment must be be a maximum of three hundred characters long'),
     isAuth,
     preload(getRestaurantById),
     isNotOwner,
@@ -334,7 +334,7 @@ router.put('/comments/edit/:commentId',
     body('comment').trim(),
     body('comment')
         .notEmpty().withMessage('Comment is required').bail()
-        .isLength({ min: 10 }).withMessage('Comment must be at least ten characters long'),
+        .isLength({ max: 300 }).withMessage('Comment must be be a maximum of three hundred characters long'),
     isAuth,
     preload(getCommentById, 'commentId'),
     isOwner,
