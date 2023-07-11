@@ -14,7 +14,7 @@ import { UpdateProductsListService } from '../update-products-list.service';
 export class AddProductComponent implements OnDestroy {
   // Get restaurant ID from parent
   @Input() restaurantId!: string;
-  
+
   successMessage!: string;
   errorMsgFromServer!: string;
   isLoading: boolean = false;
@@ -34,29 +34,29 @@ export class AddProductComponent implements OnDestroy {
     const validatedProduct = this.validateProduct.validate(productData);
     if (validatedProduct.hasError) {
       this.errorMsgFromServer = validatedProduct.error;
-
-    } else {
-      this.isLoading = true;
-      this.subscription = this.dataService.createNewProduct(this.restaurantId, validatedProduct.verifiedInput)
-        .subscribe({
-          next: (data) => {
-            this.isLoading = false;
-            formData.reset();
-            this.imageUrl = ''; // Show default picture
-            this.successMessage = `Успешно добавихте ${validatedProduct.verifiedInput.name}`;
-            // Emit new event to update product list
-            this.updateProductList.emitTriggerGetAllProducts();
-          },
-          error: (error) => {
-            this.isLoading = false;
-            this.errorMsgFromServer = error.error.message.join('\n');
-          }
-        });
+      return;
     }
+    
+    this.isLoading = true;
+    this.subscription = this.dataService.createNewProduct(this.restaurantId, validatedProduct.verifiedInput)
+      .subscribe({
+        next: (data) => {
+          this.isLoading = false;
+          formData.reset();
+          this.imageUrl = ''; // Show default picture
+          this.successMessage = `Успешно добавихте ${validatedProduct.verifiedInput.name}`;
+          // Emit new event to update product list
+          this.updateProductList.emitTriggerGetAllProducts();
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.errorMsgFromServer = error.error.message.join('\n');
+        }
+      });
   }
 
   // Check if the current html path is correct
-  validateImagePath(imagePath: string) {
+  validateImagePath(imagePath: string): void {
     this.imageUrl = this.validateProduct.validateImagePath(imagePath);
   }
 
