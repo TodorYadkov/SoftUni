@@ -18,6 +18,9 @@ import { ListProductsComponent } from './products/list-products/list-products.co
 import { DeleteProductComponent } from './products/delete-product/delete-product.component';
 import { DeleteRestaurantComponent } from './restaurants/delete-restaurant/delete-restaurant.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CommentsComponent } from './comments/add-comments/add-comments.component';
+import { EditCommentComponent } from './comments/edit-comment/edit-comment.component';
+import { DeleteCommentComponent } from './comments/delete-comment/delete-comment.component';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { OrdersComponent } from './orders/orders.component';
         ListProductsComponent,
         DeleteProductComponent,
         DeleteRestaurantComponent,
-        OrdersComponent
+        OrdersComponent,
+        CommentsComponent,
+        EditCommentComponent,
+        DeleteCommentComponent
     ],
     imports: [
         CommonModule,
