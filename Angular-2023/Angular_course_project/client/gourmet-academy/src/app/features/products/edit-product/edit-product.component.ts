@@ -28,36 +28,37 @@ export class EditProductComponent implements OnDestroy {
     private updateProductList: UpdateProductsListService,
   ) { }
 
-  editProduct(formData: NgForm) {
+  editProduct(formData: NgForm): void {
     const productData: IProduct = formData.value;
     // Validate user input
     const validatedProduct = this.validateProduct.validate(productData);
     if (validatedProduct.hasError) {
       this.errorMsgFromServer = validatedProduct.error;
-
-    } else {
-      this.isLoading = true;
-      this.subscription = this.dataService
-        .updateProduct(this.productDetails._id, validatedProduct.verifiedInput)
-        .subscribe({
-          next: (data) => {
-            this.isLoading = false;
-            this.productDetails = data;
-            this.successMessage = `Успешно редактирахте ${data.name}`;
-          },
-          error: (error) => {
-            this.isLoading = false;
-            this.errorMsgFromServer = error.error.message.join('\n');
-          }
-        });
+      return;
     }
+
+    this.isLoading = true;
+    this.subscription = this.dataService
+      .updateProduct(this.productDetails._id, validatedProduct.verifiedInput)
+      .subscribe({
+        next: (data) => {
+          this.isLoading = false;
+          this.productDetails = data;
+          this.successMessage = `Успешно редактирахте ${data.name}`;
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.errorMsgFromServer = error.error.message.join('\n');
+        }
+      });
+
   }
   // Check if the current html path is correct
-  validateImagePath(imagePath: string) {
+  validateImagePath(imagePath: string): void {
     this.imageUrl = this.validateProduct.validateImagePath(imagePath);
   }
   // Wait for the user to make more changes to their product
-  onCloseModal() {
+  onCloseModal(): void {
     // Emit new event to update product list
     this.updateProductList.emitTriggerGetAllProducts();
   }
