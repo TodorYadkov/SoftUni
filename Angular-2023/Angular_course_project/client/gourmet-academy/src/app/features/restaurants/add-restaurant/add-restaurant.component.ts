@@ -29,29 +29,28 @@ export class AddRestaurantComponent implements OnInit, OnDestroy {
     this.title.setTitle('Ресторант');
   }
 
-  createRestaurant(formData: NgForm) {
+  createRestaurant(formData: NgForm): void {
     const userInput: IRestaurant = formData.value;
     // Validate user input
     const restaurantCheck = this.validateRestaurant.validate(userInput);
     if (restaurantCheck.hasError) {
       this.errorMsgFromServer = restaurantCheck.error;
-
-    } else {
-
-      this.isLoading = true;
-      this.subscription = this.dataService.createRestaurant(restaurantCheck.verifiedInput)
-        .subscribe({
-          next: (data) => {
-            formData.reset();
-            this.isLoading = false;
-            this.router.navigate(['details', data._id]);
-          },
-          error: (error) => {
-            this.errorMsgFromServer = error.error.message.join('\n');
-            this.isLoading = false;
-          },
-        });
+      return;
     }
+
+    this.isLoading = true;
+    this.subscription = this.dataService.createRestaurant(restaurantCheck.verifiedInput)
+      .subscribe({
+        next: (data) => {
+          formData.reset();
+          this.isLoading = false;
+          this.router.navigate(['details', data._id]);
+        },
+        error: (error) => {
+          this.errorMsgFromServer = error.error.message.join('\n');
+          this.isLoading = false;
+        },
+      });
   }
 
   ngOnDestroy(): void {
@@ -59,5 +58,5 @@ export class AddRestaurantComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-  
+
 }
