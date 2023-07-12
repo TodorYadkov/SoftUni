@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!-- Message if no product found -->
-            <ng-container *ngIf="foundResult">
+            <ng-container *ngIf="isFoundResult">
                 <div class="alert alert-dismissible alert-warning mt-5 text-center">
                     <h2><strong>Няма намерени продукти</strong></h2>
                 </div>
@@ -69,8 +69,7 @@
                                         class="d-block fst-bold d-none d-lg-flex flex-grow-1 text-white">{{product.group}}</span>
                                 </div>
                                 <div class="mx-2"><span class="d-block text-muted fst-italic spec">Цена: </span><span
-                                        class="d-block fst-bold text-white">{{product.price | number:'1.2-2' }}
-                                        лв.</span></div>
+                                        class="d-block fst-bold text-white">{{product.price | number:'1.2-2' }} лв.</span></div>
                                 <!-- Edit button -->
                                 <div class="ms-5 me-3">
                                     <a type="button" class="btn btn-primary" data-bs-toggle="modal"
