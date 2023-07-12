@@ -167,8 +167,8 @@ router.get('/my-restaurants/:userId', isAuth, async (req, res, next) => {
     }
 });
 
-// Get all products - Logged in and owner
-router.get('/products/:restaurantId', isAuth, preload(getRestaurantById), isOwner, async (req, res) => {
+// Get all products - everyone
+router.get('/products/:restaurantId', async (req, res) => {
     try {
 
         const restaurantId = req.params.restaurantId;
