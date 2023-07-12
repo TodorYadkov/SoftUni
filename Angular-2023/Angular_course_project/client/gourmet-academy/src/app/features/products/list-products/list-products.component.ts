@@ -20,7 +20,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
   isShownProducts: boolean = false; // Use in html to show product list if product list on initialization is null to hide all content
   // Use this for pagination and search
   currentProducts!: IProduct[]; // Current products on the page
-  foundResult: boolean = false; // Use to show and hide a message if there are any products found or not
+  isFoundResult: boolean = false; // Use to show and hide a message if there are any products found or not
   productsPerPage = 20; // Number of products to display per page
   currentPage = 1; // Current page
   totalPages = 0; // Total number of pages
@@ -57,7 +57,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
     }
 
     // If the found result is true show message - No products found
-    this.foundResult = this.currentProducts.length === 0;
+    this.isFoundResult = this.currentProducts.length === 0;
   }
 
   // Change current products to show
