@@ -56,7 +56,8 @@
                         <div class="modal fade" id="edit_{{comment._id}}" data-bs-focus="true" data-bs-backdrop="static"
                             data-bs-keyboard="true" tabindex="-1" aria-labelledby="editComment" aria-hidden="true">
 
-                            <app-edit-comment [commentDetails]="comment" (updateCommentList)="updateComment()"></app-edit-comment>
+                            <app-edit-comment [commentDetails]="comment"
+                                (updateCommentList)="updateComment()"></app-edit-comment>
 
                         </div>
                         <!-- Delete product -->
@@ -64,7 +65,8 @@
                             data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
                             aria-labelledby="deleteComment" aria-hidden="true">
 
-                            <app-delete-comment [commentDetails]="comment"></app-delete-comment>
+                            <app-delete-comment [commentDetails]="comment"
+                                (updateCommentList)="updateComment()"></app-delete-comment>
 
                         </div>
                     </ng-container>
