@@ -52,7 +52,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
       this.errorMsgFromServer = 'Коментара трябва да бъде между 5 и 300 символа';
       return;
     }
-    // Post new comment
+
     this.isLoading = true;
     this.subscription = this.dataService
       .addNewComment(this.restaurantDetails._id, comment)
