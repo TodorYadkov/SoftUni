@@ -96,9 +96,9 @@ export class DataService {
     return this.http.put<IComment>(url, commentData);
   }
   // Delete comment
-  deleteComment(commentId: string): Observable<IComment> {
+  deleteComment(commentId: string): Observable<{ message: string, deletedComment: IComment }> {
     const url = constants.hostBackEnd + endpoints.deleteComment(commentId);
-    return this.http.delete<IComment>(url);
+    return this.http.delete<{ message: string, deletedComment: IComment }>(url);
   }
   // Get comment by ID
   getCommentById(commentId: string): Observable<IComment> {
