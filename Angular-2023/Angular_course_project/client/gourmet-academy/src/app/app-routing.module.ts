@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'add-restaurants', canActivate: [onlyForLoggedInGuard], component: AddRestaurantComponent },
   { path: 'profile', canActivate: [onlyForLoggedInGuard], component: ProfileComponent },
   { path: 'details/:restaurantId', canActivate: [onlyForLoggedInGuard], component: DetailsRestaurantComponent },
-  { path: 'orders', component: OrdersComponent }, ///:restaurantId
+  { path: 'orders/:restaurantId', component: OrdersComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: '**', component: NotFoundComponent },
 ];
