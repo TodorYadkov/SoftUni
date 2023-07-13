@@ -1,7 +1,8 @@
 <div class="modal-dialog modal-dialog-centered modal-sm d-flex flex-column position-relative rounded" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title fw-bold text-white text-decoration-underline" id="deleteComment">Потвърдете изтриване</h5>
+            <h5 class="modal-title fw-bold text-white text-decoration-underline" id="deleteComment">Потвърдете изтриване
+            </h5>
         </div>
         <div class="modal-body">
 
@@ -12,7 +13,9 @@
             <!-- Display success message -->
             <app-success-message [successMessage]="successMessage"></app-success-message>
 
-            <h5 class="text-center text-secondary-emphasis">Сигурни ли сте, че желаете да изтриете коментара?</h5>
+            <ng-container *ngIf="!successMessage">
+                <h5 class="text-center text-secondary-emphasis">Сигурни ли сте, че желаете да изтриете коментара?</h5>
+            </ng-container>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" (click)="deleteComment(commentDetails._id)"
