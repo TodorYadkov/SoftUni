@@ -32,7 +32,7 @@ export const endpoints = {
     updateComment: (commentId: string) => `restaurants/comments/edit/${commentId}`, // put
     deleteComment: (commentId: string) => `restaurants/comments/delete/${commentId}`, // delete
     getApiKeys: 'security/keys', // get
-    getUserRestaurants: (usreId: string) => `restaurants/my-restaurants/${usreId}`, // get
+    getUserRestaurants: (userId: string) => `restaurants/my-restaurants/${userId}`, // get
 
 };
 
