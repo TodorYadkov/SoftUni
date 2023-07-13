@@ -13,8 +13,10 @@ export class DeleteRestaurantComponent {
 
   @Input() restaurantDetails!: IRestaurant;
 
+  successMessage!: string;
   errorMsgFromServer!: string;
   isLoading: boolean = false;
+  disableBtnDelete: boolean = false;
   subscription!: Subscription;
 
   constructor(
@@ -30,7 +32,8 @@ export class DeleteRestaurantComponent {
       .subscribe({
         next: (data) => {
           this.isLoading = false;
-          this.router.navigate(['profile'])
+          this.disableBtnDelete = true;
+          this.successMessage = `Успешно изтрихте ресторант ${this.restaurantDetails.name}`;
         },
         error: (error) => {
           this.isLoading = false;
@@ -38,6 +41,13 @@ export class DeleteRestaurantComponent {
         }
       })
   };
+
+  // On close redirect to profile page
+  onCloseModal(): void {
+    if (this.successMessage) {
+      this.router.navigate(['profile'])
+    }
+  }
 
   ngOnDestroy(): void {
     if (this.subscription) {
