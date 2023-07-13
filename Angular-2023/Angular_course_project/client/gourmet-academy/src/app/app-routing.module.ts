@@ -10,7 +10,7 @@ import { DetailsRestaurantComponent } from './features/restaurants/details-resta
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { onlyForGuestGuard } from './core/guards/only-for-guest.guard';
 import { onlyForLoggedInGuard } from './core/guards/only-for-logged-in.guard';
-import { OrdersComponent } from './features/orders/orders.component';
+import { OrderComponent } from './features/orders/order/order.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'add-restaurants', canActivate: [onlyForLoggedInGuard], component: AddRestaurantComponent },
   { path: 'profile', canActivate: [onlyForLoggedInGuard], component: ProfileComponent },
   { path: 'details/:restaurantId', canActivate: [onlyForLoggedInGuard], component: DetailsRestaurantComponent },
-  { path: 'orders/:restaurantId', component: OrdersComponent },
+  { path: 'orders/:restaurantId', component: OrderComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: '**', component: NotFoundComponent },
 ];
