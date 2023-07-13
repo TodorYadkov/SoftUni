@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 import { translateErrorsFromServer } from 'src/app/core/environments/constants';
 import { ManagerSessionService } from 'src/app/core/services/users/manager-session.service';
 import { UsersService } from 'src/app/core/services/users/users.service';
-import { IUser } from 'src/app/models/user.interfaces';
+import { ValidateUserService } from '../validate-user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +18,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   isLoading: boolean = false;
   constructor(
-    private userService: UsersService,
-    private managerSession: ManagerSessionService,
+    private title: Title,
     private router: Router,
-    private title: Title
+    private userService: UsersService,
+    private validateUser: ValidateUserService,
+    private managerSession: ManagerSessionService,
   ) { }
 
   ngOnInit(): void {
@@ -29,39 +30,33 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   }
 
-  loginUser(formData: NgForm) {
-    const userInput: IUser = formData.value;
+  // Login
+  loginUser(formData: NgForm): void {
     // Validate user input
-    if (Object.values(formData.value).some(v => v === '')) {
-      this.errorMsgFromServer = 'Всички полета са задължителни';
-
-    } else if (/^[\w]+@[\w]+\.[\w]+$/.test(userInput.email) === false) {
-      this.errorMsgFromServer = 'Въведеният имейл е невалиден';
-
-    } else if (userInput.password.length < 6) {
-      this.errorMsgFromServer = 'Паролата трябва да бъде поне 6 символа';
-
-    } else {
-
-      this.isLoading = true;
-      this.subscription = this.userService.login(userInput)
-        .subscribe({
-          next: (data) => {
-            const userToken = data;
-            this.managerSession.addSession(userToken);
-            this.isLoading = false;
-            formData.reset();
-            this.router.navigate(['/']);
-          },
-          error: (error) => {
-            const errors = translateErrorsFromServer; // Translate error
-            this.errorMsgFromServer = errors.has(error.error.message.join('\n'))
-              ? errors.get(error.error.message.join('\n'))
-              : error.error.message.join('\n');
-            this.isLoading = false;
-          }
-        });
+    const userCheck = this.validateUser.loginValidate(formData);
+    if (userCheck.hasError) {
+      this.errorMsgFromServer = userCheck.error;
+      return;
     }
+
+    this.isLoading = true;
+    this.subscription = this.userService.login(userCheck.verifiedInput)
+      .subscribe({
+        next: (data) => {
+          const userToken = data;
+          this.managerSession.addSession(userToken);
+          this.isLoading = false;
+          formData.reset();
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          const errors = translateErrorsFromServer; // Translate error
+          this.errorMsgFromServer = errors.has(error.error.message.join('\n'))
+            ? errors.get(error.error.message.join('\n'))
+            : error.error.message.join('\n');
+          this.isLoading = false;
+        }
+      });
   }
 
   ngOnDestroy(): void {
