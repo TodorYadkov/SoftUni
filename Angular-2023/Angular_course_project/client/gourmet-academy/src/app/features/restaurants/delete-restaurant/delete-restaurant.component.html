@@ -15,7 +15,8 @@
             <div class="mb-3"><textarea class="form-control text-body-tertiary" type="text" name="description" [ngModel]="restaurantDetails.description" placeholder="Кратко описание на ресторанта" disabled=""></textarea></div>
             <div class="mb-3"><input class="form-control text-body-tertiary" type="text" name="image" [ngModel]="restaurantDetails.image" placeholder="Снимка" disabled=""></div>
             <div class="mb-5">
-                <button (click)="deleteRestaurant(restaurantDetails._id)" class="btn btn-danger shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;">
+                <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteRestaurant'"
+                class="btn btn-danger shadow justify-content-center align-items-center align-content-center" style="margin-left: 116px;">
                     <i class="bi bi-exclamation-triangle"></i> Изтрий</button>
             </div>
         </form>
@@ -24,3 +25,48 @@
         <img class="rounded-3" alt="No Image" src="{{restaurantDetails.image}}" style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
     </div>
 </div>
+
+
+<!-- Modal delete restaurant -->
+<div class="modal fade" id="deleteRestaurant" data-bs-focus="true" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="deleteRestaurant" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md d-flex flex-column position-relative rounded" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title fw-bold text-white text-decoration-underline" id="deleteComment">Потвърдете изтриване</h3>
+            </div>
+            <div class="modal-body">
+                <!-- Spinner -->
+                <app-loading [isLoading]="isLoading"></app-loading>
+                <!-- Display error -->
+                <app-alert-message [errorMsgFromServer]="errorMsgFromServer"></app-alert-message>
+                <!-- Display success message -->
+                <app-success-message [successMessage]="successMessage"></app-success-message>
+    
+                <ng-container *ngIf="!successMessage">
+                    <h5 class="text-center text-secondary-emphasis">Сигурни ли сте, че желаете да изтриете Ресторанта?</h5>
+                </ng-container>
+    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="deleteRestaurant(restaurantDetails._id)" 
+                        [disabled]="disableBtnDelete"><i class="bi bi-exclamation-triangle"></i> Изтрий</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCloseModal()"><i
+                            class="bi bi-x-lg"></i> Затвори</button>
+                </div>
+            </div>
+        </div>
+    </div>                                           
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
