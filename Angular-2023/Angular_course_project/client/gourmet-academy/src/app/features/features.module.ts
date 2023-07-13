@@ -17,10 +17,11 @@ import { SharedModule } from "../shared/shared.module";
 import { ListProductsComponent } from './products/list-products/list-products.component';
 import { DeleteProductComponent } from './products/delete-product/delete-product.component';
 import { DeleteRestaurantComponent } from './restaurants/delete-restaurant/delete-restaurant.component';
-import { OrdersComponent } from './orders/orders.component';
+import { OrderComponent } from './orders/order/order.component';
 import { CommentsComponent } from './comments/add-comments/add-comments.component';
 import { EditCommentComponent } from './comments/edit-comment/edit-comment.component';
 import { DeleteCommentComponent } from './comments/delete-comment/delete-comment.component';
+import { PaymentComponent } from './orders/payment/payment.component';
 
 
 @NgModule({
@@ -39,10 +40,11 @@ import { DeleteCommentComponent } from './comments/delete-comment/delete-comment
         ListProductsComponent,
         DeleteProductComponent,
         DeleteRestaurantComponent,
-        OrdersComponent,
+        OrderComponent,
         CommentsComponent,
         EditCommentComponent,
-        DeleteCommentComponent
+        DeleteCommentComponent,
+        PaymentComponent
     ],
     imports: [
         CommonModule,
