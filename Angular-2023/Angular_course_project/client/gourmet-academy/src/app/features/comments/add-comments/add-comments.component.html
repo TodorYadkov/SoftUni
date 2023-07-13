@@ -6,24 +6,32 @@
 
 <div *ngIf="!isLoading" class="row mt-2">
     <div class="col-md-12">
-        <div class="card px-4 mb-3 text-primary-emphasis">
+        <!-- The owner can read comments but cannot write-->
+        <ng-container *ngIf="isOwner">
             <h3 class="text-center text-decoration-underline mb-3">Коментари</h3>
-            <form #commentForm="ngForm" (ngSubmit)="postComment(commentForm)" class="mb-3">
-                <div class="form-group form-input">
-                    <textarea ngModel #inComment="ngModel" name="comment" class="form-control"
-                        [ngClass]="{'is-valid': inComment.valid && inComment.dirty, 'is-invalid': inComment.invalid && inComment.dirty}"
-                        placeholder="Добави коментар" required minlength="5" maxlength="300" cols="30"
-                        rows="1"></textarea>
-                    <!-- Validation messages -->
-                    <div *ngIf="inComment.errors?.['minlength']" class="invalid-feedback fs-6">Коментара трябва да бъде поне 5 символа</div>
-                    <div *ngIf="inComment.errors?.['maxlength']" class="invalid-feedback fs-6">Коментара трябва да бъде максимум 300 символа</div>
-                </div>
-                <div class="text-center">
-                    <button type="submit" [disabled]="commentForm.invalid"
-                        class="btn btn-primary btn-sm mt-2">Добави</button>
-                </div>
-            </form>
-        </div>
+        </ng-container>
+        <ng-container *ngIf="!isOwner">
+            <div class="card px-4 mb-3 text-primary-emphasis">
+                <h3 class="text-center text-decoration-underline mb-3">Коментари</h3>
+                <form #commentForm="ngForm" (ngSubmit)="postComment(commentForm)" class="mb-3">
+                    <div class="form-group form-input">
+                        <textarea ngModel #inComment="ngModel" name="comment" class="form-control"
+                            [ngClass]="{'is-valid': inComment.valid && inComment.dirty, 'is-invalid': inComment.invalid && inComment.dirty}"
+                            placeholder="Добави коментар" required minlength="5" maxlength="300" cols="30"
+                            rows="1"></textarea>
+                        <!-- Validation messages -->
+                        <div *ngIf="inComment.errors?.['minlength']" class="invalid-feedback fs-6">Коментара трябва да
+                            бъде поне 5 символа</div>
+                        <div *ngIf="inComment.errors?.['maxlength']" class="invalid-feedback fs-6">Коментара трябва да
+                            бъде максимум 300 символа</div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" [disabled]="commentForm.invalid"
+                            class="btn btn-primary btn-sm mt-2"><i class="bi bi-chat-right-text"></i> Добави</button>
+                    </div>
+                </form>
+            </div>
+        </ng-container>
         <!-- List all comments -->
         <ng-container *ngIf="allComments.length > 0; else noComment">
             <!-- Card comment -->
