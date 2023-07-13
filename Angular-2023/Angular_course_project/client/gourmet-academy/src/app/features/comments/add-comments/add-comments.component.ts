@@ -14,6 +14,7 @@ import { IRestaurant } from 'src/app/models/restaurant.interfaces';
 export class CommentsComponent implements OnInit, OnDestroy {
 
   @Input() restaurantDetails!: IRestaurant;
+  @Input() isOwner!: boolean;
 
   allComments!: IComment[];
   subscription!: Subscription;
