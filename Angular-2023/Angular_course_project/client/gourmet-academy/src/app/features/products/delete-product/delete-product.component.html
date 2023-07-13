@@ -1,4 +1,4 @@
-<div class="modal-dialog modal-dialog-centered modal-lg shadow-lg d-flex flex-column position-relative mt-4 mb-3 rounded">
+<div class="modal-dialog modal-dialog-centered modal-lg d-flex flex-column position-relative mt-4 mb-3 rounded">
     <div class="modal-content">
         <div class="modal-header">
             <h2 class="modal-title fw-bold text-white text-decoration-underline" id="deleteProduct">Потвърдете изтриване</h2>
@@ -12,6 +12,7 @@
         <!-- Display success message -->
         <app-success-message [successMessage]="successMessage"></app-success-message>
         
+        <ng-container *ngIf="!successMessage">
             <div class="row">
                 <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
                     <form class="mt-3" deleteForm="ngForm">
@@ -26,6 +27,7 @@
                     <img class="rounded-3" alt="No Image" src="{{productDetails.image}}" style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;" width="340" height="402">
                 </div>
             </div>
+        </ng-container>
 
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" (click)="deleteProduct(productDetails._id)" [disabled]="disableBtnDelete"><i class="bi bi-exclamation-triangle"></i> Изтрий</button>
