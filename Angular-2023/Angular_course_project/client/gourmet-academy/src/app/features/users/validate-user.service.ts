@@ -49,8 +49,7 @@ export class ValidateUserService {
 
   // Validate usr input on register
   registerValidate(userInput: IUser, repass: string): { hasError: boolean, error: string, verifiedInput: IUser } {
-    const userInputTrimmed = Object
-      .entries(userInput)
+    const userInputTrimmed = Object.entries(userInput)
       .reduce((acc, currentValue) => { // Trim user input
         currentValue[1] = typeof currentValue[1] === 'string'
           ? currentValue[1].trim()
