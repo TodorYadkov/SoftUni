@@ -1,5 +1,4 @@
-<div
-    class="modal-dialog modal-dialog-centered modal-lg d-flex flex-column position-relative mt-4 mb-3 rounded text-white">
+<div class="modal-dialog modal-dialog-centered modal-lg d-flex flex-column position-relative mt-4 mb-3 rounded text-white">
     <div class="modal-content">
         <div class="modal-header">
             <h2 class="modal-title fw-bold text-decoration-underline" id="paymentForm">Вашата поръчка</h2>
@@ -22,13 +21,13 @@
                             <!-- Name -->
                             <div class="form-group form-input mb-1">
                                 <label for="name" class="form-label mb-0 text-secondary-emphasis">Име</label>
-                                <input id="name" [ngModel]="restaurantDetails.owner.name"
+                                <input id="name" [ngModel]="currentUser?.userDetails?.name"
                                     class="form-control text-body-emphasis" type="text" name="name" disabled>
                             </div>
                             <!-- Phone -->
                             <div class="form-group form-input mb-1">
                                 <label for="phone" class="form-label mb-0 text-secondary-emphasis">Телефон</label>
-                                <input id="phone" [ngModel]="restaurantDetails.owner.phone"
+                                <input id="phone" [ngModel]="currentUser?.userDetails?.phone"
                                     class="form-control text-body-emphasis" type="tel" name="phone" disabled>
                             </div>
                             <!-- Address -->
@@ -36,7 +35,7 @@
                                 <label for="address" class="form-label mb-0 text-secondary-emphasis">Адрес за
                                     доставка</label>
                                 <input id="address" type="text" class="form-control" name="addressDelivery"
-                                    [ngModel]="restaurantDetails.owner.address" #inAddress="ngModel"
+                                    [ngModel]="currentUser?.userDetails?.address" #inAddress="ngModel"
                                     [ngClass]="{'is-valid': inAddress.valid && inAddress.dirty, 'is-invalid': inAddress.invalid && inAddress.dirty}"
                                     required minlength="5" maxlength="100">
                                 <!-- Validation messages -->
@@ -52,8 +51,8 @@
                         </form>
                     </div>
                     <!-- Summary bill -->
-                    <div class="col d-none d-lg-flex flex-grow-1" style="margin-left: 49px;">
-                        <div class="summary rounded py-0" style="width: 340px;height: 402px;position: relative;">
+                    <div class="col d-flex" style="margin-left: 49px;">
+                        <div class="summary rounded py-0" style="width: 340px;position: relative;">
                             <h4 class="my-0 py-0">Поръчка</h4>
                             <hr class="my-1 mb-4">
                             <div *ngFor="let order of summaryOrder" class="product my-2">
@@ -69,7 +68,7 @@
                             <hr class="mb-0">
                             <div class="summary-item fs-5 mt-1">
                                 <div class="row">
-                                    <div class="col text-start">
+                                    <div class="col text-start mb-3">
                                         <span class="text">Общо:</span>
                                     </div>
                                     <div class="col text-end fw-bolder">
