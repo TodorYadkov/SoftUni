@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { IProduct } from 'src/app/models/product.interfaces';
 import { IRestaurant } from 'src/app/models/restaurant.interfaces';
+import { IUserToken } from 'src/app/models/user.interfaces';
 
 @Component({
   selector: 'app-payment',
@@ -17,10 +18,12 @@ export class PaymentComponent implements OnDestroy {
   @Input() allOrderedProducts!: { [key: string]: IProduct[] };
   @Input() summaryOrder!: { product: IProduct, qtyProduct: number, totalPriceProduct: number }[];
   @Input() totalBillCost!: number;
+  @Input() currentUser!: IUserToken | null;
 
   successMessage!: string;
   errorMsgFromServer!: string;
   isLoading: boolean = false;
+  hasBought: boolean = false; // If true, the user buys the products and can be redirected to the home page is not just a close modal
   subscription!: Subscription;
 
   constructor(
@@ -54,6 +57,7 @@ export class PaymentComponent implements OnDestroy {
       .buyFromRestaurant(this.restaurantDetails._id, purchaseData)
       .subscribe({
         next: (data) => {
+          this.hasBought = true; // Use to redirect to home page
           this.isLoading = false;
           this.successMessage = 'Успешна поръчка. Наш консултант ще се свърже с вас. Приятен ден!'
         },
@@ -63,7 +67,11 @@ export class PaymentComponent implements OnDestroy {
 
   // On close redirect to home page
   onCloseModal(): void {
-    this.router.navigate(['/']);
+    if (this.hasBought) {
+      this.router.navigate(['/']);
+    }
+
+    this.hasBought = false;
   }
 
   ngOnDestroy(): void {
