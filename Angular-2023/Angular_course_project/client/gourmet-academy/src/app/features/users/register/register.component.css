@@ -486,7 +486,8 @@ li.init:after {
     position: relative;
     width: 100%;
     max-width: 990px;
-    height: 80vh; /* Change this value to view bigger form*/
+    height: 85vh;
+    /* Change this value to view bigger form*/
     margin: 20px auto;
     border: 1px solid #dddd;
     border-radius: 18px;
@@ -546,4 +547,12 @@ li.init:after {
         flex: none;
         margin-top: 20px;
     }
+}
+
+.custom-radio-right {
+    margin-right: -57px;
+}
+
+.custom-label-right {
+    margin-right: -65px;
 }
