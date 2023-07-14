@@ -25,7 +25,6 @@
     padding: 10px;
 }
 
-
 .shopping-cart .block-heading {
     margin-bottom: 10px;
     text-align: center;
@@ -33,8 +32,9 @@
 
 .shopping-cart .block-heading p {
     text-align: center;
-    max-width: 420px;
+    max-width: auto;
     margin: auto;
+    margin-bottom: 10px;
     opacity: 0.7;
 }
 
