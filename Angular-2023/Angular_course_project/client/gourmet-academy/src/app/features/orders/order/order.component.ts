@@ -6,6 +6,7 @@ import { DataService } from 'src/app/core/services/data/data.service';
 import { ManagerSessionService } from 'src/app/core/services/users/manager-session.service';
 import { IProduct } from 'src/app/models/product.interfaces';
 import { IRestaurant } from 'src/app/models/restaurant.interfaces';
+import { IUserToken } from 'src/app/models/user.interfaces';
 
 @Component({
   selector: 'app-order',
@@ -21,7 +22,8 @@ export class OrderComponent implements OnInit, OnDestroy {
   isFoundResult: boolean = false; // Use to show and hide a message if there are any products found or not
   hasUser!: boolean; // Check if current user is logged in
   isOwner!: boolean; // Check if current user is owner of current restaurant
-  restaurantDetails!: IRestaurant;
+  currentUser!: IUserToken | null; // Use for payment
+  restaurantDetails!: IRestaurant; // Restaurant details
   allProducts!: IProduct[]; // Get all products and using with async pipe
   currentProducts!: IProduct[]; // This variable will be used to display products on the screen
   allOrderedProducts: { [key: string]: IProduct[] } = {}; // An object whose key is the name of the product and whose value is an array of objects of type IProduct
@@ -39,8 +41,9 @@ export class OrderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.title.setTitle('Поръчка');
 
+    this.currentUser = this.managerSession.getSessionToken() // Get current user
     this.hasUser = this.managerSession.userStatus; // Check if has logged in user
-    this.restaurantId = '64a5d60d55954c27a48e12f6' //this.activeRoutes.snapshot.params['restaurantId'];
+    this.restaurantId = this.activeRoutes.snapshot.params['restaurantId'];
     // Get details for restaurant
     this.isLoading = true;
     this.subscription = forkJoin([
