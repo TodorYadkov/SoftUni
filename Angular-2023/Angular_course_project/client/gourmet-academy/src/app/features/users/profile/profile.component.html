@@ -49,7 +49,7 @@
                                 <br>
                                 <i class="bi bi-bag-check"></i> Общо продажби: <strong>{{stat.totalCountSell}}</strong>
                                 <br>
-                                <i class="bi bi-star"></i> Най-продавани продукти:
+                                <i class="bi bi-5-square"></i> Най-продавани продукти:
                                 <ng-container *ngFor="let sale of stat.bestSellers">
                                     <br>
                                     <span class="fst-italic fs-6">{{sale}}</span>
@@ -69,8 +69,8 @@
         <div class="border-primary mb-4" *ngIf="userRestaurants.length > 0; else noRestaurants">
             <div class="card">
                 <div class="card">
-                    <h3 class="card-header text-white fst-roboto"><i class="bi bi-list"></i> {{userRestaurants.length
-                        === 1 ? 'Моят Ресторант' : 'Моите Ресторанти'}}</h3>
+                    <h3 class="card-header text-white fst-roboto"><i class="bi bi-list"></i>
+                        {{userRestaurants.length === 1 ? 'Моят Ресторант' : 'Моите Ресторанти'}}</h3>
                 </div>
                 <div class="row">
                     <div *ngFor="let restaurant of userRestaurants" class="col-md-6">
@@ -88,8 +88,8 @@
                     <div class="card">
                         <div class="text-center fst-marck text-primary-emphasis my-5 py-4">
                             <h2 class="mt-4"><strong>Все още нямате добавен ресторант</strong></h2>
-                            <h2>Направете го сега и увеличете свойте продажби с няколко лесни
-                                стъпки от <a routerLink="/add-restaurants" class="alert-link">ТУК</a>
+                            <h2>Направете го сега и увеличете свойте продажби с няколко лесни стъпки от <a
+                                    routerLink="/add-restaurants" class="alert-link">ТУК</a>
                             </h2>
                         </div>
                     </div>
