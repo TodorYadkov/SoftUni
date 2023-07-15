@@ -21,7 +21,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   isFoundResult: boolean = false; // Use to show and hide a message if there are any products found or not
   hasUser!: boolean; // Check if current user is logged in
-  isOwner!: boolean; // Check if current user is owner of current restaurant
+  isRoleAdmin!: boolean; // Check if the current user has an admin role if they are not banned from placing orders // TODO
   currentUser!: IUserToken | null; // Use for payment
   restaurantDetails!: IRestaurant; // Restaurant details
   allProducts!: IProduct[]; // Get all products and using with async pipe
@@ -41,8 +41,8 @@ export class OrderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.title.setTitle('Поръчка');
 
-    this.currentUser = this.managerSession.getSessionToken() // Get current user
-    this.hasUser = this.managerSession.userStatus; // Check if has logged in user
+    this.currentUser = this.managerSession.getSessionToken(); // Get current user
+    this.hasUser = this.managerSession.hasUser; // Check if has logged in user
     this.restaurantId = this.activeRoutes.snapshot.params['restaurantId'];
     // Get details for restaurant
     this.isLoading = true;
@@ -52,7 +52,7 @@ export class OrderComponent implements OnInit, OnDestroy {
     ]).subscribe({
       next: ([restaurantData, productsData]) => {
         this.isLoading = false;
-        this.isOwner = restaurantData.owner._id === this.managerSession.getSessionToken()?.userDetails._id; // Check if current user is owner
+        this.isRoleAdmin = this.managerSession.isUserRoleAdmin; // Check if current user has role admin
         this.restaurantDetails = restaurantData;
         this.allProducts = productsData;
         this.allProducts.forEach(p => this.allActiveGroups.add(p.group)); // Get only group name for current restaurant
