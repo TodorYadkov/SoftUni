@@ -16,6 +16,7 @@ import { IOrderWithProducts } from 'src/app/models/order.interfaces';
 export class ProfileComponent implements OnInit, OnDestroy {
 
   userDetails!: IUser;
+  isRoleAdmin!: boolean; // Use to show admin profile page or user
   subscription!: Subscription;
   userRestaurants: IRestaurant[] = [];
   errorMsgFromServer!: string;
@@ -23,9 +24,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   statistics: { restaurantId: string, restaurantName: string, totalProfit: number, totalCountSell: number, bestSellers: string[] }[] = [];
 
   constructor(
-    private managerSession: ManagerSessionService,
-    private dataService: DataService,
     private title: Title,
+    private dataService: DataService,
+    private managerSession: ManagerSessionService
   ) { }
 
 
@@ -34,8 +35,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     const hasUser = this.managerSession.getSessionToken();
     if (hasUser) {
-      this.isLoading = true;
       this.userDetails = hasUser.userDetails;
+    }
+
+    this.isRoleAdmin = this.managerSession.isUserRoleAdmin; // Check if the current user is admin
+    if (hasUser && this.isRoleAdmin) {
+      this.isLoading = true;
       this.subscription = this.dataService.getUserRestaurants(this.userDetails._id)
         .pipe(
           mergeMap(allRestaurants => allRestaurants),
