@@ -26,12 +26,29 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Password is required'],
     },
-    role: { // TODO: For future optimization can add more role
+    role: {
         type: String,
         required: true,
+        enum: {
+            values: ['user', 'admin'],
+            message: '{VALUE} is not supported'
+        },
         default: 'user',
     },
+    companyIdentificationNumber: {
+        type: String,
+        default: null,
+        match: [/^(BG|bg)\d{9}$/, 'Incorrect format of company identification number (Bulstat)'],
+    }
 });
+
+userSchema.pre('save', function (next) {
+    if (this.companyIdentificationNumber) {
+        this.companyIdentificationNumber = this.companyIdentificationNumber.toUpperCase();
+    }
+
+    next();
+})
 
 const User = mongoose.model('User', userSchema);
 
