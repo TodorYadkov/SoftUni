@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IUser, IUserBought, IUserToken } from 'src/app/models/user.interfaces';
+import { IUser, IUserToken } from 'src/app/models/user.interfaces';
 import { constants, endpoints } from '../../environments/constants';
+import { IOrderWithProducts } from 'src/app/models/order.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,8 @@ export class UsersService {
     return this.http.get<IUser>(url);
   }
 
-  getUserBought(userId: string): Observable<IUserBought> {
+  getUserBought(userId: string): Observable<IOrderWithProducts[]> {
     const url = constants.hostBackEnd + endpoints.getUserBought(userId);
-    return this.http.get<IUserBought>(url);
+    return this.http.get<IOrderWithProducts[]>(url);
   }
 }
