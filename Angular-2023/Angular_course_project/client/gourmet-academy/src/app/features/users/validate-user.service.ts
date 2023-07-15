@@ -75,7 +75,7 @@ export class ValidateUserService {
       result.error = 'Въведеният имейл е невалиден';
 
     } else if (/^\+\d{3}\d{3}\d{3}\d{3}$/.test(result.verifiedInput.phone) === false) {
-      result.error = 'Моля ползвайте следният формат +359111222333'
+      result.error = 'Моля ползвайте следният формат +359111222333';
 
     } else if (result.verifiedInput.address.length < 5 || result.verifiedInput.address.length > 100) {
       result.error = 'Адресът трябва да бъде между 5 и 100 символа';
@@ -84,7 +84,14 @@ export class ValidateUserService {
       result.error = 'Паролата трябва да бъде поне 6 символа';
 
     } else if (result.verifiedInput.password != repass) {
-      result.error = 'Паролите не съвпадат'
+      result.error = 'Паролите не съвпадат';
+
+    } else if (['user', 'admin'].includes(result.verifiedInput.role) === false) {
+      result.error = 'Невалиден статус на потребителя';
+
+    } else if (result.verifiedInput.companyIdentificationNumber
+      && /^(BG|bg)\d{9}$/.test(result.verifiedInput.companyIdentificationNumber) === false) {
+      result.error = 'Моля ползвайте следният формат BG123456789';
 
     }
 
