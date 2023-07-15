@@ -486,7 +486,7 @@ li.init:after {
     position: relative;
     width: 100%;
     max-width: 990px;
-    height: 85vh;
+    height: 92vh;
     /* Change this value to view bigger form*/
     margin: 20px auto;
     border: 1px solid #dddd;
