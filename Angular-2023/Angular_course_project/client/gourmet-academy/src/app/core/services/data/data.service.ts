@@ -115,4 +115,6 @@ export class DataService {
     const url = constants.hostBackEnd + endpoints.buyFromRestaurant(restaurantId);
     return this.http.post<{ addressDelivery: string, orders: string[] }>(url, purchaseData);
   }
+
+  
 }
