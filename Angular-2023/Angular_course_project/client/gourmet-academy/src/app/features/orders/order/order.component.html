@@ -13,9 +13,12 @@
             <!-- THis to stay on entire length on page -->
             <div class="card">
                 <p class="fst-bad fw-bolder mt-1 mb-0 fs-1">{{restaurantDetails.name}}</p>
-                <p class="mb-1 mx-2"><i class="fa-solid fa-circle-info"></i> Описание: {{restaurantDetails.description}}</p>
-                <p class="mb-1"><i class="fa-solid fa-location-dot"></i> Адрес: {{restaurantDetails.location}}, {{restaurantDetails.address}}</p>
-                <p class="mb-2"><i class="fa-solid fa-square-phone"></i> Телефон за поръчки: <strong>{{restaurantDetails.phone}}</strong></p>
+                <p class="mb-1 mx-2"><i class="fa-solid fa-circle-info"></i> Описание: {{restaurantDetails.description}}
+                </p>
+                <p class="mb-1"><i class="fa-solid fa-location-dot"></i> Адрес: {{restaurantDetails.location}},
+                    {{restaurantDetails.address}}</p>
+                <p class="mb-2"><i class="fa-solid fa-square-phone"></i> Телефон за поръчки:
+                    <strong>{{restaurantDetails.phone}}</strong></p>
             </div>
         </div>
     </div>
@@ -87,8 +90,9 @@
                                         <span class="d-block fst-bold text-white">{{product.price | number:'1.2-2'}}
                                             лв.</span>
                                     </div>
-                                    <!-- Only if there is a user and not the owner -->
-                                    <div *ngIf="hasUser && isOwner === false" class="action-btn mt-1 ms-1 me-3 text-muted">
+                                    <!-- Only if there is a user and not the admin -->
+                                    <div *ngIf="hasUser && isRoleAdmin === false"
+                                        class="action-btn mt-1 ms-1 me-3 text-muted">
                                         <!-- <span class="d-block text-muted fst-italic spec">Добави:</span> -->
                                         <a type="button" title="Добави" (click)="orderProduct(product)"><i
                                                 class="bi bi-plus-circle py-0 my-0 fs-3"></i></a>
@@ -124,11 +128,11 @@
                         <div class="summary border rounded">
 
                             <!-- In case the current user is owner of restaurant -->
-                            <ng-container *ngIf="isOwner; else orderSection">
+                            <ng-container *ngIf="isRoleAdmin; else orderSection">
                                 <div class="col-md-12 mt-1">
                                     <div class="card px-4 mb-3 py-3 text-primary-emphasis">
-                                        <h4 class="fst-italic text-center">{{restaurantDetails.owner.name}} Вие сте
-                                            собственик на ресторанта</h4>
+                                        <h4 class="fst-italic text-center">{{currentUser?.userDetails?.name}} Вие сте
+                                            регистриран като собственик на ресторант. Само потребители могат да правят поръчки и да коментират.</h4>
                                     </div>
                                 </div>
                             </ng-container>
@@ -169,7 +173,7 @@
                                 </ng-container>
 
                                 <!-- In case there are no ordered products -->
-                                <ng-container *ngIf="summaryOrder.length === 0 && isOwner === false">
+                                <ng-container *ngIf="summaryOrder.length === 0 && isRoleAdmin === false">
                                     <div class="col-md-12">
                                         <div class="card px-4 mb-3 py-3 text-primary-emphasis">
                                             <h4 class="fst-italic text-center">Добавете любимите си продукти сега</h4>
@@ -193,16 +197,14 @@
                                     aria-hidden="true">
                                     <app-payment [restaurantDetails]="restaurantDetails"
                                         [allOrderedProducts]="allOrderedProducts" [summaryOrder]="summaryOrder"
-                                        [totalBillCost]="totalBillCost"
-                                        [currentUser]="currentUser"
-                                        ></app-payment>
+                                        [totalBillCost]="totalBillCost" [currentUser]="currentUser"></app-payment>
                                 </div>
                             </ng-template>
 
                             <!-- Comments -->
                             <hr class="mt-5 mb-0">
                             <app-add-comments [restaurantDetails]="restaurantDetails"
-                                [isOwner]="isOwner"></app-add-comments>
+                                [isRoleAdmin]="isRoleAdmin"></app-add-comments>
                         </div>
 
                     </div>
