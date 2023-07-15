@@ -62,9 +62,24 @@ function isNotOwner(req, res, next) {
     }
 }
 
+function isRoleAdmin(req, res, next) {
+    if (!req.user) {
+        // Check if the current user is logged in
+        return res.status(401).json({ message: 'Unauthorized', statusCode: 401 });
+
+    } else if (req.user.role === 'admin') {
+        // Check if the current user has role admin
+        next();
+
+    } else {
+        return res.status(403).json({ message: 'Forbidden', statusCode: 403 });
+    }
+}
+
 module.exports = {
     isAuth,
     onlyForGuest,
     isOwner,
     isNotOwner,
+    isRoleAdmin,
 };
