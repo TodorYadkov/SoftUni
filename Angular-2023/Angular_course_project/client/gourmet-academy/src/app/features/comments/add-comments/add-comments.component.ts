@@ -14,7 +14,7 @@ import { IRestaurant } from 'src/app/models/restaurant.interfaces';
 export class CommentsComponent implements OnInit, OnDestroy {
 
   @Input() restaurantDetails!: IRestaurant;
-  @Input() isOwner!: boolean;
+  @Input() isRoleAdmin!: boolean; // Check if the current user has an admin role if it has the hide comment form
 
   allComments!: IComment[];
   subscription!: Subscription;
