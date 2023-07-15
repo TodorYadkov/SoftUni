@@ -22,6 +22,7 @@ import { CommentsComponent } from './comments/add-comments/add-comments.componen
 import { EditCommentComponent } from './comments/edit-comment/edit-comment.component';
 import { DeleteCommentComponent } from './comments/delete-comment/delete-comment.component';
 import { PaymentComponent } from './orders/payment/payment.component';
+import { ProfileUserComponent } from './users/profile-user/profile-user.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { PaymentComponent } from './orders/payment/payment.component';
         CommentsComponent,
         EditCommentComponent,
         DeleteCommentComponent,
-        PaymentComponent
+        PaymentComponent,
+        ProfileUserComponent
     ],
     imports: [
         CommonModule,
