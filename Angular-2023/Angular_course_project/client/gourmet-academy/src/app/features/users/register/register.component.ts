@@ -15,6 +15,7 @@ import { ValidateUserService } from '../validate-user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit, OnDestroy {
+
   userToken!: IUserToken;
   subscription!: Subscription;
   errorMsgFromServer!: string;
@@ -36,6 +37,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   // Register
   registerUser(formData: NgForm): void {
     const userInput: IUser = formData.value;
+    console.log(userInput)
     // Validate user input
     const userCheck = this.validateUser.registerValidate(userInput, formData.value.repass);
     if (userCheck.hasError) {
