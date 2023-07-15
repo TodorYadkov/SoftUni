@@ -6,7 +6,7 @@ const { preload } = require('../middleware/preload');
 
 // User register - Not logged in
 router.post('/register',
-    body(['name', 'email', 'phone', 'address', 'password']).trim(),
+    body(['name', 'email', 'phone', 'address', 'password', 'role', 'companyIdentificationNumber']).trim(),
     body('name')
         .notEmpty().withMessage('Name is required').bail()
         .isLength({ min: 2, max: 30 }).withMessage('Name must be between 2 and 30 characters long'),
@@ -24,6 +24,8 @@ router.post('/register',
         .notEmpty().withMessage('Password is required').bail()
         // .isStrongPassword({ minLength: 6, minNumbers: 2, minLowercase: 2, minUppercase: 2 })
         .isLength({ min: 6 }).withMessage('Password must be at least six characters long'),
+    body('role')
+        .custom((value) => ['user', 'admin'].includes(value)).withMessage('The role is not accepted'),
     onlyForGuest,
     async (req, res, next) => {
         try {
