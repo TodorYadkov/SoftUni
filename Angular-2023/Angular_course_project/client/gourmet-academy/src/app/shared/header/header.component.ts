@@ -16,8 +16,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+
   theme!: string;
   subscription!: Subscription;
+  isUserAdmin!: boolean; // Use to show and hide add-restaurants (Only admin role is allowed to create new restaurant)
 
   // IF NOT USE WEATHER API - DELETE ALL OF THIS and do NOT forget to delete and services
   // ipAddressSubscription$!: Subscription;
@@ -27,7 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // isReadyForecast: boolean = false;
 
   constructor(
-    @Inject(DOCUMENT) private document: Document, // Use document object to add new class in index.thml on html tag
+    @Inject(DOCUMENT) private document: Document, // Use document object to add new class in index.html on html tag
     private themeService: ThemeService,
     private userService: UsersService,
     private managerSession: ManagerSessionService,
@@ -97,11 +99,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // check which navigation to display
   updateNav(): boolean {
 
-    return this.managerSession.userStatus;
+    this.isUserAdmin = this.managerSession.isUserRoleAdmin // Check is current user has role admin
+    return this.managerSession.hasUser;
   }
 
   // Check which theme to apply
-  checkThemeState() { // Check current state of the theme
+  checkThemeState(): void { // Check current state of the theme
     this.themeService.theme = this.themeService.theme === 'light' ? 'dark' : 'light';
     this.theme = this.themeService.theme;
     this.updateThemeColor()
@@ -112,7 +115,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   // Logout
-  logout() {
+  logout(): void {
     this.subscription = this.userService.logout()
       .subscribe({
         next: (data) => {
