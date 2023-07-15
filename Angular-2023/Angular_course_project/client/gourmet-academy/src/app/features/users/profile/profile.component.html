@@ -1,10 +1,19 @@
+<!-- User page -->
+<ng-container *ngIf="isRoleAdmin === false">
+    <app-profile-user [userDetails]="userDetails"></app-profile-user>
+</ng-container>
+
 <!-- Spinner -->
-<app-loading [isLoading]="isLoading"></app-loading>
+<ng-container *ngIf="isLoading && isRoleAdmin">
+    <app-loading [isLoading]="isLoading"></app-loading>
+</ng-container>
 
-<!-- Display error  -->
-<app-alert-message [errorMsgFromServer]="errorMsgFromServer" [autoHide]="true"></app-alert-message>
+<!-- Admin page -->
+<div *ngIf="!isLoading && isRoleAdmin" class="row mt-5 mb-4">
 
-<div *ngIf="!isLoading" class="row mt-5 mb-4">
+    <!-- Display error  -->
+    <app-alert-message [errorMsgFromServer]="errorMsgFromServer" [autoHide]="true"></app-alert-message>
+
     <div class="col-md-3">
         <!-- User details -->
         <div *ngIf="userDetails">
