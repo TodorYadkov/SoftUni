@@ -89,7 +89,7 @@
                     'is-invalid': inRePass.dirty && inRePass.value !== inPass.value}" required minlength="6">
                     <label for="rePass" class="form-label">Потвърдете вашата парола</label>
                     <!-- Validation messages -->
-                    <div *ngIf="inRePass.dirty&& inRePass.errors?.['required']" class="invalid-feedback fs-6">
+                    <div *ngIf="inRePass.dirty && inRePass.errors?.['required']" class="invalid-feedback fs-6">
                         Полето е задължително</div>
                     <div *ngIf="inRePass.dirty && inRePass.value !== inPass.value" class="invalid-feedback fs-6">
                         Паролите не съвпадат</div>
@@ -100,14 +100,25 @@
                 <div class="text-white">
                     <div class="d-flex">
                         <div class="form-check me-5">
-                            <input type="radio" name="role" id="user" value="user" checked class="form-check-input custom-radio-right">
-                            <label for="user" class="form-check-label custom-label-right" >Потребител</label>
+                            <input type="radio" ngModel #inRole="ngModel" name="role" id="user" value="user" class="form-check-input custom-radio-right">
+                            <label for="user" class="form-check-label custom-label-right" title="За потребител">Потребител</label>
                         </div>
                         <div class="form-check ms-5">
-                            <input type="radio" name="role" id="admin" value="admin" class="form-check-input custom-radio-right">
-                            <label for="admin" class="form-check-label custom-label-right">Собственик</label>
+                            <input type="radio" ngModel #inRole="ngModel" name="role" id="admin" value="admin" class="form-check-input custom-radio-right">
+                            <label for="admin" class="form-check-label custom-label-right" title="За собственик на ресторант">Собственик</label>
                         </div>
                     </div>
+                </div>
+                <!-- Company number -->
+                <div *ngIf="inRole.value === 'admin'" class="form-group form-input">
+                    <input type="text" id="bulstat" name="companyIdentificationNumber" ngModel #inBulstat="ngModel" class="form-control"
+                    [ngClass]="{'is-valid': inBulstat.valid && inBulstat.dirty, 'is-invalid': inBulstat.invalid && inBulstat.dirty}"
+                    required pattern="^(BG|bg)\d{9}$">
+                    <label for="bulstat" class="form-label">Булстат</label>
+                    <!-- Validation messages -->
+                    <div *ngIf="inBulstat.errors?.['required']" class="invalid-feedback fs-6">Полето е задължително</div>
+                    <div *ngIf="inBulstat.errors?.['pattern']" class="invalid-feedback fs-6">Моля ползвайте следният формат BG123456789</div>
+                    <div *ngIf="inBulstat.valid" class="valid-feedback fs-6">Полето е валидно</div>
                 </div>
                 <!-- Submit button -->
                 <div class="form-submit mt-4">
