@@ -11,13 +11,13 @@ const roundsBcrypt = Number(process.env.ROUNDS_BCRYPT);
 const jwtSecret = process.env.JWT_SECRET;
 
 async function userRegister(userData) {
-    const { name, email, phone, address, password } = userData;
+    const { name, email, phone, address, password, role, companyIdentificationNumber } = userData;
     // Check if the username or email is already taken
     const isExisting = await User.findOne({ email });
     if (isExisting) {
         throw new Error('Email is already used!');
     }
-    
+
     // Hash password
     const hashedPassword = await bcrypt.hash(password, roundsBcrypt);
 
@@ -27,6 +27,8 @@ async function userRegister(userData) {
         email,
         phone,
         address,
+        role,
+        companyIdentificationNumber,
         password: hashedPassword
     });
 
@@ -37,12 +39,13 @@ async function userRegister(userData) {
     return {
         accessToken: userToken,
         userDetails: {
+            _id: user._id,
             name: user.name,
             email: user.email,
             phone: user.phone,
             address: user.address,
             role: user.role,
-            _id: user._id
+            companyIdentificationNumber: user.companyIdentificationNumber
         }
     };
 }
@@ -68,12 +71,13 @@ async function userLogin(userData) {
     return {
         accessToken: userToken,
         userDetails: {
+            _id: user._id,
             name: user.name,
             email: user.email,
             phone: user.phone,
             address: user.address,
             role: user.role,
-            _id: user._id
+            companyIdentificationNumber: user.companyIdentificationNumber
         }
     };
 }
@@ -81,9 +85,16 @@ async function userLogin(userData) {
 async function generateToken(user) {
     try {
         const token = await new Promise((resolve, reject) => {
-            jwt.sign({ _id: user._id, email: user.email, name: user.name, address: user.address, phone: user.phone },
+            jwt.sign({
+                _id: user._id,
+                email: user.email,
+                name: user.name,
+                address: user.address,
+                phone: user.phone,
+                role: user.role,
+            },
                 jwtSecret,
-                { expiresIn: '1d' }, // TODO: This can be optimized with a token that expires every two minutes
+                { expiresIn: '1d' }, // TODO: This can be optimized with a token that expires every two minutes (Refresh Token on front end)
                 (err, signedToken) => {
                     if (err) {
                         reject(new Error('The token could not be signed!'));
@@ -104,9 +115,9 @@ async function userLogout(userToken) {
     tokenBlackList.add(userToken);
 }
 
-const getUserById = (userId) => User.findById(userId).select('-password');
+const getUserById = (userId) => User.findById(userId).select('-password'); // Select all without password (-password)
 
-const getMyOrders = (userId) => Order.find({ userId: userId }).populate('orders');
+const getMyOrders = (userId) => Order.find({ userId: userId }).populate('orders restaurantId');
 
 module.exports = {
     userRegister,
