@@ -28,7 +28,7 @@
                                         </li>
                                         <!-- Update nav returns true if there is a userToken in localStorage - create template variable guest and if false show the guest nav -->
                                         <ng-container *ngIf="updateNav(); else guest">
-                                            <li class="nav-item">
+                                            <li *ngIf="isUserAdmin" class="nav-item">
                                                 <a class="nav-link" routerLink="/add-restaurants"
                                                     routerLinkActive='active'
                                                     style="font-size: x-large;"><i class="bi bi-house-add"></i> Добави
