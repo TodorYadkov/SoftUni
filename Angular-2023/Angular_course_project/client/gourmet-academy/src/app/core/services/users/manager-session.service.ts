@@ -28,8 +28,29 @@ export class ManagerSessionService {
     localStorage.removeItem(constants.userTokenName);
   }
 
+  // Check current user role
+  get userRole(): string | null {
+    const token = this.getSessionToken();
+    if (token) {
+      return token.userDetails.role;
+    }
+
+    return token;
+  }
+
+  // Check if the user has role admin
+  get isUserRoleAdmin(): boolean {
+    const token = this.getSessionToken();
+    if (token && token.userDetails.role === 'admin') {
+
+      return true;
+    }
+
+    return false;
+  }
+
   // Check if a user is logged in
-  get userStatus(): boolean {
+  get hasUser(): boolean {
     return localStorage.getItem(constants.userTokenName) ? true : false;
   }
 }
