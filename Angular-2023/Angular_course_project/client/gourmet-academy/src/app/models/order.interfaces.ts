@@ -1,4 +1,5 @@
 import { IProduct } from "./product.interfaces";
+import { IRestaurant } from "./restaurant.interfaces";
 
 export interface IOrder {
     _id: string;
@@ -10,7 +11,7 @@ export interface IOrder {
 
 export interface IOrderWithProducts {
     _id: string;
-    restaurantId: string;
+    restaurantId: IRestaurant;
     userId: string;
     addressDelivery: string;
     orders: IProduct[];
