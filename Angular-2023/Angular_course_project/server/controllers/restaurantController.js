@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
-const { isAuth, isOwner, isNotOwner } = require('../middleware/guards');
+const { isAuth, isOwner, isNotOwner, isRoleAdmin } = require('../middleware/guards');
 const {
     getAllCountRestaurants,
     getAllRestaurants,
@@ -84,6 +84,7 @@ router.post('/',
     body('description').isLength({ max: 200 }).withMessage('Description must be a maximum of two hundred characters long'),
     body('image').matches(/^https?:\/\/[^ ]+$/gi).withMessage('Image URL must start with http:// or https://'),
     isAuth,
+    isRoleAdmin,
     async (req, res, next) => {
         try {
             const { errors } = validationResult(req);
@@ -114,6 +115,7 @@ router.put('/:restaurantId',
     isAuth,
     preload(getRestaurantById),
     isOwner,
+    isRoleAdmin,
     async (req, res, next) => {
         try {
             const { errors } = validationResult(req);
@@ -131,7 +133,7 @@ router.put('/:restaurantId',
     });
 
 // Delete restaurant - Logged in and owner
-router.delete('/:restaurantId', isAuth, preload(getRestaurantById), isOwner, async (req, res, next) => {
+router.delete('/:restaurantId', isAuth, preload(getRestaurantById), isOwner, isRoleAdmin, async (req, res, next) => {
     try {
 
         const restaurantId = req.params.restaurantId;
@@ -144,7 +146,7 @@ router.delete('/:restaurantId', isAuth, preload(getRestaurantById), isOwner, asy
 });
 
 // Get all order to view all profit - Logged in and owner
-router.get('/orders/:restaurantId', isAuth, preload(getRestaurantById), isOwner, async (req, res, next) => {
+router.get('/orders/:restaurantId', isAuth, preload(getRestaurantById), isOwner, isRoleAdmin, async (req, res, next) => {
     try {
         const restaurantId = req.params.restaurantId;
         const orders = await getRestaurantOrders(restaurantId);
@@ -156,7 +158,7 @@ router.get('/orders/:restaurantId', isAuth, preload(getRestaurantById), isOwner,
 });
 
 // Get all users restaurants - Logged in and owner
-router.get('/my-restaurants/:userId', isAuth, async (req, res, next) => {
+router.get('/my-restaurants/:userId', isAuth, isRoleAdmin, async (req, res, next) => {
     try {
         const userId = req.params.userId;
         const userRestaurants = await getUserRestaurants(userId);
@@ -181,7 +183,7 @@ router.get('/products/:restaurantId', async (req, res) => {
 });
 
 // Get one product - Logged in and owner
-router.get('/products/product/:productId', isAuth, preload(getProductById, 'productId'), isOwner, async (req, res, next) => {
+router.get('/products/product/:productId', isAuth, preload(getProductById, 'productId'), isOwner, isRoleAdmin, async (req, res, next) => {
     try {
         const productId = req.params.productId;
         const product = await getProductById(productId); // With populated restaurantId
@@ -203,6 +205,7 @@ router.post('/products/:restaurantId',
     isAuth,
     preload(getRestaurantById),
     isOwner,
+    isRoleAdmin,
     async (req, res, next) => {
         try {
             const { errors } = validationResult(req);
@@ -232,6 +235,7 @@ router.put('/products/edit/:productId',
     isAuth,
     preload(getProductById, 'productId'),
     isOwner,
+    isRoleAdmin,
     async (req, res, next) => {
         try {
 
@@ -251,7 +255,7 @@ router.put('/products/edit/:productId',
     });
 
 // Delete restaurant product - Logged in and owner
-router.delete('/products/delete/:productId', isAuth, preload(getProductById, 'productId'), isOwner, async (req, res, next) => {
+router.delete('/products/delete/:productId', isAuth, preload(getProductById, 'productId'), isOwner, isRoleAdmin, async (req, res, next) => {
     try {
 
         const productId = req.params.productId;
