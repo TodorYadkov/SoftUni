@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
-const { isAuth, isOwner, isNotOwner, isRoleAdmin } = require('../middleware/guards');
+const { isAuth, isOwner, isNotOwner, isRoleAdmin, isAllowedTimeToChangeOrders } = require('../middleware/guards');
+const { preload } = require('../middleware/preload');
+const { getUserById } = require('../services/userService');
 const {
     getAllCountRestaurants,
     getAllRestaurants,
@@ -22,9 +24,12 @@ const {
     getAllComments,
     getRestaurantsBySearch,
     getUserRestaurants,
+    getAllUserOrders,
+    getUserOrderById,
+    updateUserOrder,
+    deleteUserOrder,
 }
     = require('../services/restaurantService');
-const { preload } = require('../middleware/preload');
 
 // Get restaurants with pagination - Not Logged in
 router.get('/', async (req, res, next) => {
@@ -63,6 +68,7 @@ router.get('/search', async (req, res, next) => {
 // Get one restaurant - Not Logged in
 router.get('/:restaurantId', async (req, res, next) => {
     try {
+
         const restaurantId = req.params.restaurantId;
         const restaurant = await getRestaurantById(restaurantId); // With populated owner without password
 
@@ -87,6 +93,7 @@ router.post('/',
     isRoleAdmin,
     async (req, res, next) => {
         try {
+
             const { errors } = validationResult(req);
             if (errors.length > 0) {
                 throw errors;
@@ -118,6 +125,7 @@ router.put('/:restaurantId',
     isRoleAdmin,
     async (req, res, next) => {
         try {
+
             const { errors } = validationResult(req);
             if (errors.length > 0) {
                 throw errors;
@@ -145,21 +153,10 @@ router.delete('/:restaurantId', isAuth, preload(getRestaurantById), isOwner, isR
     }
 });
 
-// Get all order to view all profit - Logged in and owner
-router.get('/orders/:restaurantId', isAuth, preload(getRestaurantById), isOwner, isRoleAdmin, async (req, res, next) => {
-    try {
-        const restaurantId = req.params.restaurantId;
-        const orders = await getRestaurantOrders(restaurantId);
-
-        res.status(200).json(orders);
-    } catch (error) {
-        next(error);
-    }
-});
-
 // Get all users restaurants - Logged in and owner
 router.get('/my-restaurants/:userId', isAuth, isRoleAdmin, async (req, res, next) => {
     try {
+
         const userId = req.params.userId;
         const userRestaurants = await getUserRestaurants(userId);
 
@@ -185,6 +182,7 @@ router.get('/products/:restaurantId', async (req, res) => {
 // Get one product - Logged in and owner
 router.get('/products/product/:productId', isAuth, preload(getProductById, 'productId'), isOwner, isRoleAdmin, async (req, res, next) => {
     try {
+
         const productId = req.params.productId;
         const product = await getProductById(productId); // With populated restaurantId
 
@@ -208,6 +206,7 @@ router.post('/products/:restaurantId',
     isRoleAdmin,
     async (req, res, next) => {
         try {
+
             const { errors } = validationResult(req);
             if (errors.length > 0) {
                 throw errors;
@@ -267,15 +266,83 @@ router.delete('/products/delete/:productId', isAuth, preload(getProductById, 'pr
     }
 });
 
-// Buy products - Logged in
-router.post('/buys/:restaurantId', isAuth, async (req, res, next) => {
+// Get all restaurant orders to view all profit - Logged in and owner
+router.get('/orders/:restaurantId', isAuth, preload(getRestaurantById), isOwner, isRoleAdmin, async (req, res, next) => {
     try {
+
+        const restaurantId = req.params.restaurantId;
+        const orders = await getRestaurantOrders(restaurantId);
+
+        res.status(200).json(orders);
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Buy products - Logged in
+router.post('/orders/buys/:restaurantId', isAuth, async (req, res, next) => {
+    try {
+
         const userId = req.user._id;
         const restaurantId = req.params.restaurantId;
         const boughtProducts = req.body;
+
         await buyFromRestaurant(restaurantId, userId, boughtProducts);
 
         res.status(200).json({ message: 'Successful purchase' });
+    } catch (error) {
+        next(error);
+    }
+});
+
+//  Get all user orders - Logged in and owner
+router.get('/orders/user-orders/:userId', isAuth, preload(getUserById, 'userId'), isOwner, async (req, res, next) => {
+    try {
+
+        const userId = req.params.userId;
+        const myOrders = await getAllUserOrders(userId);
+
+        res.status(200).json(myOrders);
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Get one user order - Logged in and owner
+router.get('/orders/order/:orderId', isAuth, preload(getUserOrderById, 'orderId'), isOwner, async (req, res, next) => {
+    try {
+
+        const orderId = req.params.orderId;
+        const myOrder = await getUserOrderById(orderId);
+
+        res.status(200).json(myOrder);
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Edit order - Logged in and owner
+router.put('/orders/edit/:orderId', isAuth, preload(getUserOrderById, 'orderId'), isAllowedTimeToChangeOrders, isOwner, async (req, res, next) => {
+    try {
+
+        const orderData = req.body;
+        const orderId = req.params.orderId;
+        const updatedOrder = await updateUserOrder(orderData, orderId);
+
+        res.status(200).json(updatedOrder);
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Delete order - Logged in and owner
+router.delete('/orders/delete/:orderId', isAuth, preload(getUserOrderById, 'orderId'), isAllowedTimeToChangeOrders, isOwner, async (req, res, next) => {
+    try {
+
+        const orderId = req.params.orderId;
+        const deletedOrder = await deleteUserOrder(orderId);
+
+        res.status(200).json({ message: 'Order is successfully deleted', deletedOrder });
     } catch (error) {
         next(error);
     }
@@ -297,6 +364,7 @@ router.get('/comments/:restaurantId', async (req, res) => {
 // Get one comment - Logged in and owner
 router.get('/comments/comment/:commentId', isAuth, preload(getCommentById, 'commentId'), isOwner, async (req, res, next) => {
     try {
+
         const commentId = req.params.commentId;
         const comment = await getCommentById(commentId); // With populated userId
 
@@ -317,6 +385,7 @@ router.post('/comments/:restaurantId',
     isNotOwner,
     async (req, res, next) => {
         try {
+
             const { errors } = validationResult(req);
             if (errors.length > 0) {
                 throw errors;
@@ -344,6 +413,7 @@ router.put('/comments/edit/:commentId',
     isOwner,
     async (req, res, next) => {
         try {
+
             const { errors } = validationResult(req);
             if (errors.length > 0) {
                 throw errors;
