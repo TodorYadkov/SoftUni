@@ -3,6 +3,7 @@ const { Order } = require("../models/Order");
 const { Product } = require("../models/Product");
 const { Restaurant } = require("../models/Restaurant");
 
+// Restaurants
 const addNewRestaurant = (restaurantData, userId) => {
     const { name, location, address, phone, cuisine, description, image } = restaurantData;
     return Restaurant.create({ name, location, address, phone, cuisine, description, image, owner: userId });
@@ -21,24 +22,22 @@ const deleteRestaurant = async (restaurantId) => {
     return deletedRestaurant;
 };
 
+const getRestaurantsBySearch = (nameInput = '', locationInput = '') => Restaurant.find(
+    {
+        name: { $regex: new RegExp(nameInput, 'gi') },
+        location: { $regex: new RegExp(locationInput, 'gi') }
+    }
+);
+
 const getRestaurantById = (restaurantId) => Restaurant.findById(restaurantId).populate('owner', ['name', 'email', 'phone', 'address', 'role']);
 
 const getAllRestaurants = (page, limit) => Restaurant.find().skip((page - 1) * limit).limit(limit);
 
 const getAllCountRestaurants = () => Restaurant.countDocuments();
 
-const getRestaurantOrders = (restaurantId) => Order.find({ restaurantId: restaurantId }).populate('orders');
-// If need
-// .populate('userId', ['name', 'email', 'phone', 'address', 'role'])
-// .populate('restaurantId');
-
 const getUserRestaurants = (userId) => Restaurant.find({ owner: userId });
 
-const buyFromRestaurant = (restaurantId, userId, boughtProducts) => {
-    const { orders, addressDelivery } = boughtProducts;
-    return Order.create({ restaurantId, userId, orders, addressDelivery })
-};
-
+// Products
 const addNewProduct = async (productData, restaurantId) => {
     const { name, weight, price, group, image } = productData;
     return await Product.create({ name, weight, price, group, image, restaurantId: restaurantId });
@@ -55,10 +54,15 @@ const getProductById = (productId) => Product.findById(productId).populate('rest
 
 const getAllProducts = (restaurantId) => Product.find({ restaurantId: restaurantId });
 
+// Comments
 const addNewComment = (commentData, restaurantId, userId) => {
     const { comment } = commentData;
     return Comment.create({ comment, restaurantId, userId });
 };
+
+const getCommentById = (commentId) => Comment.findById(commentId).populate('userId', ['name', 'email', 'phone', 'address', 'role']);
+
+const getAllComments = (restaurantId) => Comment.find({ restaurantId: restaurantId }).populate('userId', ['name', 'email', 'phone', 'address', 'role']);
 
 const updateComment = (commentData, commentId) => {
     const { comment } = commentData;
@@ -67,16 +71,27 @@ const updateComment = (commentData, commentId) => {
 
 const deleteComment = (commentId) => Comment.findByIdAndDelete(commentId, { returnDocument: true });
 
-const getCommentById = (commentId) => Comment.findById(commentId).populate('userId', ['name', 'email', 'phone', 'address', 'role']);
+// Orders
+const buyFromRestaurant = (restaurantId, userId, boughtProducts) => {
+    const { orders, addressDelivery } = boughtProducts;
+    return Order.create({ restaurantId, userId, orders, addressDelivery })
+};
 
-const getAllComments = (restaurantId) => Comment.find({ restaurantId: restaurantId }).populate('userId', ['name', 'email', 'phone', 'address', 'role']);
+const getRestaurantOrders = (restaurantId) => Order.find({ restaurantId: restaurantId }).populate('orders');
+// If need
+// .populate('userId', ['name', 'email', 'phone', 'address', 'role'])
+// .populate('restaurantId');
 
-const getRestaurantsBySearch = (nameInput = '', locationInput = '') => Restaurant.find(
-    {
-        name: { $regex: new RegExp(nameInput, 'gi') },
-        location: { $regex: new RegExp(locationInput, 'gi') }
-    }
-);
+const getAllUserOrders = (userId) => Order.find({ userId: userId }).populate('orders restaurantId');
+
+const getUserOrderById = (orderId) => Order.findById(orderId).populate('orders restaurantId');
+
+const updateUserOrder = (orderData, orderId) => {
+    const { addressDelivery, orders } = orderData;
+    return Order.findByIdAndUpdate(orderId, { addressDelivery, orders }, { runValidators: true, new: true });
+};
+
+const deleteUserOrder = (orderId) => Order.findByIdAndDelete(orderId, { returnDocument: true });
 
 module.exports = {
     addNewRestaurant,
@@ -99,4 +114,8 @@ module.exports = {
     deleteComment,
     getRestaurantsBySearch,
     getUserRestaurants,
+    getAllUserOrders,
+    getUserOrderById,
+    updateUserOrder,
+    deleteUserOrder,
 };
