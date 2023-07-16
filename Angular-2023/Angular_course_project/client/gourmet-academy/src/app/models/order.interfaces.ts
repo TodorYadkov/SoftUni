@@ -7,6 +7,7 @@ export interface IOrder {
     userId: string;
     addressDelivery: string;
     orders: string[];
+    date: Date;
 };
 
 export interface IOrderWithProducts {
@@ -15,4 +16,5 @@ export interface IOrderWithProducts {
     userId: string;
     addressDelivery: string;
     orders: IProduct[];
+    date: number;
 };
