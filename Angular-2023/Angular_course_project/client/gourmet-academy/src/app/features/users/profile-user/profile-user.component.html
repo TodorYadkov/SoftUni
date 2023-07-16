@@ -29,18 +29,15 @@
         <!-- Hide if the owner not have any restaurant -->
         <div class="card border-primary mb-4" *ngIf="userOrders.length > 0; else noOrders">
             <div class="card-body">
-                <h3 class="card-title text-white "><i class="bi bi-list"></i> Моите сметки</h3>
+                <h3 class="card-title text-white "><i class="bi bi-list"></i> Моите поръчки</h3>
                 <hr class="mt-0 mb-4">
 
                 <section class="fst-roboto">
 
-
-                    <!-- TODO Arrange the content in right order -->
-
                     <details *ngFor="let order of allSummaryOrders" class="card">
                         <summary>
                             <div>
-                                <span>
+                                <span class="d-none d-lg-flex">
                                     <img class="ms-2 rounded" src="{{order.restaurantImage}}"
                                         alt="{{order.restaurantName}}" width="140" height="100">
                                 </span>
@@ -56,40 +53,49 @@
                                 <span>{{order.totalBillCost | number: '1.2-2'}} лв.</span>
                             </div>
                         </summary>
-                        <div *ngFor="let product of order.products" class="mt-1">
-                            <dl>
-                                <div class="me-1">
-                                    <dt><img class="rounded" src="{{product.image}}" alt="{{product.name}}" width="70"
-                                            height="50"></dt>
-                                </div>
 
-                                <div>
-                                    <dd class="text-muted mb-0">Име</dd>
-                                    <dt>{{product.name}}</dt>
-                                </div>
+                        <div *ngFor="let product of order.products" class="mt-1 justify-content-between ">
+                            
+                                <div class="row">
+                                    <div class="col d-flex justify-content-start">
+                                        <div class="d-none d-lg-flex me-2">
+                                            <dt><img class="rounded text-muted" src="{{product.image}}" alt="No Image"
+                                                    width="70" height="50"></dt>
+                                        </div>
 
-                                <div>
-                                    <dd class="text-muted mb-0">Грамаж</dd>
-                                    <dt>{{product.weight}}</dt>
-                                </div>
+                                        <div>
+                                            <dd class="text-muted mb-0">Име</dd>
+                                            <dt class="text-center">{{product.name}}</dt>
+                                        </div>
+                                    </div>
 
-                                <div>
-                                    <dd class="text-muted mb-0">Количество</dd>
-                                    <dt>{{product.quantity}}</dt>
-                                </div>
+                                    <div class="col d-flex justify-content-end">
+                                        <div class="me-4">
+                                            <dd class="text-muted mb-0">Грамаж</dd>
+                                            <dt class="text-center">{{product.weight}}</dt>
+                                        </div>
 
-                                <div>
-                                    <dd class="text-muted mb-0">Цена</dd>
-                                    <dt>{{product.price}}</dt>
-                                </div>
+                                        <div class="me-4">
+                                            <dd class="text-muted mb-0">Брой</dd>
+                                            <dt class="text-center">{{product.quantity}}</dt>
+                                        </div>
 
-                                <div>
-                                    <dd class="text-muted mb-0">Общо</dd>
-                                    <dt>{{product.totalCost}}</dt>
-                                </div>
-                            </dl>
+                                        <div class="me-4">
+                                            <dd class="text-muted mb-0">Цена</dd>
+                                            <dt class="text-center">{{product.price | number:'1.2-2'}} лв.</dt>
+                                        </div>
 
+                                        <div class="mb-3">
+                                            <dd class="text-muted mb-0">Общо</dd>
+                                            <dt class="text-center">{{product.totalCost | number:'1.2-2'}} лв.</dt>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            
+                            <hr class="my-0">
                         </div>
+
                     </details>
 
                 </section>
@@ -113,7 +119,6 @@
 
     </div>
 </div>
-
 
 
 
