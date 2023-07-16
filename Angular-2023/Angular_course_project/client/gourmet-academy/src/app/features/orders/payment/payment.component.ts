@@ -20,8 +20,8 @@ export class PaymentComponent implements OnDestroy {
   @Input() totalBillCost!: number;
   @Input() currentUser!: IUserToken | null;
 
-  successMessage!: string;
   errorMsgFromServer!: string;
+  hasSuccessMessage: boolean = false;
   isLoading: boolean = false;
   hasBought: boolean = false; // If true, the user buys the products and can be redirected to the home page is not just a close modal
   subscription!: Subscription;
@@ -49,7 +49,8 @@ export class PaymentComponent implements OnDestroy {
     // Create object needed to backend
     const purchaseData = {
       addressDelivery,
-      orders
+      orders,
+      date: new Date().getTime()
     };
 
     this.isLoading = true;
@@ -59,7 +60,7 @@ export class PaymentComponent implements OnDestroy {
         next: (data) => {
           this.hasBought = true; // Use to redirect to home page
           this.isLoading = false;
-          this.successMessage = 'Успешна поръчка. Наш консултант ще се свърже с вас. Приятен ден!'
+          this.hasSuccessMessage = true;
         },
         error: (error) => this.errorMsgFromServer = error.error.message
       })
@@ -72,6 +73,11 @@ export class PaymentComponent implements OnDestroy {
     }
 
     this.hasBought = false;
+  }
+
+  // If the user wants to delete or edit the order - redirect to profile
+  redirectToProfile(): void {
+    this.router.navigate(['profile']);
   }
 
   ngOnDestroy(): void {
