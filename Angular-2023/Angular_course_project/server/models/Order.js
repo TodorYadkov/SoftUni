@@ -20,7 +20,13 @@ const orderSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         required: [true, 'Order is required'],
         ref: 'Product'
-    }]
+    }],
+    date: {
+        type: Number,
+        required: true,
+        default: Number(new Date().getTime().toString())
+        // MongoDb works with BSON object and timestamp - this is for school practice only
+    }
 });
 
 const Order = mongoose.model('Order', orderSchema);
