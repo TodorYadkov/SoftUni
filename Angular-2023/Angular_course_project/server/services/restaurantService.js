@@ -73,8 +73,8 @@ const deleteComment = (commentId) => Comment.findByIdAndDelete(commentId, { retu
 
 // Orders
 const buyFromRestaurant = (restaurantId, userId, boughtProducts) => {
-    const { orders, addressDelivery } = boughtProducts;
-    return Order.create({ restaurantId, userId, orders, addressDelivery })
+    const { orders, addressDelivery, date } = boughtProducts;
+    return Order.create({ restaurantId, userId, orders, addressDelivery, date })
 };
 
 const getRestaurantOrders = (restaurantId) => Order.find({ restaurantId: restaurantId }).populate('orders');
