@@ -1,5 +1,4 @@
 const { User } = require('../models/User.js');
-const { Order } = require('../models/Order.js');
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -117,12 +116,9 @@ async function userLogout(userToken) {
 
 const getUserById = (userId) => User.findById(userId).select('-password'); // Select all without password (-password)
 
-const getMyOrders = (userId) => Order.find({ userId: userId }).populate('orders restaurantId');
-
 module.exports = {
     userRegister,
     userLogin,
     userLogout,
     getUserById,
-    getMyOrders,
 };
