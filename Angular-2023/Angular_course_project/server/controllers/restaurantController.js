@@ -286,7 +286,7 @@ router.post('/orders/buys/:restaurantId', isAuth, async (req, res, next) => {
         const userId = req.user._id;
         const restaurantId = req.params.restaurantId;
         const boughtProducts = req.body;
-
+        
         await buyFromRestaurant(restaurantId, userId, boughtProducts);
 
         res.status(200).json({ message: 'Successful purchase' });
