@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
-const { userRegister, userLogin, userLogout, getUserById, getMyOrders } = require('../services/userService');
-const { onlyForGuest, isAuth, isOwner } = require('../middleware/guards');
-const { preload } = require('../middleware/preload');
+const { userRegister, userLogin, userLogout, getUserById } = require('../services/userService');
+const { onlyForGuest, isAuth } = require('../middleware/guards');
+
 
 // User register - Not logged in
 router.post('/register',
@@ -85,18 +85,8 @@ router.get('/:userId', isAuth, async (req, res, next) => {
     try {
         const userId = req.params.userId;
         const user = await getUserById(userId);
-        res.status(200).json(user);
-    } catch (error) {
-        next(error);
-    }
-});
 
-//  Get user orders - Logged in and owner
-router.get('/orders/:userId', isAuth, preload(getUserById, 'userId'), isOwner, async (req, res, next) => {
-    try {
-        const userId = req.params.userId;
-        const myOrders = await getMyOrders(userId);
-        res.status(200).json(myOrders);
+        res.status(200).json(user);
     } catch (error) {
         next(error);
     }
