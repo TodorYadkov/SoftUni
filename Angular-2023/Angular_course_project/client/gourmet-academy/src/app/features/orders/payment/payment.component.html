@@ -1,4 +1,5 @@
-<div class="modal-dialog modal-dialog-centered modal-lg d-flex flex-column position-relative mt-4 mb-3 rounded text-white">
+<div
+    class="modal-dialog modal-dialog-centered modal-lg d-flex flex-column position-relative mt-4 mb-3 rounded text-white">
     <div class="modal-content">
         <div class="modal-header">
             <h2 class="modal-title fw-bold text-decoration-underline" id="paymentForm">Вашата поръчка</h2>
@@ -9,10 +10,16 @@
             <!-- Display error -->
             <app-alert-message [errorMsgFromServer]="errorMsgFromServer" [autoHide]="true"></app-alert-message>
             <!-- Display success message -->
-            <app-success-message [successMessage]="successMessage"></app-success-message>
+            <div *ngIf="hasSuccessMessage" class="alert alert-dismissible alert-success">
+                <h3 class="text-decoration-underline">Успешна поръчка!</h3>
+                <p class="my-0">Наш консултант ще се свърже с вас.</p>
+                <p class="my-0">Приятен ден!</p>
+                <p class="fst-italic">Може да редактирате или откажете поръчката в рамките на 5 минути от
+                    <span type="button" data-bs-dismiss="modal" (click)="redirectToProfile()">"ТУК".</span>
+                </p>
+            </div>
 
-
-            <ng-container *ngIf="!successMessage">
+            <ng-container *ngIf="!hasSuccessMessage">
                 <div class="row ">
                     <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
                         <form #payForm="ngForm" (ngSubmit)="payBill(payForm)">
@@ -39,9 +46,12 @@
                                     [ngClass]="{'is-valid': inAddress.valid && inAddress.dirty, 'is-invalid': inAddress.invalid && inAddress.dirty}"
                                     required minlength="5" maxlength="100">
                                 <!-- Validation messages -->
-                                <div *ngIf="inAddress.errors?.['required']" class="invalid-feedback fs-6">Полето е задължително</div>
-                                <div *ngIf="inAddress.errors?.['minlength']" class="invalid-feedback fs-6">Адресът трябва да бъде поне 5 символа</div>
-                                <div *ngIf="inAddress.errors?.['maxLength']" class="invalid-feedback fs-6">Адресът трябва да бъде максимум 100 символа</div>
+                                <div *ngIf="inAddress.errors?.['required']" class="invalid-feedback fs-6">Полето е
+                                    задължително</div>
+                                <div *ngIf="inAddress.errors?.['minlength']" class="invalid-feedback fs-6">Адресът
+                                    трябва да бъде поне 5 символа</div>
+                                <div *ngIf="inAddress.errors?.['maxLength']" class="invalid-feedback fs-6">Адресът
+                                    трябва да бъде максимум 100 символа</div>
                                 <div *ngIf="inAddress.valid" class="valid-feedback fs-6">Полето е валидно</div>
                             </div>
                             <div class="form-submit my-4">
