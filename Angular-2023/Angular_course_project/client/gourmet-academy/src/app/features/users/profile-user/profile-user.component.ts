@@ -73,7 +73,7 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
               currentProductDetails[orderObj._id].quantity += 1;
               currentProductDetails[orderObj._id].totalCost += orderObj.price;
             });
-            
+
             // Get details of the current restaurant where the order is from
             const currentOrderDetails = {
               restaurantImage: currentOrder.restaurantId.image,
@@ -90,8 +90,8 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
             // Return current order
             return currentOrderDetails;
           });
-          // Get summary details for all products
-          this.allSummaryOrders = resultSummaryOrder;
+          // Get summary details for all products in descending order
+          this.allSummaryOrders = resultSummaryOrder.sort((a,b) => b.date - a.date);
 
           return allOrders;
         })
