@@ -12,28 +12,30 @@ export const endpoints = {
     login: 'users/login', // post
     logout: 'users/logout', // get
     getUserById: (userId: string) => `users/${userId}`, // get 
-    getUserBought: (userId: string) => `users/orders/${userId}`, // get
     getAllRestaurants: (page: string, limit: string) => `restaurants?page=${page}&limit=${limit}`, // get // Usage: from front with quey ?page=1&limit=6 {page: "currentNum", limit: 6}
     getRestaurantsBySearch: (restaurantName: string, location: string) => `restaurants/search?name=${restaurantName}&location=${location}`, // get
     getRestaurantById: (restaurantId: string) => `restaurants/${restaurantId}`, // get
     addNewRestaurant: 'restaurants', // post
     updateRestaurant: (restaurantId: string) => `restaurants/${restaurantId}`, // put
     deleteRestaurant: (restaurantId: string) => `restaurants/${restaurantId}`, // delete
-    getRestaurantOrders: (restaurantId: string) => `restaurants/orders/${restaurantId}`, // get
     getAllProductsRestaurant: (restaurantId: string) => `restaurants/products/${restaurantId}`, // get
     getProductById: (productId: string) => `restaurants/products/product/${productId}`, // get
     addNewProduct: (restaurantId: string) => `restaurants/products/${restaurantId}`, // post
     updateProduct: (productId: string) => `restaurants/products/edit/${productId}`, // put
-    deleteProduct: (productId: string) => `restaurants/products/delete/${productId}`, // delete
-    buyFromRestaurant: (restaurantId: string) => `restaurants/buys/${restaurantId}`, // post
+    deleteProduct: (productId: string) => `restaurants/products/delete/${productId}`, // delete   
     getCommentById: (commentId: string) => `restaurants/comments/comment/${commentId}`, // get
     getAllCommentsRestaurant: (restaurantId: string) => `restaurants/comments/${restaurantId}`, // get
     addNewComment: (restaurantId: string) => `restaurants/comments/${restaurantId}`, // post
     updateComment: (commentId: string) => `restaurants/comments/edit/${commentId}`, // put
     deleteComment: (commentId: string) => `restaurants/comments/delete/${commentId}`, // delete
-    getApiKeys: 'security/keys', // get
     getUserRestaurants: (userId: string) => `restaurants/my-restaurants/${userId}`, // get
-
+    getOrderById: (orderId: string) => `restaurants/orders/order/${orderId}`, // get
+    getRestaurantOrders: (restaurantId: string) => `restaurants/orders/${restaurantId}`, // get     
+    getUserBought: (userId: string) => `restaurants/orders/user-orders/${userId}`, // get     
+    buyFromRestaurant: (restaurantId: string) => `restaurants/orders/buys/${restaurantId}`, // post
+    updateOrder: (orderId: string) => `restaurants/orders/edit/${orderId}`, // put
+    deleteOrder: (orderId: string) => `restaurants/orders/delete/${orderId}`, // delete
+    getApiKeys: 'security/keys', // get
 };
 
 // Translate the errors and if they are different from the current ones show them in English
