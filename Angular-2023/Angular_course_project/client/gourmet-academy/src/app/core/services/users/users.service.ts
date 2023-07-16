@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser, IUserToken } from 'src/app/models/user.interfaces';
 import { constants, endpoints } from '../../environments/constants';
-import { IOrderWithProducts } from 'src/app/models/order.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +29,5 @@ export class UsersService {
   getUserById(userId: string): Observable<IUser> {
     const url = constants.hostBackEnd + endpoints.getUserById(userId);
     return this.http.get<IUser>(url);
-  }
-
-  getUserBought(userId: string): Observable<IOrderWithProducts[]> {
-    const url = constants.hostBackEnd + endpoints.getUserBought(userId);
-    return this.http.get<IOrderWithProducts[]>(url);
   }
 }
