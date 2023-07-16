@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { IEnvironments } from 'src/app/models/environment.interfaces';
 import { constants, endpoints } from '../../environments/constants';
 import { IAllRestaurants, IRestaurant } from 'src/app/models/restaurant.interfaces';
-import { IOrder, IOrderWithProducts } from 'src/app/models/order.interfaces';
+import { IOrderWithProducts } from 'src/app/models/order.interfaces';
 import { IComment } from 'src/app/models/comment.interfaces';
 import { IProduct } from 'src/app/models/product.interfaces';
 
@@ -115,6 +115,10 @@ export class DataService {
     const url = constants.hostBackEnd + endpoints.buyFromRestaurant(restaurantId);
     return this.http.post<{ addressDelivery: string, orders: string[] }>(url, purchaseData);
   }
-
+  // Get user purchased products
+  getUserBought(userId: string): Observable<IOrderWithProducts[]> {
+    const url = constants.hostBackEnd + endpoints.getUserBought(userId);
+    return this.http.get<IOrderWithProducts[]>(url);
+  }
   
 }
