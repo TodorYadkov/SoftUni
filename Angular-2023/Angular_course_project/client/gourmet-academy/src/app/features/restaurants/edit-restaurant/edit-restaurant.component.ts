@@ -47,7 +47,7 @@ export class EditRestaurantComponent implements OnDestroy {
         },
         error: (error) => {
           this.isLoading = false;
-          this.errorMsgFromServer = error.error.message.join('\n');
+          this.errorMsgFromServer = error.error.message;
         }
       });
   }
