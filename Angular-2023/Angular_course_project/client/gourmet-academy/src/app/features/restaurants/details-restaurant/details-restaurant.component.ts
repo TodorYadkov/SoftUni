@@ -54,7 +54,7 @@ export class DetailsRestaurantComponent implements OnInit, OnDestroy {
       ).subscribe({
         next: (data) => this.isLoading = false,
         error: (error) => {
-          this.errorMsgFromServer = error.error.message.join('\n');
+          this.errorMsgFromServer = error.error.message;
           this.isLoading = false;
         },
         complete: () => this.isLoading = false,
