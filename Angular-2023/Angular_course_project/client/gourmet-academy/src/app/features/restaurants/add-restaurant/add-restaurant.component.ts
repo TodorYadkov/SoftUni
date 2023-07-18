@@ -47,7 +47,7 @@ export class AddRestaurantComponent implements OnInit, OnDestroy {
           this.router.navigate(['details', data._id]);
         },
         error: (error) => {
-          this.errorMsgFromServer = error.error.message.join('\n');
+          this.errorMsgFromServer = error.error.message;
           this.isLoading = false;
         },
       });
