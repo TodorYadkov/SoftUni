@@ -23,6 +23,8 @@ import { EditCommentComponent } from './comments/edit-comment/edit-comment.compo
 import { DeleteCommentComponent } from './comments/delete-comment/delete-comment.component';
 import { PaymentComponent } from './orders/payment/payment.component';
 import { ProfileUserComponent } from './users/profile-user/profile-user.component';
+import { EditOrderComponent } from './orders/edit-order/edit-order.component';
+import { DeleteOrderComponent } from './orders/delete-order/delete-order.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { ProfileUserComponent } from './users/profile-user/profile-user.componen
         EditCommentComponent,
         DeleteCommentComponent,
         PaymentComponent,
-        ProfileUserComponent
+        ProfileUserComponent,
+        EditOrderComponent,
+        DeleteOrderComponent
     ],
     imports: [
         CommonModule,
