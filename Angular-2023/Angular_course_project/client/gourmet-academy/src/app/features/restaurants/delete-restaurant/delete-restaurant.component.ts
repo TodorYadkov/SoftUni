@@ -37,7 +37,7 @@ export class DeleteRestaurantComponent {
         },
         error: (error) => {
           this.isLoading = false;
-          this.errorMsgFromServer = error.error.message.join('\n');
+          this.errorMsgFromServer = error.error.message;
         }
       })
   };
