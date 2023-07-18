@@ -42,5 +42,6 @@ export const endpoints = {
 export const translateErrorsFromServer: Map<string, string> = new Map([
     ['Email is already used!', 'Имейлът е вече зает моля използвайте друг'],
     ['Invalid username or password!', 'Невалиден потребител или парола'],
-    ['Invalid email', 'Въведеният имейл е невалиден']
+    ['Invalid email', 'Въведеният имейл е невалиден'],
+    ['Forbidden - Time is more than five minutes', 'Поръчката не може да се редактира. Изминали са повече от 5 минути. За допълнителна информация моля позвънете в ресторанта']
 ]);
