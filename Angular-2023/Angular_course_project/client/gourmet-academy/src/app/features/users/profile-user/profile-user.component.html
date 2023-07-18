@@ -32,7 +32,7 @@
                 <h3 class="card-title text-white "><i class="bi bi-list"></i> Моите поръчки</h3>
                 <hr class="mt-0 mb-4">
 
-                <section class="fst-roboto">
+                <section class="fst-roboto mb-3">
 
                     <details *ngFor="let order of allSummaryOrders" class="card">
                         <summary>
@@ -52,47 +52,71 @@
                                 </h3>
                                 <span>{{order.totalBillCost | number: '1.2-2'}} лв.</span>
                             </div>
+                            <!-- Edit - Delete section -->
+                            <div *ngIf="order.canEdit">
+                                <!-- Edit button -->
+                                <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#' + 'edit_' + order._id"
+                                    class="btn btn-primary btn-sm ps-0 pe-1 py-0 me-1">Редактирай</button>
+                                <!-- Delete button -->
+                                <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#' + 'delete_' + order._id"
+                                    class="btn btn-primary btn-sm ps-0 pe-1 py-0">Откажи</button>
+
+                                <!-- Edit order -->
+                                <!-- modal - add data-bs-focus="true" - Puts the focus on the modal when initialized, data-bs-backdrop="static" = for a backdrop which doesn't close the modal on click -->
+                                <!-- modal - data-bs-keyboard="true" - Closes the modal when escape key is pressed -->
+                                <app-edit-order
+                                [userDetails]="userDetails"
+                                [userOrders]="userOrders"
+                                [orderToEditId]="order._id"
+                                (updateOrderList)="refreshUserOrdersList()"
+                                ></app-edit-order>
+
+                                <!-- Delete order -->
+                                <app-delete-order [orderToDeleteId]="order._id" (deletedOrder)="refreshUserOrdersList()"></app-delete-order>
+
+                            </div>
+
                         </summary>
 
                         <div *ngFor="let product of order.products" class="mt-1 justify-content-between ">
-                            
-                                <div class="row">
-                                    <div class="col d-flex justify-content-start">
-                                        <div class="d-none d-lg-flex me-2">
-                                            <dt><img class="rounded text-muted" src="{{product.image}}" alt="No Image"
-                                                    width="70" height="50"></dt>
-                                        </div>
 
-                                        <div>
-                                            <dd class="text-muted mb-0">Име</dd>
-                                            <dt class="text-center">{{product.name}}</dt>
-                                        </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-start">
+                                    <div class="d-none d-lg-flex me-2">
+                                        <dt><img class="rounded text-muted" src="{{product.image}}" alt="No Image"
+                                                width="70" height="50"></dt>
                                     </div>
 
-                                    <div class="col d-flex justify-content-end">
-                                        <div class="me-4">
-                                            <dd class="text-muted mb-0">Грамаж</dd>
-                                            <dt class="text-center">{{product.weight}}</dt>
-                                        </div>
-
-                                        <div class="me-4">
-                                            <dd class="text-muted mb-0">Брой</dd>
-                                            <dt class="text-center">{{product.quantity}}</dt>
-                                        </div>
-
-                                        <div class="me-4">
-                                            <dd class="text-muted mb-0">Цена</dd>
-                                            <dt class="text-center">{{product.price | number:'1.2-2'}} лв.</dt>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <dd class="text-muted mb-0">Общо</dd>
-                                            <dt class="text-center">{{product.totalCost | number:'1.2-2'}} лв.</dt>
-                                        </div>
+                                    <div>
+                                        <dd class="text-muted mb-0">Име</dd>
+                                        <dt class="text-center">{{product.name}}</dt>
                                     </div>
-
                                 </div>
-                            
+
+                                <div class="col d-flex justify-content-end">
+                                    <div class="me-4">
+                                        <dd class="text-muted mb-0">Грамаж</dd>
+                                        <dt class="text-center">{{product.weight}}</dt>
+                                    </div>
+
+                                    <div class="me-4">
+                                        <dd class="text-muted mb-0">Брой</dd>
+                                        <dt class="text-center">{{product.quantity}}</dt>
+                                    </div>
+
+                                    <div class="me-4">
+                                        <dd class="text-muted mb-0">Цена</dd>
+                                        <dt class="text-center">{{product.price | number:'1.2-2'}} лв.</dt>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <dd class="text-muted mb-0">Общо</dd>
+                                        <dt class="text-center">{{product.totalCost | number:'1.2-2'}} лв.</dt>
+                                    </div>
+                                </div>
+
+                            </div>
+
                             <hr class="my-0">
                         </div>
 
@@ -119,69 +143,3 @@
 
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <table class="table rounded table-striped table-hover table-responsive">
-    <thead>
-        <tr>
-            <th scope="col">Детайли</th>
-            <th scope="col">Име</th>
-            <th scope="col">Store Name</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Address</th>
-            <th scope="col">Delivery Address</th>
-            <th scope="col">Creation Time</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        <ng-container *ngFor="let order of userOrders">
-            <tr>
-                <td><img src="{{ order.restaurantId.image }}" alt="Store Image" width="50" /></td>
-                <td>{{ order.restaurantId.name }}</td>
-                <td>{{ order.restaurantId.address }}</td>
-                <td>{{ order.restaurantId.phone }}</td>
-                <td (click)="toggleRow()"><i class="bi bi-eye"></i></td>
-                <td>{{ order.addressDelivery }}</td>
-                <td>{{order.date | date:'dd.MM.yyyy, HH:mm'}}</td>
-                <td>
-                    <button class="btn btn-primary btn-sm">Edit</button>
-                    <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-            </tr>
-
-            <ng-container *ngIf="!isHiddenRow">
-                <tr *ngFor="let product of hiddenRowDetails">
-                    <td><img src="{{product.image}}" alt="Store Image" width="50" /></td>
-                    <td>{{product.name}}</td>
-                    <td>{{product.weight}}</td>
-                    <td>{{product.price}}</td>
-                    <td>{{product.quantity}}</td>
-                    <td>{{product.totalCost}}</td>
-                </tr>
-            </ng-container>
-
-        </ng-container>
-
-    </tbody>
-</table> -->
