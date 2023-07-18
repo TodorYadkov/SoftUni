@@ -50,7 +50,7 @@ export class AddProductComponent implements OnDestroy {
         },
         error: (error) => {
           this.isLoading = false;
-          this.errorMsgFromServer = error.error.message.join('\n');
+          this.errorMsgFromServer = error.error.message;
         }
       });
   }
