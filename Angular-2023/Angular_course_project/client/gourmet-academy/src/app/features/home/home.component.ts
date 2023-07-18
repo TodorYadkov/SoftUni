@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.isLoading = false;
         },
         error: (error) => {
-          this.errorMsgFromServer = error.error.message.join('\n');
+          this.errorMsgFromServer = error.error.message;
           this.isLoading = false;
         }
       });
@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.isSubmitedSearch = this.foundRestaurants.length === 0;
           },
           error: (error) => {
-            this.errorMsgFromServer = error.error.message.join('\n');
+            this.errorMsgFromServer = error.error.message;
             this.isLoading = false;
           }
         });
