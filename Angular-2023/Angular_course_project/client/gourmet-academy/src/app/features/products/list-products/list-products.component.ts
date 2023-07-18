@@ -124,7 +124,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           this.isLoading = false;
-          this.errorMsgFromServer = error.error.message.join('\n');
+          this.errorMsgFromServer = error.error.message;
         }
       });
   }
