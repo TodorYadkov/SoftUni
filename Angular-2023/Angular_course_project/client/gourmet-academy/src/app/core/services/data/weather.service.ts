@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { constants } from '../../environments/constants';
 import { HttpClient } from '@angular/common/http';
-import { IForecastDaily, ILocation } from 'src/app/models/wheater.interfaces';
+import { Observable } from 'rxjs';
+import { IWeather } from 'src/app/models/weather.interfaces';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,8 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  geCityByIP(apiKey: string, ipAddress: string): Observable<ILocation> {
-    const url = constants.weatherGetCityByIP_URL(apiKey, ipAddress);
-    return this.http.get<ILocation>(url);
+  getWeatherNow(weatherApiKey: string): Observable<IWeather> {
+    const url = constants.weatherURL(weatherApiKey);
+    return this.http.get<IWeather>(url);
   }
-
-  getOneDayForecast(apiKey: string, cityKey: string): Observable<IForecastDaily> {
-    const url = constants.forecastDaily_Url(apiKey, cityKey);
-    return this.http.get<IForecastDaily>(url);
-  }
-
 }
