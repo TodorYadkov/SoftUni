@@ -51,15 +51,16 @@
                                     <div *ngIf="inAddress.valid" class="valid-feedback fs-6">Полето е валидно</div>
                                 </div>
                                 <div class="form-submit my-4">
-                                    <button [disabled]="orderForm.invalid" class="btn btn-primary btn-lg"
-                                        style="margin-left: 116px;"><i class="bi bi-pencil-square"></i>
+                                    <button [disabled]="orderForm.invalid || totalBillCost === 0"
+                                        class="btn btn-primary btn-lg" style="margin-left: 116px;"><i
+                                            class="bi bi-pencil-square"></i>
                                         Редактирай</button>
                                 </div>
                             </form>
                         </div>
                         <!-- Summary bill -->
-                        <div class="col d-flex" style="margin-left: 49px;">
-                            <div class="summary rounded py-0" style="width: 340px;position: relative;">
+                        <div *ngIf="totalBillCost !== 0;else noProducts" class="col d-flex" style="margin-left: 49px;">
+                            <div class="summary rounded py-0 position-relative" style="width: 340px;">
                                 <h5 class="my-0 py-0">Редактирай поръчка</h5>
                                 <hr class="my-1 mb-4">
 
@@ -72,22 +73,23 @@
                                     <div class="col">
                                         <div class="static-info me-2">
                                             <div class="total-info actions">
-                                                <span class="value">{{order.totalPriceProduct | number:'1.2-2'}} лв.</span>
+                                                <span class="value">{{order.totalPriceProduct | number:'1.2-2'}}
+                                                    лв.</span>
 
                                                 <!-- Buttons to add, remove, delete ordered product -->
-                                                    <button type="button" class="action-btn" title="Добави"
-                                                        (click)="addMoreProduct(order.product)">
-                                                        <i class="bi bi-plus-square fs-6 ms-1 text-white"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn" title="Намали"
-                                                        (click)="removeProduct(order.product)">
-                                                        <i class="bi bi-dash-square fs-6 mx-1 text-white"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn ms-1" title="Изтрий"
-                                                        (click)="deleteProduct(order.product)">
-                                                        <i class="bi bi-trash3 fs-6 text-white"></i>
-                                                    </button>
-                                                
+                                                <button type="button" class="action-btn" title="Добави"
+                                                    (click)="addMoreProduct(order.product)">
+                                                    <i class="bi bi-plus-square fs-6 ms-1 text-white"></i>
+                                                </button>
+                                                <button type="button" class="action-btn" title="Намали"
+                                                    (click)="removeProduct(order.product)">
+                                                    <i class="bi bi-dash-square fs-6 mx-1 text-white"></i>
+                                                </button>
+                                                <button type="button" class="action-btn ms-1" title="Изтрий"
+                                                    (click)="deleteProduct(order.product)">
+                                                    <i class="bi bi-trash3 fs-6 text-white"></i>
+                                                </button>
+
                                             </div>
                                         </div>
                                     </div>
@@ -107,6 +109,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <ng-template #noProducts>
+                        <div class="summary rounded py-0 position-relative" style="width: 340px;">
+                            <h5 class="my-0 py-0">Редактирай поръчка</h5>
+                            <hr class="my-1 mb-4">
+                            <div class="alert alert-dismissible alert-secondary d-flex flex-column align-items-center">
+                                <p class="text-center">Няма налични продукти във вашата поръчка.</p>
+                                <button type="button" (click)="onCloseModal()" class="btn btn-secondary" data-bs-dismiss="modal">Назад</button>
+                            </div>
+                        </div>
+
+                    </ng-template>
+
                 </ng-container>
 
                 <div class="modal-footer">
