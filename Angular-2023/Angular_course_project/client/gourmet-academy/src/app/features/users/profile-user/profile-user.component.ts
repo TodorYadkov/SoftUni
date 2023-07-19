@@ -1,30 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, map } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
-import { IOrderWithProducts } from 'src/app/models/order.interfaces';
+import { IOrderSummary, IOrderWithProducts } from 'src/app/models/order.interfaces';
 import { IUser } from 'src/app/models/user.interfaces';
-
-// Summary for each order
-type OrderSummary = {
-  _id: string;
-  restaurantImage: string;
-  restaurantName: string;
-  restaurantLocation: string;
-  restaurantAddress: string;
-  restaurantPhone: string;
-  totalBillCost: number;
-  addressDelivery: string;
-  date: number;
-  canEdit: boolean;
-  products: {
-    image: string;
-    name: string;
-    weight: string;
-    quantity: number;
-    price: number;
-    totalCost: number;
-  }[];
-};
 
 @Component({
   selector: 'app-profile-user',
@@ -35,7 +13,7 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
 
   @Input() userDetails!: IUser;
 
-  allSummaryOrders!: OrderSummary[]; // Using to show summary information for each order
+  allSummaryOrders!: IOrderSummary[]; // Using to show summary information for each order
   isRoleAdmin!: boolean; // Use to show admin profile page or user
   subscription!: Subscription;
   errorMsgFromServer!: string;
@@ -138,3 +116,4 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
     }
   }
 }
+
