@@ -7,7 +7,7 @@ module.exports = async (connectionString) => {
             useUnifiedTopology: true,
         });
 
-        console.log('Database is succefully connected!');
+        console.log('Database is successfully connected!');
     } catch (error) {
         console.error(error.message);
         console.log('Error to initialize Database');
