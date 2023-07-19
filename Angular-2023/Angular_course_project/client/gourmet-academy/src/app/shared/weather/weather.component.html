@@ -1,5 +1,5 @@
 <!-- Weather icon and data -->
-<ul class="navbar-nav ms-md-auto text-white me-5 d-none d-lg-flex flex-grow-1">
+<ul *ngIf="weatherData" class="navbar-nav ms-md-auto text-white me-5 d-none d-lg-flex flex-grow-1">
     <li class="nav-item text-center">
         <img src="{{weatherData.current.condition.icon}}" alt="{{weatherData.current.condition.text}}" class="weather-img">
         <div class="d-block">
