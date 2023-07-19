@@ -21,19 +21,18 @@ export class WeatherComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // this.subscription = this.dataService.getAPIKeys()
-    //   .pipe(
-    //     mergeMap((apiKeys: IEnvironments) => this.weatherService.getWeatherNow(apiKeys.weatherApiKey)),
-    //   ).subscribe({
-    //     next: (data) => {
-    //       this.weatherData = data;
-    //       this.weatherData.current.condition.icon = this.weatherData.current.condition.icon.startsWith('//cdn.weatherapi.com/')
-    //         ? this.weatherData.current.condition.icon.replace('//cdn.weatherapi.com/', '/assets/')
-    //         : this.weatherData.current.condition.icon;
-    //     },
-    //     error: (error) => console.error(error),
-    //   });
-
+    this.subscription = this.dataService.getAPIKeys()
+      .pipe(
+        mergeMap((apiKeys: IEnvironments) => this.weatherService.getWeatherNow(apiKeys.weatherApiKey)),
+      ).subscribe({
+        next: (data) => {
+          this.weatherData = data;
+          this.weatherData.current.condition.icon = this.weatherData.current.condition.icon.startsWith('//cdn.weatherapi.com/')
+            ? this.weatherData.current.condition.icon.replace('//cdn.weatherapi.com/', '/assets/')
+            : this.weatherData.current.condition.icon;
+        },
+        error: (error) => console.error(error),
+      });
   }
 
   ngOnDestroy(): void {
