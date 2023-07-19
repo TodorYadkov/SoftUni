@@ -6,7 +6,8 @@ import { LoginComponent } from './users/login/login.component';
 import { AddRestaurantComponent } from './restaurants/add-restaurant/add-restaurant.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { ProfileComponent } from './users/profile/profile.component';
+import { ProfileComponent } from './users/profile-admin/profile.component';
+import { ProfileUserComponent } from './users/profile-user/profile-user.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditRestaurantComponent } from './restaurants/edit-restaurant/edit-restaurant.component';
@@ -22,7 +23,6 @@ import { CommentsComponent } from './comments/add-comments/add-comments.componen
 import { EditCommentComponent } from './comments/edit-comment/edit-comment.component';
 import { DeleteCommentComponent } from './comments/delete-comment/delete-comment.component';
 import { PaymentComponent } from './orders/payment/payment.component';
-import { ProfileUserComponent } from './users/profile-user/profile-user.component';
 import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 import { DeleteOrderComponent } from './orders/delete-order/delete-order.component';
 
