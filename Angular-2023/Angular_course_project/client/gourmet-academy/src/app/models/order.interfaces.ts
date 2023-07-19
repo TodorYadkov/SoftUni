@@ -18,3 +18,25 @@ export interface IOrderWithProducts {
     orders: IProduct[];
     date: number;
 };
+
+// Summary for each order
+export interface IOrderSummary {
+    _id: string;
+    restaurantImage: string;
+    restaurantName: string;
+    restaurantLocation: string;
+    restaurantAddress: string;
+    restaurantPhone: string;
+    totalBillCost: number;
+    addressDelivery: string;
+    date: number;
+    canEdit: boolean;
+    products: {
+      image: string;
+      name: string;
+      weight: string;
+      quantity: number;
+      price: number;
+      totalCost: number;
+    }[];
+  };
