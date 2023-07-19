@@ -29,7 +29,7 @@
         <!-- Hide if the owner not have any restaurant -->
         <div class="card border-primary mb-4" *ngIf="userOrders.length > 0; else noOrders">
             <div class="card-body">
-                <h3 class="card-title text-white "><i class="bi bi-list"></i> Моите поръчки</h3>
+                <h3 class="card-title text-white"><i class="bi bi-list"></i> Моите поръчки</h3>
                 <hr class="mt-0 mb-4">
 
                 <section class="fst-roboto mb-3">
@@ -44,7 +44,7 @@
                                 <h3>
                                     <strong>{{order.restaurantName}}</strong>
                                     <small class="mt-1"><i class="bi bi-geo-alt-fill"></i>
-                                        {{order.restaurantLocation}},{{order.restaurantAddress}}</small>
+                                        {{order.restaurantLocation}}, {{order.restaurantAddress}}</small>
                                     <small class="mt-1"><i class="bi bi-telephone-fill"></i>
                                         {{order.restaurantPhone}}</small>
                                     <small class="mt-1">
@@ -55,24 +55,24 @@
                             <!-- Edit - Delete section -->
                             <div *ngIf="order.canEdit">
                                 <!-- Edit button -->
-                                <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#' + 'edit_' + order._id"
+                                <button type="button" data-bs-toggle="modal"
+                                    [attr.data-bs-target]="'#' + 'edit_' + order._id"
                                     class="btn btn-primary btn-sm ps-0 pe-1 py-0 me-1">Редактирай</button>
                                 <!-- Delete button -->
-                                <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#' + 'delete_' + order._id"
+                                <button type="button" data-bs-toggle="modal"
+                                    [attr.data-bs-target]="'#' + 'delete_' + order._id"
                                     class="btn btn-primary btn-sm ps-0 pe-1 py-0">Откажи</button>
 
                                 <!-- Edit order -->
                                 <!-- modal - add data-bs-focus="true" - Puts the focus on the modal when initialized, data-bs-backdrop="static" = for a backdrop which doesn't close the modal on click -->
                                 <!-- modal - data-bs-keyboard="true" - Closes the modal when escape key is pressed -->
-                                <app-edit-order
-                                [userDetails]="userDetails"
-                                [userOrders]="userOrders"
-                                [orderToEditId]="order._id"
-                                (updateOrderList)="refreshUserOrdersList()"
-                                ></app-edit-order>
+                                <app-edit-order [userDetails]="userDetails" [userOrders]="userOrders"
+                                    [orderToEditId]="order._id"
+                                    (updateOrderList)="refreshUserOrdersList()"></app-edit-order>
 
                                 <!-- Delete order -->
-                                <app-delete-order [orderToDeleteId]="order._id" (deletedOrder)="refreshUserOrdersList()"></app-delete-order>
+                                <app-delete-order [orderToDeleteId]="order._id"
+                                    (deletedOrder)="refreshUserOrdersList()"></app-delete-order>
 
                             </div>
 
@@ -131,10 +131,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="text-center fst-marck text-primary-emphasis my-5 py-4">
-                            <h2 class="mt-4"><strong>Все още не сте пробвали да поръчате онлайн</strong></h2>
-                            <h2>Направете го <a routerLink="/" class="alert-link">сега</a> и прекарайте повече време с
-                                любимите си хора <i class="bi bi-emoji-smile"></i></h2>
+                        <div class="card-body">
+                            <div class="text-center fst-bad my-5 py-4">
+                                <h2 class="mt-4 text-white"><strong>Все още не сте пробвали да поръчате онлайн</strong></h2>
+                                <h2 class="text-white">Направете го <a routerLink="/" class="alert-link text-white">сега</a> и прекарайте повече време
+                                    с
+                                    любимите си хора <i class="bi bi-emoji-smile"></i></h2>
+                            </div>
                         </div>
                     </div>
                 </div>
