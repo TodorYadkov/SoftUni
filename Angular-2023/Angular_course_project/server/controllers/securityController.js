@@ -5,8 +5,8 @@ require('dotenv').config();
 router.get('/keys', async (req, res, next) => {
     try {
         const apiKeys = { // - ADD here if another key is needed
-            accuWeatherApiKey: process.env.API_KEY_ACCUWEATEHER,
-        };
+           weatherApiKey: process.env.API_KEY_WEATHER,
+        };        
 
         res.status(200).json(apiKeys);
     } catch (error) {
