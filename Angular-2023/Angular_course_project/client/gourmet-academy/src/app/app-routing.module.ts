@@ -4,7 +4,7 @@ import { HomeComponent } from './features/home/home.component';
 import { RegisterComponent } from './features/users/register/register.component';
 import { LoginComponent } from './features/users/login/login.component';
 import { AddRestaurantComponent } from './features/restaurants/add-restaurant/add-restaurant.component';
-import { ProfileComponent } from './features/users/profile/profile.component';
+import { ProfileComponent } from './features/users/profile-admin/profile.component';
 import { AboutUsComponent } from './features/about-us/about-us.component';
 import { DetailsRestaurantComponent } from './features/restaurants/details-restaurant/details-restaurant.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
@@ -24,7 +24,6 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: '**', component: NotFoundComponent },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
