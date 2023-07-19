@@ -1,10 +1,9 @@
 export const constants = {
     hostBackEnd: 'http://localhost:3000/',
+    weatherURL: (weatherApiKey: string) => `http://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=auto:ip&lang=bg`,
     userTokenName: '65c227bd8f4eb7fe5ee3cd2ad13a5a8c',
     defaultPaginationPageNum: '1',
     defaultPaginationLimitNum: '3',
-    weatherGetCityByIP_URL: (apiKey: string, ipAddress: string) => `http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${apiKey}&q=${ipAddress}&language=en-us&details=false`,
-    forecastDaily_Url: (apiKey: string, cityKey: string) => `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=${apiKey}&language=en-us&details=false&metric=true`,
 };
 
 export const endpoints = {
