@@ -13,11 +13,6 @@
  */
 @import url(https://fonts.googleapis.com/css2?family=Kablammo&family=Marck+Script&family=Bad+Script&family=Montserrat+Alternates:wght@100&family=Roboto:wght@100&family=Rubik+Puddles&display=swap);
 
-/* If must change color of the theme */
-/* --bs-primary-rgb: 2-33, 84, 32; #e-95420
---bs-secondary-rgb: 1-74, 167, 159; 
-    --bs-body-bg-rgb: 3-3, 37, 41;*/
-
 :root,
 [data-bs-theme=light] {
     --bs-blue: #007bff;
