@@ -1,4 +1,4 @@
-# Gourmet Academy
+
 
 **Gourmet Academy** is my final project for the Angular course in SoftUni is created with Node.js, Express.js, MongoDB with Mongoose for the backend, and Angular for the frontend.
 
