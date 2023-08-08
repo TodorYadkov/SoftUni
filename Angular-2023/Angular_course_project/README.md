@@ -164,4 +164,4 @@ The routing configuration defines the navigation paths within the application, a
 ![nav_logged_admin](https://github.com/TodorYadkov/SoftUni/assets/4013980/10ee64ae-3434-4127-b8d1-0bef34323ae2)
 
 ## Footer
-![footer](https://github.com/TodorYadkov/SoftUni/assets/4013980/fc705c07-476f-474d-9f44-2597e4414737)
+![footer](https://github.com/TodorYadkov/SoftUni/assets/4013980/fe953e77-32b2-4677-90a9-dbc910a6e3e8)
