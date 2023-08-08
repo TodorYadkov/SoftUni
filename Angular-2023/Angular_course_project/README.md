@@ -16,7 +16,7 @@
    - [Backend Deployment](#backend-deployment)
    - [Frontend Deployment](#frontend-deployment)
    - [Database](#database)
-6. [Architecture](#architecture)
+6. [Architecture-Overview](#architecture-overview)
 7. [Screenshots](#screenshots)
    
 ## Introduction
@@ -104,6 +104,74 @@ The Angular frontend of Gourmet Academy is deployed on [Netlify](https://www.net
 
 The MongoDB database used for Gourmet Academy is hosted on [MongoDB Cloud](https://cloud.mongodb.com). MongoDB Cloud ensures reliable and scalable data storage for the application.
 
-## Architecture
+## Architecture-Overview
 
-## Screenshots
+## App Module
+The `AppModule` is the root module of the application. It sets up the main components and services, and it acts as the entry point to the application.
+
+![AppModule](https://github.com/TodorYadkov/SoftUni/assets/4013980/777ae6e6-a42e-4f0c-a77f-aeddc607f8f3)
+
+## Features Module
+The `FeaturesModule` contains feature-specific components.
+
+![features-module](https://github.com/TodorYadkov/SoftUni/assets/4013980/543b520b-447e-4e6b-a3c2-e2ecae55c4c4)
+
+
+## Shared Module
+The `SharedModule` includes components that are shared across the application.
+
+![SharedModule](https://github.com/TodorYadkov/SoftUni/assets/4013980/e4b935ec-8003-442c-a5cf-f01f2f4b9653)
+
+## Routes
+The routing configuration defines the navigation paths within the application, allowing users to access different views based on their roles and actions.
+
+![routes](https://github.com/TodorYadkov/SoftUni/assets/4013980/cde36bd9-a870-4a14-943e-c4d8d9b3b7e0)
+
+## Entire overview
+![overview](https://github.com/TodorYadkov/SoftUni/assets/4013980/65fe5fb1-01cc-4aa2-b3da-4c272bb48970)
+
+# Screenshots
+
+## Home Page
+
+The home page welcomes users to Gourmet Academy and provides a brief overview of the platform's features.
+
+## Login
+
+The login page allows users to authenticate themselves and access their accounts.
+
+## Register
+
+The registration page enables new users to create an account on Gourmet Academy.
+
+## About Us
+
+The "About Us" page offers information about Gourmet Academy and its mission.
+
+## Footer
+
+The footer section provides additional navigation links and contact information.
+
+## Navigation - Not Logged In
+
+The navigation bar for users who are not logged in displays relevant options such as viewing menus and accessing the "About Us" page.
+
+## Navigation - Logged In User
+
+Logged-in users have additional options in the navigation bar, including accessing their profile and placing orders.
+
+## Navigation - Logged In Admin
+
+Logged-in administrators can manage restaurants, products, and view statistics through the navigation bar.
+
+## User Profile
+
+The user profile page displays personal information, order history, and comments.
+
+## Admin Profile
+
+The admin profile page provides access to restaurant management and statistics.
+
+## Order
+
+The order page allows users to review and confirm their orders before placing them.
