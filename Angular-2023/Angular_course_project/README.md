@@ -133,45 +133,35 @@ The routing configuration defines the navigation paths within the application, a
 # Screenshots
 
 ## Home Page
-
-The home page welcomes users to Gourmet Academy and provides a brief overview of the platform's features.
+![home_page](https://github.com/TodorYadkov/SoftUni/assets/4013980/0b9eb47f-7f39-45c0-bc8d-cefc39076e2d)
+![home_page-1](https://github.com/TodorYadkov/SoftUni/assets/4013980/a10d4ab9-aba1-4370-8236-ed00b5b97faf)
 
 ## Login
-
-The login page allows users to authenticate themselves and access their accounts.
+![login](https://github.com/TodorYadkov/SoftUni/assets/4013980/43e92aea-df0e-4501-9cb5-0303993b0f7b)
 
 ## Register
-
-The registration page enables new users to create an account on Gourmet Academy.
+![register](https://github.com/TodorYadkov/SoftUni/assets/4013980/6689afd1-5cb7-4c3f-9694-3a832016c06e)
 
 ## About Us
-
-The "About Us" page offers information about Gourmet Academy and its mission.
-
-## Footer
-
-The footer section provides additional navigation links and contact information.
-
-## Navigation - Not Logged In
-
-The navigation bar for users who are not logged in displays relevant options such as viewing menus and accessing the "About Us" page.
-
-## Navigation - Logged In User
-
-Logged-in users have additional options in the navigation bar, including accessing their profile and placing orders.
-
-## Navigation - Logged In Admin
-
-Logged-in administrators can manage restaurants, products, and view statistics through the navigation bar.
+![about-us](https://github.com/TodorYadkov/SoftUni/assets/4013980/59941b8e-db22-48f2-a453-d135bda2072d)
 
 ## User Profile
-
-The user profile page displays personal information, order history, and comments.
+![user-profile](https://github.com/TodorYadkov/SoftUni/assets/4013980/343e37f8-9f3a-49fa-bc5a-111cd0724fb4)
 
 ## Admin Profile
-
-The admin profile page provides access to restaurant management and statistics.
+![user-admin](https://github.com/TodorYadkov/SoftUni/assets/4013980/7e664f40-d818-47dc-bdca-64ab723f2014)
 
 ## Order
+![order](https://github.com/TodorYadkov/SoftUni/assets/4013980/da365179-b158-4058-a6b3-859e48c558ba)
 
-The order page allows users to review and confirm their orders before placing them.
+## Navigation - Not Logged In
+![nav_not_logged](https://github.com/TodorYadkov/SoftUni/assets/4013980/ecfb9c48-3704-4878-af24-8247dbaa1faf)
+
+## Navigation - Logged In User
+![nav_logged_user](https://github.com/TodorYadkov/SoftUni/assets/4013980/d5c6988c-381c-4647-b417-69420cc2981a)
+
+## Navigation - Logged In Admin
+![nav_logged_admin](https://github.com/TodorYadkov/SoftUni/assets/4013980/10ee64ae-3434-4127-b8d1-0bef34323ae2)
+
+## Footer
+![footer](https://github.com/TodorYadkov/SoftUni/assets/4013980/fc705c07-476f-474d-9f44-2597e4414737)
