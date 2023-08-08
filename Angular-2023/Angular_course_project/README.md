@@ -16,7 +16,9 @@
    - [Backend Deployment](#backend-deployment)
    - [Frontend Deployment](#frontend-deployment)
    - [Database](#database)
-
+6. [Architecture](#architecture)
+7. [Screenshots](#screenshots)
+   
 ## Introduction
 
 The main objective of Gourmet Academy is to provide users with an easy-to-use platform to explore various cuisines, view restaurant menus, and place orders for delivery. It supports three types of users:
@@ -101,3 +103,7 @@ The Angular frontend of Gourmet Academy is deployed on [Netlify](https://www.net
 ### Database
 
 The MongoDB database used for Gourmet Academy is hosted on [MongoDB Cloud](https://cloud.mongodb.com). MongoDB Cloud ensures reliable and scalable data storage for the application.
+
+## Architecture
+
+## Screenshots
