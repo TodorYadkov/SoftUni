@@ -1,0 +1,64 @@
+html {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Georgia, serif;
+
+}
+
+
+ul {
+    list-style: square;
+}
+
+ul ul {
+    list-style: disc;
+}
+
+ul ul ul {
+    list-style: circle;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+table thead {
+    text-align: left;
+    background-color: #cccccc;
+}
+
+table th,
+table td {
+    border: 1px solid #d7d7d7;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+table th,
+table td {
+    padding-left: 5px;
+}
+
+blockquote {
+    border-left: 4px solid rgb(221, 221, 221);
+    padding-left: 20px;
+    font-style: italic;
+    line-height: 2;
+}
+
+blockquote .author {
+    text-align: right;
+}
