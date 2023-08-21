@@ -1,0 +1,43 @@
+html {
+    font-family: Helvetica, sans-serif;
+}
+
+nav {
+    line-height: 1;
+    display: inline-block;
+}
+
+nav p {
+    display: inline-block;
+    margin-right: 30px;
+    font-weight: 600;
+    font-size: 26px;
+}
+
+nav ul {
+    display: inline-block;
+    list-style-type: none;
+}
+
+ul li {
+    display: inline-block;
+}
+
+li a {
+    color: #80c080;
+    text-decoration: none;
+}
+
+li:not(:last-child) {
+    margin-right: 20px;
+}
+
+hr {
+    margin-top: 0px;
+    border: 1px solid black;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 100;
+}
