@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+main {
+    width: 700px;
+    height: 500px;
+    margin: 60px;
+}
+
+.new {
+    position: relative;
+    top: -200px;
+    right: 150px;
+}
