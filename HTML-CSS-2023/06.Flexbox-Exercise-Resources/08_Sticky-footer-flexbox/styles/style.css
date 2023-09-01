@@ -1,0 +1,40 @@
+body {
+    background-color: rgb(238, 238, 238);
+    height: 100vh;
+    font-family: Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    border-bottom: 2px solid black;
+    margin-bottom: 36px;
+}
+
+header>p {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 12px;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+main p {
+    margin-bottom: 20px;
+}
+
+main p:last-child {
+    margin-bottom: 36px;
+}
+
+footer {
+    color: rgb(255, 255, 255);
+    background-color: rgb(102, 102, 102);
+    padding: 16px;
+}
