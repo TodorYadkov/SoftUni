@@ -1,0 +1,99 @@
+body {
+    background-color: rgb(238, 238, 238);
+    padding: 32px 64px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-article {
+    width: 70%;
+}
+
+img {
+    background-color: rgb(255, 255, 255);
+    padding: 6px;
+    border: 3px solid black;
+    box-shadow: 0px 0px 24px 6px rgb(0, 0, 0, 0.2);
+}
+
+p {
+    margin-bottom: 16px;
+}
+
+header {
+    border-bottom: 2px solid black;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+header .title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+    font-size: xx-large;
+    margin-bottom: 16px;
+}
+
+.section-one {
+    margin-bottom: 32px;
+}
+
+.section-one img {
+    float: right;
+    margin-left: 20px;
+}
+
+.section-two {
+    margin-bottom: 32px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 16px;
+}
+
+.wrapper>p {
+    padding-right: 22px;
+}
+
+.wrapper>blockquote {
+    font-family: Georgia, serif;
+    font-style: italic;
+    padding: 0 22px;
+    border-left: 3px solid lightgrey;
+}
+
+.wrapper span {
+    display: block;
+    float: right;
+    margin-top: 24px;
+    margin-right: 16px;
+}
+
+.section-three img {
+    float: left;
+    margin-right: 16px;
+}
+
+aside {
+    width: 25%;
+    margin-left: 64px;
+}
+
+a {
+    color: rgb(0, 153, 0);
+    text-decoration: none;
+}
