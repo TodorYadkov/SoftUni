@@ -1,0 +1,35 @@
+html {
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+    padding: 64px;
+}
+
+section {
+    width: 400px;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0px 0px 16px 8px rgb(0, 0, 0, 0.2);
+    background-color: rgb(255, 255, 255);
+}
+
+section div:nth-child(2) {
+    padding: 16px;
+}
+
+button {
+    all: unset;
+    background-color: rgb(0, 153, 0);
+    color: white;
+    border-radius: 4px;
+    padding: 4px 12px;
+    float: right;
+    margin-bottom: 22px;
+}
+
+h2 {
+    font-family: Georgia, serif;
+    font-size: 1em/1.2;
+}
