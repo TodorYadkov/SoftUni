@@ -1,0 +1,85 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 32px 64px;
+}
+
+.form-login {
+    margin: 0 auto;
+}
+
+.fieldset {
+    background-color: #f8f8f8;
+}
+
+.legend {
+    background-color: #f8f8f8;
+    border: 1px solid #9f9f9f;
+    padding: 4px 8px;
+    padding-right: 96px;
+}
+
+.username {
+    position: relative;
+    display: block;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+.password {
+    position: relative;
+    display: block;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+.username i {
+    position: absolute;
+    top: 14px;
+    left: 104px;
+}
+
+.password i {
+    position: absolute;
+    top: 14px;
+    left: 104px;
+}
+
+.username input {
+    border: 1px solid #c6c6c6;
+    border-radius: 4px;
+    margin-left: 4px;
+    font-weight: normal;
+    text-indent: 18px;
+}
+
+.password input {
+    border: 1px solid #c6c6c6;
+    border-radius: 4px;
+    margin-left: 6px;
+    font-weight: normal;
+    text-indent: 18px;
+}
+
+.btn {
+    all: unset;
+    margin-left: 14px;
+    padding: 4px 12px;
+    background-color: #2d2d2d;
+    color: #faf8ee;
+    border-radius: 4px;
+}
+
+@media (max-width: 500px) {
+
+    .username i {
+        top: 36px;
+        left: 28px;
+    }
+
+    .password i {
+        top: 36px;
+        left: 28px;
+    }
+}
