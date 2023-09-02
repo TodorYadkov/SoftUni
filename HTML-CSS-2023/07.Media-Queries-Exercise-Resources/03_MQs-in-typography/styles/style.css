@@ -1,0 +1,112 @@
+body {
+  background-color: rgb(238, 238, 238);
+  padding: 40px 120px;
+}
+
+h1,
+h2,
+blockquote {
+  font-family: Georgia, serif;
+}
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  border-bottom: 2px solid black;
+  width: 100%;
+}
+
+main {
+  width: 70%;
+}
+
+.page aside {
+  width: 20%;
+  margin-left: 60px;
+}
+
+img {
+  border: 3px solid black;
+  padding: 10px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  background-color: rgb(255, 255, 255);
+}
+
+.image1 {
+  float: right;
+  margin: 20px;
+}
+
+.image2 {
+  float: left;
+  margin: 0px 20px 20px 20px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(0, 153, 0);
+}
+
+.quote {
+  display: flex;
+  gap: 10px;
+}
+
+.quote-left {
+  width: 50%;
+  border-right: 2px solid gray;
+  margin: 0px;
+  padding-right: 5px;
+}
+
+.quote-right {
+  width: 50%;
+  font-style: italic;
+}
+
+.quote-right-text {
+  margin: 0px;
+}
+
+.quote-right-author {
+  float: right;
+}
+
+* {
+  font-size: 23px;
+}
+
+@media (max-width: 1800px) {
+  * {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 1300px) {
+  * {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 800px) {
+  * {
+    font-size: 16px;
+  }
+
+  body {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  * {
+    font-size: 14px;
+  }
+
+  body {
+    padding: 10px;
+  }
+}
