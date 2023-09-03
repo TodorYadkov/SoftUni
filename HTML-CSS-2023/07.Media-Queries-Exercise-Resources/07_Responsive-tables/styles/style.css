@@ -1,0 +1,37 @@
+body {
+    background-color: #eeeeee;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+table td,
+table th {
+    border: 1px solid #aaaaaa;
+    padding: 3px 2px;
+}
+
+table tbody td {
+    font-size: 13px;
+}
+
+table tbody tr:nth-child(odd) {
+    background: #f1f1f1;
+}
+
+table tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+
+table thead {
+    background: #333333;
+}
+
+table thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffffff;
+}
