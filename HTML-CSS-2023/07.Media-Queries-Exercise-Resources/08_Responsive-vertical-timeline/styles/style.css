@@ -1,0 +1,137 @@
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.3rem solid rgb(153, 153, 153);
+    padding: 24px 124px;
+    overflow: hidden;
+}
+
+h2 {
+    padding: 4px 18px;
+    border: 1px solid rgb(153, 153, 153);
+    margin-bottom: 32px;
+}
+
+.card {
+    width: 50%;
+}
+
+.card:nth-child(odd)::before {
+    position: absolute;
+    left: 49.6%;
+    content: "";
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(153, 153, 153);
+    border-radius: 100%;
+    background-color: #099004;
+}
+
+.card:nth-child(even)::before {
+    position: absolute;
+    left: 49.6%;
+    content: "";
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(153, 153, 153);
+    border-radius: 100%;
+    background-color: #ff9100;
+}
+
+.card:nth-child(odd) {
+    margin-left: 55%;
+    text-align: left;
+}
+
+.card:nth-child(even) {
+    margin-right: 55%;
+    text-align: right;
+}
+
+h3 {
+    font-style: italic;
+}
+
+.timeline .center-line {
+    position: absolute;
+    height: 100%;
+    width: 0.3rem;
+    background-color: rgb(153, 153, 153);
+    top: 68px;
+    margin: 0 32px;
+}
+
+@media (max-width: 1500px) {
+    .card:nth-child(odd)::before {
+        left: 49.4%;
+    }
+
+    .card:nth-child(even)::before {
+        left: 49.4%;
+    }
+}
+
+@media (max-width: 700px) and (max-width: 1499px) {
+    .card:nth-child(odd)::before {
+        left: 49%;
+    }
+
+    .card:nth-child(even)::before {
+        left: 49%;
+    }
+
+    .card:nth-child(odd) {
+        margin-left: 60%;
+    }
+
+    .card:nth-child(even) {
+        margin-right: 60%;
+    }
+
+    .timeline {
+        padding: 24px 62px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .card {
+        width: 80%;
+    }
+
+    .card:nth-child(odd)::before {
+        left: 7.4%;
+    }
+
+    .card:nth-child(even)::before {
+        left: 7.4%;
+    }
+
+    .card:nth-child(odd) {
+        margin: 0;
+    }
+
+    .card:nth-child(even) {
+        margin: 0;
+        text-align: left;
+    }
+
+    h2 {
+        width: 100%;
+        padding: 4px 10px;
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .timeline .center-line {
+        top: 57px;
+        left: 0px;
+    }
+
+    .timeline {
+        padding: 24px 20px;
+        gap: 18px;
+    }
+}
