@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+html {
+    font-family: Inter;
+}
+
+.container {
+    height: 100vh;
+    position: relative;
+}
+
+.container .background-image {
+    position: absolute;
+    z-index: -1;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+        "left-1 right"
+        "left-2 right";
+    padding: 32px 16px 32px 92px;
+    gap: 32px;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 64px 32px;
+}
+
+.card i {
+    font-size: 48px;
+}
+
+.card .description {
+    padding: 24px 0px 24px 0px;
+    color: darkgrey;
+}
+
+.card .image {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    float: right;
+}
+
+.card.left-1 {
+    grid-area: left-1;
+}
+
+.card.left-2 {
+    grid-area: left-2;
+}
+
+.card.right {
+    grid-area: right;
+}
+
+.card.right .description {
+    padding: 64px 0px 64px 0px;
+}
+
+.card.right .image {
+    float: left;
+    width: 100px;
+    height: 100px;
+    filter: grayscale(100%);
+    margin-top: 16px;
+    margin-right: 12px;
+}
+
+.card.right .employee {
+    border-top: 1px solid #dadada;
+}
+
+.card.right i {
+    font-size: 96px;
+}
+
+.card.right .name {
+    margin-top: 32px;
+}
