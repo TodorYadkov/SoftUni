@@ -1,0 +1,72 @@
+@media (max-width: 600px) {
+    .header-title {
+        padding: 0;
+    }
+
+    header nav ul {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        margin-bottom: 12px;
+        gap: 4px;
+    }
+
+    .header-title h1 {
+        font-size: 25px;
+        padding-bottom: 0.5em;
+    }
+
+    .header-title p {
+        font-size: 12px;
+    }
+
+    .blog-section p:nth-child(2),
+    .team-description p:nth-child(2),
+    .about-us p:nth-child(2) {
+        font-size: 14px;
+    }
+
+    .team-description ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 36px 0px;
+    }
+
+    .team-description ul li img {
+        width: 224px;
+        height: 224px;
+    }
+
+    .team-description-wrapper,
+    .about-us {
+        width: 90%;
+        margin: 0;
+        text-align: center;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .team-description {
+        padding-left: 32px;
+    }
+
+    .choose-us ul {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .blog-news ul {
+        margin-top: 18px;
+        flex-direction: column;
+        gap: 24px;
+        padding: 0 32px;
+    }
+
+    .blog-news ul .item .avatar img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
