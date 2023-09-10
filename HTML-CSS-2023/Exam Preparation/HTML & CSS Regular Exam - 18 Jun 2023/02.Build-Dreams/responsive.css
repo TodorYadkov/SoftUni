@@ -1,0 +1,51 @@
+@media screen and (max-width: 600px) {
+    .home-hero {
+        padding: 0;
+        flex-direction: column-reverse;
+    }
+
+    .home-hero-text-container {
+        width: unset;
+        margin: 0 24px;
+    }
+
+    .home-cta-btn2 {
+        width: 34%;
+        align-self: center;
+    }
+
+    .home-image1 {
+        width: 90%;
+    }
+
+    .home-navbar {
+        width: 100%;
+        padding-left: 72px;
+    }
+
+    .home-cta-btn {
+        padding: 4px 8px;
+    }
+
+    .home-heading-container {
+        width: 100%;
+    }
+
+    .home-cards-container {
+        flex-direction: column;
+    }
+
+    .home-features {
+        height: auto;
+    }
+
+    .home-feature-card,
+    .home-feature-card1,
+    .home-feature-card2 {
+        width: 100%;
+    }
+
+    .home-stats {
+        grid-template-columns: 1fr;
+    }
+}
