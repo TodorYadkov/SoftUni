@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+:root {
+    --primary-color: #ade2df;
+    --secondary-color: #000000;
+    --background-color: #f3f5fa;
+    --color-white: white;
+    --border-color: #dbdbdb;
+}
+
+html {
+    font-family: 'Inter', 'serif';
+}
+
+/* Buttons */
+.btn {
+    border-radius: 6px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 auto;
+    padding: 16px 230px;
+}
+
+.header-nav-items {
+    display: flex;
+    gap: 64px;
+}
+
+.header-nav-item>a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.header-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.header-button-signup {
+    background-color: var(--primary-color);
+}
+
+/* Section-one */
+.section-one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    background-color: var(--primary-color);
+    padding: 64px 32px;
+}
+
+.section-one-title {
+    font-size: 76px;
+    font-weight: 500;
+}
+
+.section-one-desc {
+    font-size: 22px;
+    margin-bottom: 22px;
+}
+
+.section-one-buttons {
+    margin-bottom: 24px;
+}
+
+.button-ios {
+    color: var(--color-white);
+    background-color: var(--secondary-color);
+    padding: 22px 18px;
+    margin-right: 10px;
+}
+
+.button-android {
+    color: var(--color-white);
+    background-color: var(--secondary-color);
+    padding: 22px 18px;
+}
+
+/* Section-two */
+.section-two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 22px;
+    padding: 64px 184px;
+    padding-bottom: 48px;
+}
+
+.section-two-items {
+    display: flex;
+    flex: 1 1 33%;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-two-item-bold {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1;
+    display: block;
+    padding-bottom: 32px;
+}
+
+.section-two-item {
+    padding: 0 16px;
+    padding-bottom: 72px;
+}
+
+.section-two-item:nth-child(1) {
+    border-left: 2px solid var(--border-color);
+}
+
+.section-two-item:nth-child(2) {
+    border-left: 2px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
+}
+
+.section-two-item:nth-child(3) {
+    border-right: 2px solid var(--border-color);
+}
+
+/* Section-three */
+.section-three {
+    background-color: var(--primary-color);
+    padding-left: 320px;
+    padding-right: 120px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+}
+
+.section-three-image {
+    border: 2px dashed #98b8b6;
+    width: 720px;
+}
+
+.section-three-image>img {
+    width: 100%;
+}
+
+.section-three-content {
+    display: flex;
+    flex-direction: column;
+    padding: 72px 124px;
+}
+
+.section-three-title {
+    font-size: 48px;
+    font-weight: 600;
+    margin-top: 72px;
+    margin-bottom: 36px;
+    padding-left: 36px;
+    padding-right: 120px;
+}
+
+.section-three-item {
+    margin-bottom: 36px;
+}
+
+.section-three-item-bold {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.section-three-item:nth-child(3) {
+    margin-top: 108px;
+}
+
+.section-three-item-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 4px;
+}
+
+/* Section four */
+.section-four {
+    background-color: var(--background-color);
+    padding: 48px 0;
+}
+
+.section-four-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 64px;
+}
+
+.section-four-header-button {
+    background-color: var(--primary-color);
+}
+
+.section-four-title {
+    font-size: 42px;
+}
+
+.section-four-grid {
+    background-color: var(--color-white);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 2fr;
+    grid-template-areas:
+        "card-1 card-2 card-3 card-4 card-4";
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    gap: 22px;
+}
+
+.section-four-card:nth-child(1) {
+    grid-area: card-1;
+    margin: 24px 0;
+}
+
+.section-four-card:nth-child(2) {
+    grid-area: card-2;
+    margin: 24px 0;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.section-four-card:nth-child(3) {
+    grid-area: card-3;
+    margin: 24px 0;
+}
+
+.section-four-card.large {
+    grid-area: card-4;
+    background-color: var(--primary-color);
+    padding: 0px 48px;
+    padding-top: 24px;
+    padding-bottom: 8px;
+}
+
+.section-four-card {
+    padding: 0px 16px;
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 32px;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 26px;
+}
+
+.card-desc {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.card-price {
+    font-size: 24px;
+    margin-bottom: 22px;
+}
+
+.card-price-bold {
+    font-size: 62px;
+}
+
+.card-items {
+    padding: 0;
+    font-size: 20px;
+}
+
+.card-item {
+    padding: 12px 0;
+}
+
+.card-footer {
+    text-align: center;
+    margin-top: 64px;
+    margin-bottom: 24px;
+}
+
+.card-button {
+    background-color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 600;
+    padding: 22px 86px;
+}
+
+.card-desc.large {
+    font-weight: 600;
+}
+
+.section-four-card.large {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-footer.large {
+    margin-top: auto;
+}
+
+
+.card-button.large {
+    background-color: var(--secondary-color);
+    color: var(--color-white);
+    display: block;
+    width: 100%;
+}
+
+/* Section-five */
+.section-five {
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 64px 660px;
+}
+
+.section-five-title {
+    font-size: 72px;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.section-five-desc {
+    font-size: 20px;
+    margin-bottom: 48px;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 48px;
+}
+
+.footer-links-icon {
+    padding: 0 8px;
+}
