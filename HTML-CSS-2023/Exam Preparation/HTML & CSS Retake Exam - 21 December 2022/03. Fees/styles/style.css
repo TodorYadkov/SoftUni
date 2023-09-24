@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* font-family: 'Lato', sans-serif; - •	Use font 'Lato' for the text
+font-family: 'Montserrat', sans-serif; -•	Use font 'Montserrat' for the headings */
+
+:root {
+    --primary-color: #54546d;
+    --purple-color: #9a5dc6;
+    --footer-color-text:#908da5;
+    --gray: #e6e6e6;
+    --light-gray: #f8f8f8;
+    --white-color: #fff;
+    --green-gradient: linear-gradient(90deg, rgba(0, 152, 55, 1) 0%, rgba(36, 182, 92, 1) 45%, rgba(69, 214, 124, 1) 100%);
+    --blue-gradient: linear-gradient(90deg, rgba(80, 109, 137, 1) 0%, rgba(87, 131, 171, 1) 45%, rgba(104, 157, 207, 1) 100%);
+    --purple-gradient: linear-gradient(90deg, rgba(71, 51, 164, 1) 0%, rgba(87, 131, 171, 1) 45%, rgba(138, 123, 226, 1) 100%);
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--primary-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.content {
+    margin-bottom: 8em;
+}
+
+/* Header */
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2em 0 1.5em 0;
+}
+
+.header-nav-logo {
+    width: 190px;
+    height: 60px;
+    margin-left: 8em;
+}
+
+.header-nav-items {
+    display: flex;
+    align-items: center;
+    margin-right: 8em;
+    margin-top: 1.2em;
+}
+
+.header-nav-item {
+    padding: 0 0.5em;
+}
+
+.header-nav-item-anchor {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Section taxes */
+.section-taxes {
+    background-color: var(--primary-color);
+    position: relative;
+}
+
+.section-taxes-background {
+    color: var(--white-color);
+    position: relative;
+    height: 24.5em;
+}
+
+.section-taxes-background-heading {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    font-weight: normal;
+    font-size: 2em;
+}
+
+.section-taxes-background-image {
+    position: absolute;
+    top: 9%;
+    left: -4.7%;
+    height: 15em;
+    width: auto;
+}
+
+.section-taxes-cards {
+    position: absolute;
+    display: flex;
+    flex: 0 0 33%;
+    justify-content: space-between;
+    gap: 1.4em;
+    height: 20em;
+    top: 8.5em;
+    left: 5.6em;
+    right: 5.6em;
+}
+
+.section-taxes-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    background-color: var(--white-color);
+    border-radius: 0.5em;
+    overflow: hidden;
+    width: 33%;
+    height: 460px;
+    text-align: center;
+    font-size: 1.3em;
+    box-shadow: 0px 2px 6px 4px rgb(0, 0, 0, 0.2);
+}
+
+.section-taxes-card-content {
+    padding: 1.8em 2.5em;
+}
+
+.section-taxes-card-content-heading {
+    margin-bottom: 0.6em;
+}
+
+.section-taxes-card-content-desc {
+    margin-bottom: 1em;
+}
+
+.section-taxes-card-price {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin-top: auto;
+    padding: 1em 2em;
+    color: var(--white-color);
+}
+
+.section-taxes-card-price-first {
+    font-size: 1.8em;
+    color: var(--white-color);
+}
+
+.section-taxes-card-price-first-span {
+    display: block;
+    font-size: 0.6em;
+}
+
+/* Green card */
+.section-taxes-card-content-heading.green {
+    margin: 0.05em;
+}
+
+.section-taxes-card-content-desc.green {
+    font-size: 1.15em;
+    margin-bottom: 3.5em;
+}
+
+.section-taxes-card-content-btn.green {
+    text-decoration: none;
+    color: var(--white-color);
+    background-color: var(--purple-color);
+    padding: 1em 2em;
+    border-radius: 9em;
+    box-shadow: 0px 4px 4px 4px rgb(0, 0, 0, 0.1);
+}
+
+.section-taxes-card-price.green {
+    background-image: var(--green-gradient);
+    width: 100%;
+    height: 100%;
+}
+
+.section-taxes-card-price-first-span.green {
+    margin-top: 0.2em;
+}
+
+/* Blue and Purple card */
+.section-taxes-card-price.blue,
+.section-taxes-card-price.purple {
+    position: absolute;
+    top: 320px;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    width: 100%;
+}
+
+.section-taxes-card-price-first.blue:nth-child(1),
+.section-taxes-card-price-first.purple:nth-child(1) {
+    border-right: 1px solid var(--white-color);
+    padding-right: 0.5em;
+    height: 2.7em;
+}
+
+.section-taxes-card-price-first.blue:nth-child(2),
+.section-taxes-card-price-first.purple:nth-child(2) {
+    height: 2.7em;
+}
+
+/* Blue card */
+.section-taxes-card-price.blue {
+    background-image: var(--blue-gradient);
+}
+
+/* Purple card */
+.section-taxes-card-price.purple {
+    background-image: var(--purple-gradient);
+}
+
+/* Section study */
+.section-study {
+    padding: 20em 15em 6.5em 15em;
+}
+
+.section-study-heading {
+    padding-bottom: 0.8em;
+    font-size: 2.15em;
+    font-weight: 500;
+}
+
+.section-study-desc {
+    font: 1.4em 'Lato', sans-serif;
+    padding-bottom: 2em;
+}
+
+.section-study-type {
+    font: 1.4em 'Lato', sans-serif;
+}
+
+.section-study-type-row {
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr;
+    gap: 1em;
+    background-color: var(--gray);
+    padding: 1em;
+    align-items: center;
+}
+
+.section-study-type-row:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+.section-study-type-row:first-child {
+    border-top-left-radius: 0.5em;
+}
+
+.section-study-type-row:last-child {
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+.section-study-type-desc-check,
+.section-study-type-desc-cross {
+    width: 28px;
+    height: 28px;
+}
+
+/* Section financing */
+.section-financing {
+    padding: 2em 6em;
+}
+
+.section-financing-heading {
+    font-size: 1.8em;
+    font-weight: 500;
+    margin-bottom: 1em;
+}
+
+.section-financing-image {
+    float: right;
+    margin-right: 6em;
+    width: 420px;
+    height: 180px;
+}
+
+.section-financing-desc {
+    font: 1.37em 'Lato', sans-serif;
+    width: 1130px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--footer-color-text);
+    text-align: center;
+    padding: 1.4em;
+    font-size: 1.4em;
+}
