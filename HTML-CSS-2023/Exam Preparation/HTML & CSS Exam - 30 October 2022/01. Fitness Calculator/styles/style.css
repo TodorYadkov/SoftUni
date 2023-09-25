@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Main content */
+.content {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 1350px;
+    height: 680px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #808080;
+    border-radius: 1em;
+    overflow: hidden;
+    box-shadow: 0px 12px 22px 0px rgb(0, 0, 0, 0.5);
+}
+
+/* Image content */
+.content-image {
+    position: relative;
+}
+
+.content-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgb(0, 0, 0, 0.3);
+}
+
+.content-image-img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Content description */
+.content-desc {
+    background-color: #f6f7f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4.15em 1em;
+}
+
+.content-desc-heading {
+    font-size: 1.9em;
+    margin-bottom: 2em;
+}
+
+.content-desc-title {
+    font-size: 1em;
+}
+
+/* Units */
+.content-desc-units {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin-bottom: 1.6em;
+}
+
+.content-desc-units-btn {
+    text-decoration: none;
+    color: black;
+    padding: 0.45em 1em;
+    border-radius: 0.6em;
+    border: 1px solid black;
+}
+
+.content-desc-units-btn.green {
+    background-color: #86d862;
+    margin-left: -2em;
+}
+
+.content-desc-units-btn.grey {
+    background-color: #e0e0df;
+    margin-left: 2.9em;
+}
+
+/* Gender */
+.content-desc-title:not(:first-of-type) {
+    margin: 1.35em;
+}
+
+.content-desc-title:first-of-type {
+    margin-bottom: 1.35em;
+}
+
+.content-desc-gender {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    gap: 2.6em;
+}
+
+.content-desc-gender-select {
+    width: 195px;
+    height: 20px;
+    padding: 0;
+    border: 1px solid #969696;
+}
+
+.content-desc-gender-year {
+    width: 175px;
+    height: 20px;
+    border: 1px solid #969696;
+}
+
+.content-desc-gender-select,
+.content-desc-gender-year {
+    font-size: 0.8em;
+}
+
+/* Pounds */
+.content-desc-weight {
+    width: 100%;
+}
+
+.content-desc-weight-input {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #969696;
+    padding: 0.2em 0.4em;
+}
+
+/* Weight */
+.content-desc-height {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8em;
+}
+
+.content-desc-height-input {
+    width: 60%;
+    border: 1px solid #969696;
+    border-radius: 0.35em;
+    padding-left: 0.4em;
+    margin-bottom: 4em;
+}
+
+/* Button */
+.content-desc-buttons {
+    display: flex;
+    justify-content: start;
+    width: 95%;
+}
+
+.content-desc-btn {
+    background-color: #05a2d3;
+    width: 94%;
+    margin-left: 0.6em;
+    padding: 0.25em 2em;
+    border-radius: 5em;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.4em;
+    box-shadow: 0px 6px 12px 0px rgb(0, 0, 0, 0.5);
+}
