@@ -1,0 +1,110 @@
+@media screen and (max-width:600px) {
+    p {
+        font-size: 15px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    header {
+        padding: 0.3em 0;
+    }
+
+    header nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+    }
+
+    header nav>ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25em;
+    }
+
+    .header-title {
+        padding: 0em;
+    }
+
+    .header-title h1 {
+        font-size: 38px;
+    }
+
+    .header-title p {
+        font-size: 15px;
+    }
+
+    .header-title button {
+        margin-block: 2.65em;
+        padding: 0.5em 0.6em;
+        font-size: 12px;
+    }
+
+    .about-us p:nth-child(3) {
+        width: 92%;
+    }
+
+    .blog-section p:nth-child(2),
+    .team-description p:nth-child(2),
+    .about-us p:nth-child(2) {
+        font-size: 12px;
+        padding-bottom: 2rem;
+    }
+
+    .team-description-wrapper,
+    .about-us {
+        width: 75%;
+    }
+
+    .team-description ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 4.1em;
+    }
+
+    .team-description ul li img {
+        width: 100%;
+        height: 200px;
+        padding: 0;
+    }
+
+    .team-description ul li p {
+        font-size: 12px;
+    }
+
+    .choose-us {
+        margin: 0 auto;
+        width: 65%;
+    }
+
+    .choose-us ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blog-news {
+        padding: 2rem 0;
+    }
+
+    .blog-news p {
+        font-size: 12px;
+    }
+
+    .blog-news ul {
+        flex-direction: column;
+        gap: 2rem;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .blog-news .content h4 {
+        font-size: 12px;
+    }
+
+    footer * {
+        font-size: 11px;
+    }
+}
