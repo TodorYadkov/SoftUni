@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@100;200;300;400;500;600;700&display=swap');
+
+/* •	Use the fonts - "Roboto" and for the headings "Abril Fatface" */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Abril Fatface', cursive;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background-image: url('../image/image.jpg');
+    background-position: center center;
+    background-size: 100% 196%;
+    background-repeat: no-repeat;
+    height: 80vh;
+}
+
+.header-logo {
+    background-color: transparent;
+    box-shadow: 2px 1px 4px 1px rgb(0, 0, 0, 0.5);
+    width: 22%;
+    font-size: 1.1em;
+    position: relative;
+    top: 3.5%;
+    left: 4.3%;
+    padding: 1.1em 1em;
+}
+
+.header-logo-text::after {
+    content: "";
+    display: block;
+    width: 65%;
+    height: 2px;
+    background-color: white;
+    margin: 0.25em 0;
+}
+
+.header-logo-company-name {
+    font-size: 0.9em;
+}
+
+.header-intro {
+    background: linear-gradient(90deg, rgba(155, 145, 137, 1) 0%, rgba(188, 183, 177, 1) 32%, rgba(207, 204, 201, 1) 65%, rgba(201, 199, 198, 1) 100%);
+    box-shadow: 0px 0px 4px 2px rgb(132, 129, 128, 0.8);
+    text-shadow: 1px 1px 2px black;
+    text-align: right;
+    width: 29%;
+    position: relative;
+    top: 2%;
+    left: 68%;
+    padding: 4.25em 1em 1em 1em;
+}
+
+.header-intro-quote {
+    color: #8d8581;
+    font-size: 4em;
+    position: absolute;
+    top: 6%;
+    left: 89%;
+
+}
+
+.header-intro-desc {
+    color: white;
+}
+
+/* Content */
+.content {
+    display: grid;
+    grid-template-areas:
+        "services services stats"
+        "contact contact stats";
+    grid-template-columns: 3fr 1.7fr 2fr;
+}
+
+/* Services */
+.services {
+    grid-area: services;
+    background-color: #f2f0f3;
+    padding: 4em;
+}
+
+.services-heading {
+    text-transform: uppercase;
+    font-size: 2.2em;
+}
+
+.services-list {
+    padding: 0;
+    font-size: 1.05em;
+}
+
+.services-item {
+    margin-bottom: 1em;
+}
+
+.services-item-text>svg {
+    width: 1em;
+    height: 0.85em;
+}
+
+.services-item-span {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 0.25em;
+}
+
+
+/* Contact */
+.contact {
+    grid-area: contact;
+    background-color: #f2f0f3;
+    padding-inline: 4em;
+}
+
+.contact-heading {
+    text-transform: uppercase;
+    font-size: 2.2em;
+}
+
+.contact-heading::after {
+    content: "";
+    display: block;
+    width: 120%;
+    height: 2px;
+    background-color: #777777;
+    position: relative;
+    left: -10%
+}
+
+.contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    padding: 0;
+    margin-bottom: 2em;
+}
+
+.contact-item-span {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 0.25em;
+}
+
+.contact-msg {
+    margin-bottom: 2em;
+}
+
+.contact-msg-input {
+    width: 45%;
+    padding: 0.5em 1em;
+    background-color: #bab1ad;
+    border: unset;
+    border-radius: 0.25em;
+    margin-right: 0.75em;
+}
+
+.contact-msg-input::placeholder {
+    color: white;
+    font-size: 0.85em;
+}
+
+.contact-msg-btn {
+    all: unset;
+    background-color: #67784d;
+    padding: 0.5em 1em;
+    border-radius: 0.25em;
+    color: white;
+}
+
+/* Stats */
+.stats {
+    grid-area: stats;
+    background-color: #bab1ad;
+    padding: 2.75em 4em 0em 1em;
+}
+
+.stats-list {
+    padding: 0;
+}
+
+.stats-list-item:not(:last-child) {
+    margin-bottom: 7em;
+}
+
+.stats-list-item-p {
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.stats-list-item-span {
+    display: block;
+    font-size: 4.5em;
+    font-weight: 100;
+    color: white;
+}
