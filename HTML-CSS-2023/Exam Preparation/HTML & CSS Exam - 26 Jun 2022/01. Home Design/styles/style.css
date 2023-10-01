@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+body {
+    font-family: 'Courgette', cursive;
+    background-color: #f5f5f5;
+}
+
+/* Content */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4em 8em;
+    max-width: 1366px;
+    margin: 0 auto;
+}
+
+/* Title */
+.content-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 4em;
+}
+
+.content-header-h1 {
+    font-size: 4em;
+    font-weight: lighter;
+    position: relative;
+}
+
+.content-header-p {
+    color: #cb2027;
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    top: 14.5%;
+    left: 54%;
+}
+
+/* Section cards */
+.content-cards {
+    display: flex;
+    gap: 2em;
+}
+
+/* Card */
+.card {
+    width: 33%;
+    border-radius: 1em;
+    overflow: hidden;
+    background-color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.card-content::before {
+    content: "";
+    display: block;
+    width: 90%;
+    height: 1px;
+    background-color: #cb2027;
+    margin: 0 auto;
+    margin-bottom: 1em;
+}
+
+.card-footer {
+    padding-bottom: 1em;
+    margin-top: auto;
+}
+
+.card-footer-a {
+    text-decoration: none;
+    color: black;
+}
+
+.card-footer-a svg {
+    vertical-align: middle;
+    margin-left: 0.5em;
+}
