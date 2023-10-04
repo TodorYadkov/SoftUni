@@ -1,0 +1,134 @@
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 13px;
+        max-width: 600px;
+    }
+
+    nav {
+        width: 100%;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    nav p {
+        font-size: 24px;
+    }
+
+    nav ul {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    nav ul li {
+        font-size: 13px;
+    }
+
+    header div {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url("../image/dancing-girl.png") no-repeat center center;
+        background-size: cover;
+        color: white;
+        padding: 8em 0 8em 3em;
+    }
+
+    header div h1 {
+        padding-bottom: 0.5em;
+        width: 50%;
+        font-size: 56px;
+    }
+
+    .trainings {
+        flex-direction: column;
+    }
+
+    .trainings div {
+        width: 55%;
+    }
+
+    .trainings div img {
+        width: 88px;
+        height: 88px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .instructors>p {
+        font-size: 14px;
+    }
+
+    .instructors-pic {
+        flex-direction: column;
+    }
+
+    .instructors-pic div {
+        width: 16rem;
+        margin: 0.4rem;
+    }
+
+    .classes ul {
+        gap: 2em;
+    }
+
+    .classes li {
+        width: calc(50% - 2em);
+    }
+
+    .classes li>p {
+        font-size: 52px;
+    }
+
+    .classes li div h3 {
+        font-size: 21px;
+    }
+
+    .classes li div p {
+        font-size: 15px;
+    }
+
+    .getInTouch {
+        flex-direction: column;
+        align-items: initial;
+    }
+
+    .getInTouch form input {
+        height: 2.6rem;
+        font-size: 12px;
+    }
+
+    .getInTouch textarea {
+        font-size: 13px;
+    }
+
+    .getInTouch button {
+        padding: 0.8rem 2.8rem;
+        font-size: 16px;
+    }
+
+    .site-footer .wrapper {
+        flex-wrap: wrap;
+        width: 88%;
+    }
+
+    .about header>p {
+        font-size: 10px;
+    }
+
+    .site-footer .about {
+        flex: 0 0 100%;
+    }
+
+    .about > p {
+        padding-bottom: 0.95rem;
+    }
+
+    .site-footer .sitemap {
+        flex: 0 0 50%;
+    }
+
+    .contacts h3, .sitemap h3 {
+        padding-bottom: 1.75rem;
+    }
+}
