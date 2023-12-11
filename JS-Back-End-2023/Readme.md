@@ -1,15 +1,15 @@
-## За курса
-Курсът е интензивен и цели да запознае учащите с разработката на сървърни JavaScript приложения върху платформата Node.js, използвайки Express.js, като framework. 
-По време на обучението ще разберем как да създадем сървър с Node.js, ще се научим на сървър-клиент архитектурата и как да правим лесни и бързи data-driven web приложения с Node.js, Express.js и MongoDB, 
-използвайки съвременни похвати и инструменти. Ще се разглежда една от най-популярните нерелационни бази от данни - MongoDB, 
-заедно с библиотеката Mongoose за взимане на данни от нея. Към края на курса ще се изгради от нулата един цялостен REST API, ползвайки Express.js и MongoDB. 
-Набляга се много на практически упражнения, чрез които ви въвлича в реални проекти за изработка на уеб страници, имплементация на фрагменти от сайтове и създаване на цялостни модерни уеб сайтове с добра визия, с
-ъвременна структура и мобилна поддръжка.
+# 💻 JS Back-End 
 
-## Придобити умения 
-- Използване Web Server
-- Работа по HTTP протокола
-- Сървърни приложения с Node.JS
-- Работа с нерелационни бази данни
-- Създаване на приложения с Express и Handlebars
-- Създаване на MVC архитектура
+The course is intensive and aims to familiarize students with developing server-side JavaScript applications on the Node.js platform using Express.js as a framework. During the course we will learn how to create a server with Node.js, learn the server-client architecture and how to make easy and fast data-driven web applications with Node.js, Express.js and MongoDB using modern techniques and tools. One of the most popular non-relational databases, MongoDB, will be covered along with the Mongoose library for taking data from it. Towards the end of the course, a complete REST API will be built from scratch using Express.js and MongoDB. There's a lot of emphasis on hands-on exercises that get you involved in real-world projects to build web pages, implement snippets of sites, and create complete modern websites with good design, modern structure, and mobile support.
+
+## 🚀 Acquired skills 
+
+  - Using Web Server.
+  - HTTP protocol.
+  - Server Applications with Node.JS.
+  - Working with non-relational databases.
+  - Creating applications with Express and Handlebars.
+  - Creating MVC architecture.
+
+## 🎓 Certificate
+![JS Back-End - May 2023 - Certificate_01](https://github.com/TodorYadkov/SoftUni/assets/4013980/5672216f-2af7-4365-ad00-87aafe1bd9a4)
