@@ -1,15 +1,16 @@
-## За курса
+## 💻 React
 
-За курса
-Курсът дава знания и практически умения за изграждане на клиентски приложения (Single Page Applications), използвайки една от най-популярните работни рамки. Изучават се архитектурни шаблони за SPA приложения, компоненти и други. Изучават се изгледи и шаблони за визуализация на данни (templates), модели, свързване на данни (data binding), работа с много изгледи, рутиране (routing), извличане на данни от REST услуги.
+The course provides knowledge and practical skills for building client applications (Single Page Applications) using one of the most popular frameworks. Architectural patterns for SPA applications, components, and more are studied. Views and templates for data visualization (templates), models, data binding, working with multiple views, routing, extracting data from REST services are studied.
 
-Обучението дава знания и практически умения за разработването на Single Page Applications (SPA), ползвайки технологията ReactJS - една от най-популярните и бързи библиотеки за изобразяване на клиентски интерфейс, разработвана и поддържана от Facebook и Instagram. Ще се обърне специално внимание на синтаксиса JSX, работа със заявки и Promises, разделяне на една апликация на компоненти, рутиране и валидация на форми и различни начини за стилизиране на компоненти, ползвайки техники като CSS Modules и Styled Components. Ще се разгледат и нови концепции в библиотеката, като React Hooks и Context API. Обучението ще наблегне и на писане на Unit Tests, ползвайки JEST.
+The training provides knowledge and practical skills for the development of Single Page Applications (SPA) using ReactJS technology - one of the most popular and fast client interface rendering libraries, developed and supported by Facebook and Instagram. Special attention will be paid to JSX syntax, working with requests and promises, splitting an application into components, routing and form validation, and different ways to style components using techniques such as CSS Modules and Styled Components. New concepts in the library, such as React Hooks and the Context API, will also be covered. The training will also focus on writing Unit Tests using JEST.
 
-## Придобити умения
+## 🚀 Acquired skills
 
--   Изграждане на компонентно-базирани приложения
--   Работа със SPA концепции
--   Основни познания по React и JSX
--   Работа с отдалечени REST услуги
--   Разработване на клиентски приложения с React
--   Работа с шаблони и рутиране
+-   Building component-based applications
+-   Working with SPA concepts
+-   Basic knowledge of React and JSX
+-   Working with remote REST services
+-   Developing client applications with React
+-   Working with templates and routing
+
+## 🎓 Certificate
