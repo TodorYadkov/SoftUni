@@ -1,14 +1,16 @@
-## За курса
-С "Programming Fundamentals" студентите започват да изучават вътрешната програма на SoftUni за цялостна подготовка на софтуерни инженери. 
-Курсът разглежда фундаментални концепции в програмирането, които са основа за ефективното и качествено обучение в професионалните модули. 
-Обучаващите се надграждат знанията, придобити в курса Programming Basics и започват да използват по-сложни похвати и структури от програмирането като: масиви, листове, обекти и класове.
-Изучават се допълнителни технологии, необходими на всеки един софтуерен разработчик, като HTML и CSS, HTTP, побитови операции и други. 
-Разглеждат се основите на web разработката, както и един от най-разпространените технологии и инструменти, с което курсът успешно изгражда представа у студентите относно предстоящите професионални модули и знанията, 
-които ще придобият от тях, за да станат успешни софтуерни разработчици.
+# 💻 Programming Fundamentals with JavaScript - September 2022 
 
-## Придобити умения 
-- Боравене със стандартната функционалност на програмния език 
-- Работа с линейни структури от данни 
-- Разбиране на взаимовръзката между различни IT концепции 
-- Анализ на проблеми и редуциране до компютърно-изпълними стъпки 
-- Базови умения за работа с HTML и CSS
+With "Programming Fundamentals," students will begin to learn SoftUni's in-house curriculum for the comprehensive training of software engineers. The course addresses fundamental concepts in programming that are the basis for effective and quality learning in the professional modules. Students build on the knowledge gained in the Programming Basics course and begin to use more complex programming techniques and structures such as: lists, dictionaries, objects and classes.
+
+Additional technologies needed by any software developer will be studied, such as HTML and CSS, HTTP, bitwise operations, and more. The fundamentals of web development will be covered, as well as some of the most common technologies and tools, which the course successfully builds students' awareness of upcoming professional modules and the knowledge they will gain from them to become successful software developers.
+
+## 🚀 Acquired skills 
+
+  - Handling standard programming language functionality.
+  - Working with linear data structures.
+  - Understanding the relationship between different IT concepts.
+  - Analyzing problems and reducing them to computer-executable steps.
+  - Basic HTML and CSS skills.
+
+## 🎓 Certificate
+![Programming Fundamentals with JavaScript - September 2022 - Certificate_01](https://github.com/TodorYadkov/SoftUni/assets/4013980/62abc8a5-d66b-4248-be86-181fb38c4bd0)
