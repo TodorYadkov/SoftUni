@@ -7,7 +7,7 @@ Specialize in so called full-stack JavaScript development of modern web applicat
 
 ## Table of Contents
 
-1. [Programming Basics](https://github.com/TodorYadkov/SoftUni/blob/main/Programming-Basics-JavaScript-2022/readme.md)
+1. [Programming Basics](https://github.com/TodorYadkov/SoftUni/blob/main/Programming-Basics-JavaScript-2022)
 2. [Angular ](https://github.com/TodorYadkov/SoftUni/tree/main/Angular-2023)
 3. [HTML & CSS](https://github.com/TodorYadkov/SoftUni/tree/main/HTML-CSS-2023)
 4. [JS-Advanced-January](https://github.com/TodorYadkov/SoftUni/tree/main/JS-Advanced-January-2023)
