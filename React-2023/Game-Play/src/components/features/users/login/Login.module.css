@@ -1,0 +1,26 @@
+.error {
+    color: red;
+    margin: 0;
+    padding: 0;
+}
+
+.error::before {
+    content: "\2716";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 0.25em;
+}
+
+.valid {
+    color: green;
+    margin: 0;
+    padding: 0;
+}
+
+.valid::before {
+    content: "\2714";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
