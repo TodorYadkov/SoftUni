@@ -1,15 +1,15 @@
-## За курса
-Курсът "Angular" дава знания и практически умения за изграждане на клиентски приложения (Single Page Applications) с технологията Angular,
-работна рамка произведение на Google и една от най-популярните в момента. Ще научим какво е TypeScript, 
-основен синтакс и концепции и какво повече той ни предлага пред JavaScript, като удобства за разработка в браузъра и на мобилните платформи. Изучават се какво е Single Page Application (SPA), 
-архитектурни шаблони за SPA приложения, компоненти, директиви и реализацията им в Angular. Изучават се изгледи и шаблони за визуализация на данни (templates),
-модели, компоненти, свързване на данни (data binding), работа с много изгледи, обзървабали (observables), рутиране (routing), извличане на данни от REST услуга и dependency injection (DI).
+# 💻 HTML & CSS 
 
-## Придобити умения 
-- Изграждане на компонентно-базирани приложения
-- Работа със SPA концепции
-- Разработка на клиентски приложения с Angular
-- Работа с отдалечени REST услуги
-- Основни познания по TypeScript
-- Работа с шаблони и рутиране
+The Angular course provides the knowledge and practical skills to build client applications (Single Page Applications) with Angular technology, a working framework produced by Google and one of the most popular currently. You'll learn what TypeScript is, the underlying syntax and concepts, and what more it offers over JavaScript, such as conveniences for development in the browser and on mobile platforms. You will learn what a Single Page Application (SPA) is, architectural patterns for SPA applications, components, directives and their implementation in Angular. Data visualization views and templates, patterns, components, data binding, multi-view handling, observables, routing, REST service data mining and dependency injection (DI) are studied.
 
+## 🚀 Acquired skills 
+
+  - Working with remote REST services.
+  - Working with SPA concepts.
+  - Developing client applications with Angular.
+  - Building component-based applications.
+  - Basic knowledge of TypeScript.
+  - Working with templates and routing.
+
+## 🎓 Certificate
+![Angular - June 2023 - Certificate_01](https://github.com/TodorYadkov/SoftUni/assets/4013980/57bb9eee-94eb-4eb4-a5bb-edaa3e17be04)
