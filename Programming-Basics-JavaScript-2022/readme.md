@@ -1,13 +1,13 @@
-## За курса
-Курсът "Programming Basics" дава начални умения по програмиране, необходими за всички технологични специалности в Софтуерния университет. 
-Това включва писане на програмен код на начално ниво (basic coding skills), работа със среда за разработка (IDE), 
-използване на променливи и данни, оператори и изрази, работа с конзолата (четене на входни данни и печатане на резултати), 
-използване на условни конструкции (if, if-else) и цикли (for, while, do-while).
+# 💻 Programming Basics
+The course "Programming Basics" provides foundational programming skills necessary for all technology-related specializations at SoftUni. This includes writing basic-level code, working with an integrated development environment (IDE), using variables and data, operators and expressions, interacting with the console (reading input data and printing results), and employing conditional constructs (if, if-else) and loops (for, while, do-while).
 
-## Придобити умения 
-- Работа с конзолата (вход и изход на данни)
-- Работа с цикли (for)
-- Работа с по-сложни логически проверки
-- Работа с логически проверки (if-else)
-- Извършване на прости пресмятания
-- Работа с по-сложни цикли (вложени for цикли и while)
+## 🚀 Acquired Skills
+- Console input and output operations
+- Working with loops (for)
+- Handling more complex logical conditions
+- Working with logical constructs (if-else)
+- Performing simple calculations
+- Working with more complex loops (nested for loops and while loops)
+
+## 🎓Certificate
+![Programming Basics - April 2022 - Certificate_01](https://github.com/TodorYadkov/SoftUni/assets/4013980/8a978e38-6c25-4c6d-b96c-1af97fe6a1b5)
