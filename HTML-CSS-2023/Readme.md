@@ -1,12 +1,15 @@
-## За курса
+# 💻 HTML & CSS 
 
-Целта на курса "HTML & CSS" е да положи основни знания по уеб технологии и по-конкретно запознаване с HTML5 и CSS3. Придобиват се начални знания в уеб разработката, уеб браузъри, инструменти за HTML/CSS/DOM разработка и се развиват практически умения за използване на езика за описание на уеб съдържание (HTML) и езика за стилизиране на уеб съдържание (CSS). Изучават се основните HTML тагове, параграфи, списъци, таблици, форми, контроли и таговете за семантичен HTML. Набляга се на основните CSS селектори и стилове, работа с класове, презентационни правила, правила за позициониране и изглед (layout) в CSS. Покриват се последните новости на HTML5 и CSS3 стандарта. Курсът набляга на практически упражнения с HTML и CSS, чрез които ще въвлече курсистите в реални проекти за изработка на уеб страници, имплементация на фрагменти от сайтове и създаване на цялостни модерни уеб сайтове с добра визия, съвременна структура и мобилна поддръжка.
+The purpose of the HTML & CSS course is to lay a foundation of knowledge in web technologies, specifically an introduction to HTML5 and CSS3. Students will gain a beginning knowledge of web development, web browsers, HTML/CSS/DOM development tools and develop practical skills in using the Web Content Description Language (HTML) and the Web Content Stylesheet Language (CSS). Basic HTML tags, paragraphs, lists, tables, forms, controls, and semantic HTML tags are studied. Emphasis is placed on basic CSS selectors and styles, working with classes, presentation rules, positioning and layout rules in CSS. The latest developments in HTML5 and the CSS3 standard are covered. The course emphasizes hands-on exercises with HTML and CSS that engage you in real-world projects to build web pages, implement site snippets, and create complete modern websites with good looks, modern structure, and mobile support.
 
-## Придобити умения
+## 🚀 Acquired skills 
 
--   Изучаване на основите на типографията
--   Стилизиране на уеб сайтове със CSS
--   Основни познания в изграждането на уеб страници
--   Създаване на адаптивен (responsive) уеб дизайн
--   Създаване на съвременни уеб сайтове
--   Възможност за създаване на статични уеб страници
+  - Styling websites with CSS.
+  - Ability to create static web pages.
+  - Basic knowledge in building web pages.
+  - Learning the basics of typography.
+  - Creating responsive web design.
+  - Creating modern websites.
+
+## 🎓 Certificate
+![HTML   CSS - September 2023 - Certificate_01](https://github.com/TodorYadkov/SoftUni/assets/4013980/d502298e-0cd1-4ed8-91ed-d3e91bce2699)
