@@ -14,3 +14,4 @@ The training provides knowledge and practical skills for the development of Sing
 -   Working with templates and routing
 
 ## 🎓 Certificate
+![ReactJS - October 2023 - Certificate_01](https://github.com/TodorYadkov/SoftUni/assets/4013980/c2b5fb48-8a05-46d6-96ea-6f54cd4857f5)
