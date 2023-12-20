@@ -17,4 +17,5 @@ Specialize in so called full-stack JavaScript development of modern web applicat
 - [HTML & CSS](https://github.com/TodorYadkov/SoftUni/tree/main/HTML-CSS-2023)
 - [React](https://github.com/TodorYadkov/SoftUni/tree/main/React-2023)
 
-## 🎓Diploma - In Progress
+## 🎓Diploma - JS Web Developer
+![Diploma for JS Web Developer_01](https://github.com/TodorYadkov/SoftUni/assets/4013980/3f6d3f55-316f-4a3e-b0d9-3ce3e59a4500)
